@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map with Autocomplete</title>
+  <!-- Include necessary libraries -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbORSZJBXcqDnY6BbMx_JSP0l_9HLQSkw&libraries=places&callback=initMap"
+    async defer></script>
+  <style>
+    /* Add your styles here */
+    #map {
+      height: 400px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="row mb-20">
+    <div class="col-lg-4">
+      <input id="origin-input" class="controls" type="text" placeholder="Pickup location" />
+    </div>
+
+    <div class="col-lg-4">
+      <input id="destination-input" class="controls" type="text" placeholder="Destination location" />
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div id="map"></div>
+  </div>
+
+  <script>
+    var map, directionsService, directionsDisplay;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8
+      });
+
+      directionsService = new google.maps.DirectionsService();
+      directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay.setMap(map);
+
+      var originInput = document.getElementById('origin-input');
+      var destinationInput = document.getElementById('destination-input');
+
+      var originAutocomplete = new google.maps.places.Autocomplete(originInput, { placeIdOnly: true });
+      var destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput, { placeIdOnly: true });
+
+      originAutocomplete.addListener('place_changed', function () {
+        calculateAndDisplayRoute();
+      });
+
+      destinationAutocomplete.addListener('place_changed', function () {
+        calculateAndDisplayRoute();
+      });
+    }
+
+    function calculateAndDisplayRoute() {
+      var originAutocomplete = new google.maps.places.Autocomplete(originInput, { placeIdOnly: false });
+    var destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput, { placeIdOnly: false });
+
+    var originPlace = originAutocomplete.getPlace();
+    var destinationPlace = destinationAutocomplete.getPlace();
+
+    var originPlaceId = originPlace.place_id;
+    var destinationPlaceId = destinationPlace.place_id;
+
+    console.log('Origin Place ID:', originPlaceId);
+    console.log('Destination Place ID:', destinationPlaceId);
+
+    if (!originAutocomplete || !destinationAutocomplete) {
+        // Handle empty inputs
+        return;
+    }
+
+    originAutocomplete.addListener('place_changed', function () {
+    var place = originAutocomplete.getPlace();
+    console.log('Origin Autocomplete Prediction:', place);
+    calculateAndDisplayRoute();
+});
+
+destinationAutocomplete.addListener('place_changed', function () {
+    var place = destinationAutocomplete.getPlace();
+    console.log('Destination Autocomplete Prediction:', place);
+    calculateAndDisplayRoute();
+});
+
+    var request = {
+        origin: { 'placeId': originPlaceId },
+        destination: { 'placeId': destinationPlaceId },
+        travelMode: 'DRIVING' // You can change this to 'WALKING' or 'TRANSIT' as needed
+    };
+
+    directionsService.route(request, function (response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+            showDistanceAndTime(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+    }
+
+    function showDistanceAndTime(directionsResult) {
+      var route = directionsResult.routes[0];
+
+      if (route) {
+        var distance = 0;
+        var duration = 0;
+
+        for (var i = 0; i < route.legs.length; i++) {
+          distance += route.legs[i].distance.value;
+          duration += route.legs[i].duration.value;
+        }
+
+        var distanceInKm = (distance / 1000).toFixed(2);
+        var durationInMinutes = Math.round(duration / 60);
+
+        // Display distance and duration
+        console.log('Distance: ' + distanceInKm + ' km');
+        console.log('Duration: ' + durationInMinutes + ' minutes');
+      } else {
+        console.error('Error calculating distance and time. Check your route.');
+      }
+    }
+  </script>
+
+</body>
+
+</html>

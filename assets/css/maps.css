@@ -1,0 +1,18 @@
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+#map {
+  width: 103%;
+  /* Set map width to 100% of its container */
+  height: 160%;
+  /* Set a fixed height for the map */
+  margin-top: 10px;
+}
+
+/* Adjust map height for smaller screens */
+@media (max-width: 768px) {
+  #map {
+    height: 200px;
+  }
+}
