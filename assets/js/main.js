@@ -89,7 +89,10 @@ class AutocompleteDirectionsHandler {
     // Specify just the place data fields that you need.
     const destinationAutocomplete = new google.maps.places.Autocomplete(
       destinationInput,
-      { fields: ["place_id", "geometry", "formatted_address", "name"] }
+      {
+        fields: ["place_id", "geometry", "formatted_address", "name"],
+        componentRestrictions: { country: "uk" },
+      }
     );
     this.setupPlaceChangedListener(originAutocomplete, "ORIG");
     this.setupPlaceChangedListener(destinationAutocomplete, "DEST");
@@ -151,6 +154,16 @@ class AutocompleteDirectionsHandler {
             response.routes[0].legs[0].duration.value
           );
           me.directionsRenderer.setDirections(response);
+          const paragraphDistance = document.getElementById("distanceForm");
+          paragraphDistance.innerHTML =
+            "Distance: " +
+            (
+              response.routes[0].legs[0].distance.value * 0.0006213711922
+            ).toFixed(2) +
+            " miles";
+          const paragraphDuration = document.getElementById("durationForm");
+          paragraphDuration.innerHTML =
+            "Duration: " + response.routes[0].legs[0].duration.text;
         } else {
           window.alert("Directions request failed due to " + status);
         }
@@ -162,7 +175,7 @@ window.initMap = initMap;
 
 // Date & Time
 $(document).ready(function () {
-  $("#datebtn").click(function () {
+  $(".customButtons #nextBtn").click(function () {
     testClicked();
   });
 });
@@ -203,7 +216,7 @@ function showCurrentValueTextArea(event) {
 const getVT = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/vehicleType/getAllVehiclesTypes"
+      "http://57.128.184.217:3000/api/passengerLuggageLimit/getAllPassengerLuggageLimits"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -219,823 +232,21 @@ const getVT = async () => {
 const displayOption = async (val) => {
   let value = Number(val);
   $("#vehicleType").empty();
-  if (value === 1 || value === 2 || value === 3) {
-    const options = await getVT();
-    const option1 = [
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Luxury Coach",
-      "62 Seat Luxury Coach",
-      "57 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "57 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "29 Seat Executive Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "72 seater Standard",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "25 - 33 seat Luxury Midi Coach",
-      "55 Seat Standard Coach",
-      "36 Seat Luxury Team Coach",
-      "62 Seat Standard Coach",
-      "63 Seat Executive Coach",
-      "62 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value === 4 || value === 5 || value === 6) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Luxury Coach",
-      "62 Seat Luxury Coach",
-      "57 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "57 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "29 Seat Executive Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "72 seater Standard",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "25 - 33 seat Luxury Midi Coach",
-      "55 Seat Standard Coach",
-      "36 Seat Luxury Team Coach",
-      "62 Seat Standard Coach",
-      "63 Seat Executive Coach",
-      "62 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value === 7) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Luxury Coach",
-      "62 Seat Luxury Coach",
-      "57 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "57 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "29 Seat Executive Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "72 seater Standard",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "25 - 33 seat Luxury Midi Coach",
-      "55 Seat Standard Coach",
-      "36 Seat Luxury Team Coach",
-      "62 Seat Standard Coach",
-      "63 Seat Executive Coach",
-      "62 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value === 8) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Luxury Coach",
-      "62 Seat Luxury Coach",
-      "57 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "57 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "29 Seat Executive Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "72 seater Standard",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "25 - 33 seat Luxury Midi Coach",
-      "55 Seat Standard Coach",
-      "36 Seat Luxury Team Coach",
-      "62 Seat Standard Coach",
-      "63 Seat Executive Coach",
-      "62 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (
-    value === 9 ||
-    value === 10 ||
-    value === 11 ||
-    value === 12 ||
-    value === 13 ||
-    value === 14 ||
-    value === 15 ||
-    value === 16
-  ) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Luxury Coach",
-      "62 Seat Luxury Coach",
-      "57 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "57 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "29 Seat Executive Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "72 seater Standard",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "25 - 33 seat Luxury Midi Coach",
-      "55 Seat Standard Coach",
-      "36 Seat Luxury Team Coach",
-      "62 Seat Standard Coach",
-      "63 Seat Executive Coach",
-      "62 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (
-    value === 17 ||
-    value === 18 ||
-    value === 19 ||
-    value === 20 ||
-    value === 21 ||
-    value === 22 ||
-    value === 23 ||
-    value === 24
-  ) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (
-    value === 25 ||
-    value === 26 ||
-    value === 27 ||
-    value === 28 ||
-    value === 29
-  ) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value === 30 || value === 31 || value === 32 || value === 33) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value === 34 || value === 35 || value === 36) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25-33 Seat Luxury Midi Coach",
-      "33 Seat Standard",
-      "33 Seat Executive",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value >= 37 && value <= 49) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "Multiple Luxury Vehicles",
-      "Multiple Executive Vehicles",
-      "Multiple Standard Vehicles",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value >= 50 && value <= 53) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value >= 54 && value <= 55) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Luxury Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value >= 56 && value <= 57) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "55 Seat Standard Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value >= "58" && value <= "62") {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "55 Seat Standard Coach",
-      "57 Seat Luxury Coach",
-      "57 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value === 63) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "55 Seat Standard Coach",
-      "57 Seat Luxury Coach",
-      "57 Seat Executive Coach",
-      "62 Seat Standard Coach",
-      "62 Seat Luxury Coach",
-      "62 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value > 63 && value <= 72) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "55 Seat Standard Coach",
-      "57 Seat Luxury Coach",
-      "57 Seat Executive Coach",
-      "62 Seat Standard Coach",
-      "62 Seat Luxury Coach",
-      "62 Seat Executive Coach",
-      "63 Seat Executive Coach",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
-  }
-  if (value > 72) {
-    const options = await getVT();
-    const option1 = [
-      "Standard Saloon Car",
-      "Executive Saloon Car",
-      "VIP Saloon Car",
-      "Standard 6 Seat MPV",
-      "Executive 6 Seat MPV",
-      "VIP 6 Seat MPV",
-      "Executive 7 Seat MPV",
-      "Luxury 7 Seat MPV",
-      "Standard 8 Seat MPV",
-      "Executive 8 seat MPV",
-      "10-16 Seat Standard Minibus",
-      "10-16 Seat Executive Minibus",
-      "14-16 Seat Luxury Minibus",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "17-24 Seat Standard Midi Coach",
-      "17-24 Seat Executive Midi Coach",
-      "17-24 Seat Luxury Midi Coach",
-      "29 Seat Standard Midi Coach",
-      "29 Seat Executive Midi Coach",
-      "29 Seat Luxury Midi Coach",
-      "25 - 33 seat Luxury Midi Coach",
-      "33 seater standard",
-      "33 seat executive",
-      "36 Seat Luxury Team Coach",
-      "49 Seat Standard Coach",
-      "49 Seat Executive Coach",
-      "49 Seat Luxury Coach",
-      "53 Seat Executive Coach",
-      "53 Seat Standard Coach",
-      "53 Seat Luxury Coach",
-      "55 Seat Luxury Coach",
-      "55 Seat Executive Coach",
-      "55 Seat Standard Coach",
-      "57 Seat Luxury Coach",
-      "57 Seat Executive Coach",
-      "62 Seat Standard Coach",
-      "62 Seat Luxury Coach",
-      "62 Seat Executive Coach",
-      "63 Seat Executive Coach",
-      "72 seater Standard",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.type));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.type;
-      newOption.text = option.type;
-      $("#vehicleType").append(newOption);
-    }
+  $("#luggage").empty();
+  const options = await getVT();
+  const option1 = options.filter(
+    (item) => Number(item.max_passengers) >= value
+  );
+  // Assuming filtered is an array of objects with properties base_change and type
+  for (const option of option1) {
+    const newOption = document.createElement("option");
+    const newLuggage = document.createElement("option");
+    newOption.value = option.vehicle_type.type;
+    newOption.text = option.vehicle_type.type;
+    newLuggage.value = option.max_luggage.description;
+    newLuggage.text = option.max_luggage.description;
+    $("#vehicleType").append(newOption);
+    $("#luggage").append(newLuggage);
   }
 };
 
@@ -1043,340 +254,9 @@ const displayOption = async (val) => {
 $("#vehicleType").on("change", function (event) {
   // Get the selected value
   const selectedValue = event.target.value;
-  displayOptionLuggage(selectedValue);
   // Do whatever you need with the selected value
   localStorage.setItem("vt", selectedValue);
 });
-// Luggage Limit
-const getLuggage = async () => {
-  try {
-    const response = await fetch(
-      "http://localhost:3000/api/luggage/getAllLuggages"
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
-  }
-};
-
-const displayOptionLuggage = async (value) => {
-  $("#luggage").empty();
-  if (value === "VIP Saloon Car") {
-    const options = await getLuggage();
-    const option1 = [
-      "Lap Luggage Only",
-      "More than 2 x 22kg Check in Luggage each",
-      "1 x 22kg Check in luggage and 1 x 10kg Hand Luggage per person",
-      "1 x 10kg Hand Luggage and 1 set golf clubs each.",
-      "1 x 10kg Hand luggage and 1 x small sports kit bag each",
-      "1 Set of golf clubs each.",
-      "1 x 20kg Check in luggage per person only",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter(
-      (item) => !option1.includes(item.description)
-    );
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "10-16 Seat Standard Minibus") {
-    const options = await getLuggage();
-    const option1 = [
-      "1 x 10kg Hand luggage per person only",
-      "1 x 22kg Check in luggage and 1 x 10kg Hand Luggage per person",
-      "1 x 10kg Hand Luggage and 1 set golf clubs each.",
-      "1 x 10kg Hand luggage and 1 x small sports kit bag each",
-      "1 Set of golf clubs each.",
-      "1 x 20kg Check in luggage per person only",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter(
-      (item) => !option1.includes(item.description)
-    );
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "17-24 Seat Standard Midi Coach") {
-    const options = await getLuggage();
-    const option1 = [
-      "More than 2 x 22kg Check in Luggage each",
-      "1 x 10kg Hand luggage per person only",
-      "1 x 22kg Check in luggage and 1 x 10kg Hand Luggage per person",
-      "1 x 10kg Hand Luggage and 1 set golf clubs each.",
-      "1 x 10kg Hand luggage and 1 x small sports kit bag each",
-      "1 Set of golf clubs each.",
-      "1 x 20kg Check in luggage per person only",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter(
-      (item) => !option1.includes(item.description)
-    );
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "Standard Saloon Car" || value === "Executive Saloon Car") {
-    const options = await getLuggage();
-    const option1 = [
-      "More than 2 x 22kg Check in Luggage each",
-      "1 x 22kg Check in luggage and 1 x 10kg Hand Luggage per person",
-      "1 x 10kg Hand Luggage and 1 set golf clubs each.",
-      "1 x 10kg Hand luggage and 1 x small sports kit bag each",
-      "1 Set of golf clubs each.",
-      "1 x 20kg Check in luggage per person only",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter(
-      (item) => !option1.includes(item.description)
-    );
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "Standard 6 Seat MPV" || value === "Executive 6 Seat MPV") {
-    const options = await getLuggage();
-    const option1 = [
-      "More than 2 x 22kg Check in Luggage each",
-      "1 x 22kg Check in luggage and 1 x 10kg Hand Luggage per person",
-      "1 x 10kg Hand Luggage and 1 set golf clubs each.",
-      "1 x 10kg Hand luggage and 1 x small sports kit bag each",
-      "1 Set of golf clubs each.",
-      "1 x 20kg Check in luggage per person only",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter(
-      (item) => !option1.includes(item.description)
-    );
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "29 Seat Standard Midi Coach") {
-    const options = await getLuggage();
-    const option1 = [
-      "More than 2 x 22kg Check in Luggage each",
-      "1 x 22kg Check in luggage and 1 x 10kg Hand Luggage per person",
-      "1 x 10kg Hand Luggage and 1 set golf clubs each.",
-      "1 x 10kg Hand luggage and 1 x small sports kit bag each",
-      "1 Set of golf clubs each.",
-      "1 x 20kg Check in luggage per person only",
-    ];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter(
-      (item) => !option1.includes(item.description)
-    );
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "29 Seat Luxury Midi Coach") {
-    const options = await getLuggage();
-    const option1 = ["3", "2", "3.50", "1.20"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "49 Seat Executive Coach" || value === "49 Seat Luxury Coach") {
-    const options = await getLuggage();
-    const option1 = ["3", "2", "3.50", "1.20"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (
-    value === "49 Seat Standard Coach" ||
-    value === "17-24 Seat Luxury Midi Coach" ||
-    value === "14-16 Seat Luxury Minibus"
-  ) {
-    const options = await getLuggage();
-    const option1 = ["3.40", "2", "3.50", "1.20"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "53 Seat Standard Coach") {
-    const options = await getLuggage();
-    const option1 = ["3.40", "2", "3.50", "1.20", "3", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "53 Seat Executive Coach" || value === "53 Seat Luxury Coach") {
-    const options = await getLuggage();
-    const option1 = ["3.40", "2", "3.50", "1.20", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (
-    value === "17-24 Seat Standard Midi Coach" ||
-    value === "17-24 Seat Executive Midi Coach"
-  ) {
-    const options = await getLuggage();
-    const option1 = ["3", "3.50", "1.20", "3.40", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-  if (value === "VIP 6 Seat MPV") {
-    const options = await getLuggage();
-    const option1 = ["1.20", "2", "3.40", "3.50"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "62 Seat Luxury Coach") {
-    const options = await getLuggage();
-    const option1 = ["1.20", "2", "3.40", "3.50", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (
-    value === "57 Seat Luxury Coach" ||
-    value === "57 Seat Luxury Coach" ||
-    value === "55 Seat Executive Coach"
-  ) {
-    const options = await getLuggage();
-    const option1 = ["1.20", "2", "3", "3.40", "3.50"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "Executive 7 Seat MPV" || value === "Executive 8 seat MPV") {
-    const options = await getLuggage();
-    const option1 = ["1.20", "3", "3.40", "3.50", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "Luxury 7 Seat MPV") {
-    const options = await getLuggage();
-    const option1 = ["1.20", "3.40", "3.50", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-
-  if (value === "Executive 6 Seat MPV") {
-    const options = await getLuggage();
-    const option1 = ["1.20", "2", "3.40", "3.50", "3.60", "4"];
-    // Use filter to keep only the elements not present in option1
-    const filtered = options.filter((item) => !option1.includes(item.size));
-    // Assuming filtered is an array of objects with properties base_change and type
-    for (const option of filtered) {
-      const newOption = document.createElement("option");
-      newOption.value = option.description;
-      newOption.text = option.description;
-      $("#luggage").append(newOption);
-    }
-  }
-};
 
 $("#luggage").on("change", function (event) {
   // Get the selected value
@@ -1388,7 +268,7 @@ $("#luggage").on("change", function (event) {
 const getJourneys = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/journey/getAllJourneys"
+      "http://57.128.184.217:3000/api/journey/getAllJourneys"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -1426,7 +306,7 @@ $("#journeys").on("change", function (event) {
 const getSource = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/source/getAllSources"
+      "http://57.128.184.217:3000/api/source/getAllSources"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -1462,7 +342,7 @@ $("#sources").on("change", function (event) {
 });
 
 $(document).ready(function () {
-  $("#reviewbtn").click(function () {
+  $(".customButtons #nextBtn").click(function () {
     testtClicked();
   });
 });
@@ -1471,21 +351,27 @@ function testtClicked() {
   // email
   const paragraph = document.getElementById("email_visitor");
   paragraph.innerHTML = localStorage.getItem("email");
+
   // name
   const name_p = document.getElementById("name_visitor");
   name_p.innerHTML = localStorage.getItem("name");
+
   // phone
   const phone_p = document.getElementById("phone_visitor");
   phone_p.innerHTML = localStorage.getItem("phone");
+
   // go time
   const goDate = document.getElementById("go");
   goDate.innerHTML = localStorage.getItem("goDate");
+
   // return time
   const returnDate = document.getElementById("returnDate");
   returnDate.innerHTML = localStorage.getItem("returnDate");
+
   // pickup
   const pickup_adr = document.getElementById("pickup");
   pickup_adr.innerHTML = localStorage.getItem("pickupFullName");
+
   // dest
   const dest_adr = document.getElementById("dest");
   dest_adr.innerHTML = localStorage.getItem("destFullName");
@@ -1543,24 +429,6 @@ async function submitLoginForm(event) {
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
   let date = /* "-- " +  */ hours + ":" + minutes + ampm;
-  if (
-    email_visitor === "" ||
-    name_visitor === "" ||
-    phone_visitor === "" ||
-    localStorage.getItem("goDate") === date ||
-    localStorage.getItem("pickupFullName") === null ||
-    localStorage.getItem("destFullName") === null
-  ) {
-    var element = document.getElementById("menu1");
-    element.classList.remove("active");
-    var elementTab = document.getElementById("menu1Tab1");
-    elementTab.classList.remove("active");
-    var homeTab = document.getElementById("homeTab");
-    homeTab.classList.add("active");
-    homeTab.classList.remove("disabled-tab");
-    var elementHome = document.getElementById("home");
-    elementHome.classList.add("active");
-  }
   let object = {
     name: name_visitor,
     phone: phone_visitor,
@@ -1585,14 +453,17 @@ async function submitLoginForm(event) {
     enquiryDate: currentDate,
   };
   let body = JSON.stringify(object);
-  const response = await fetch("http://localhost:3000/api/visitor/newVisitor", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body,
-  });
+  const response = await fetch(
+    "http://57.128.184.217:3000/api/visitor/newVisitor",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: body,
+    }
+  );
 
   response.json().then((data) => {
     localStorage.setItem("v_id", data._id);
@@ -1600,34 +471,6 @@ async function submitLoginForm(event) {
     localStorage.setItem("phone", data.phone);
     localStorage.setItem("name", data.name);
   });
-}
-
-async function verifyForm(event) {
-  event.preventDefault();
-  let pax = "";
-  pax = localStorage.getItem("pax");
-  let vehicleType = "";
-  vehicleType = localStorage.getItem("vt");
-  let luggage = "";
-  luggage = localStorage.getItem("lgg");
-  let journey = "";
-  journey = localStorage.getItem("jrn");
-  if (
-    pax === null ||
-    vehicleType === null ||
-    journey === null ||
-    luggage === null
-  ) {
-    var element = document.getElementById("menu2");
-    element.classList.remove("active");
-    var elementTab = document.getElementById("menu2Tab2");
-    elementTab.classList.remove("active");
-    var homeTab = document.getElementById("menu1Tab1");
-    homeTab.classList.add("active");
-    homeTab.classList.remove("disabled-tab");
-    var elementHome = document.getElementById("menu1");
-    elementHome.classList.add("active");
-  }
 }
 
 function convertToHHMM(seconds) {
@@ -1689,6 +532,19 @@ async function submitQuoteForm(event) {
     String(dropoffTime.hours).padStart(2, "0") +
     ":" +
     String(dropoffTime.minutes).padStart(2, "0");
+
+  let returnDropoffTime = addDurationToTime(
+    localStorage.getItem("returnTime"),
+    duration.hours,
+    duration.minutes,
+    localStorage.getItem("returnDate")
+  );
+  let clean_return_dropoff_date = returnDropoffTime.date;
+  let clean_return_dropoff_time =
+    String(returnDropoffTime.hours).padStart(2, "0") +
+    ":" +
+    String(returnDropoffTime.minutes).padStart(2, "0");
+
   let object = {
     pickup_time: localStorage.getItem("goTime"),
     date: localStorage.getItem("goDate"),
@@ -1696,6 +552,8 @@ async function submitQuoteForm(event) {
     dropoff_date: clean_dropoff_date,
     return_time: localStorage.getItem("returnTime"),
     return_date: localStorage.getItem("returnDate"),
+    return_dropoff_time: clean_return_dropoff_time,
+    return_dropoff_date: clean_return_dropoff_date,
     id_visitor: localStorage.getItem("v_id"),
     passengers_number: localStorage.getItem("pax"),
     vehicle_type: localStorage.getItem("vt"),
@@ -1729,14 +587,17 @@ async function submitQuoteForm(event) {
     status: "Pending",
   };
 
-  const response = await fetch("http://localhost:3000/api/quote/newQuote", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body,
-  });
+  const response = await fetch(
+    "http://57.128.184.217:3000/api/quote/newQuote",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: body,
+    }
+  );
 
   response
     .json()
@@ -1744,7 +605,7 @@ async function submitQuoteForm(event) {
       localStorage.clear();
     })
     .then(() => {
-      fetch("http://localhost:3000/api/visitor/updateStatus", {
+      fetch("http://57.128.184.217:3000/api/visitor/updateStatus", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -1758,3 +619,124 @@ async function submitQuoteForm(event) {
 function olLoadPage() {
   location.reload();
 }
+
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == x.length - 1) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n);
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x,
+    y,
+    i,
+    valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  let returnDate = document.getElementById("returnDatePicker");
+  let returnTime = document.getElementById("returnTimePicker");
+  let inputsArray = Array.from(y);
+  let filteredInputs = inputsArray;
+  if (currentTab === 0) {
+    // Convert HTMLCollection to an array
+    let type = localStorage.getItem("type");
+    switch (type) {
+      case "One way":
+        filteredInputs = inputsArray.filter(
+          (input) => input !== returnDate && input !== returnTime
+        );
+        break;
+      case "Return":
+        filteredInputs = inputsArray;
+    }
+  }
+
+  if (currentTab === 1) {
+    // Convert HTMLCollection to an array
+    let journey = localStorage.getItem("jrn");
+    if (journey === null) {
+      valid = false;
+    }
+    let vehicleType = localStorage.getItem("vt");
+    if (vehicleType === null) {
+      valid = false;
+    }
+    let luggage = localStorage.getItem("lgg");
+    if (luggage === null) {
+      valid = false;
+    }
+  }
+
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < filteredInputs.length; i++) {
+    // If a field is empty...
+    if (filteredInputs[i].value == "") {
+      // add an "invalid" class to the field:
+      // filteredInputs[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+
+  if (!valid) {
+    alert("Please Fill in all the requested information!");
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i,
+    x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+
+window.onload = function clearStorage() {
+  localStorage.clear();
+  localStorage.setItem("type", "One way");
+};

@@ -5,7 +5,7 @@
 #map {
   width: 103%;
   /* Set map width to 100% of its container */
-  height: 160%;
+  height: 130%;
   /* Set a fixed height for the map */
   margin-top: 10px;
 }
