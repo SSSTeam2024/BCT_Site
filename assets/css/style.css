@@ -8110,7 +8110,7 @@ select {
 
 #regForm {
     background-color: #ffffff;
-    margin: 100px auto;
+    margin: 50px auto;
     font-family: Raleway;
     padding: 40px;
     width: 100%;
@@ -8135,7 +8135,7 @@ select {
   }
   
   /* Hide all steps by default: */
-  .tab {
+  .QuoteTab {
     display: none;
   }
   
