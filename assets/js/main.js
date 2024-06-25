@@ -235,31 +235,35 @@ let max_pax;
 const displayOption = async (val) => {
   let value = Number(val);
   max_pax = value;
-  $("#vehicleType").empty();
+  //$("#vehicleType").empty();
+  var select = document.getElementById("vehicleType");
+  select.innerHTML = "";
   passengerLuggageLimitOptions = await getVT();
   const option1 = passengerLuggageLimitOptions.filter(
     (item) => Number(item.max_passengers) >= value
   );
-  console.log("option1", option1);
-  console.log("value", value);
+
   // Assuming filtered is an array of objects with properties base_change and type
   const newEmptyOption = document.createElement("option");
   newEmptyOption.value = "";
   newEmptyOption.text = "Select Vehicle";
 
-  $("#vehicleType").append(newEmptyOption);
+  select.add(newEmptyOption);
+
   for (const option of option1) {
     const newOption = document.createElement("option");
     newOption.value = option.vehicle_type.type;
     newOption.text = option.vehicle_type.type;
-    $("#vehicleType").append(newOption);
+    select.add(newOption);
   }
 };
 
 // Add an event listener to #vehicleType
 $("#vehicleType").on("change", function (event) {
   // Get the selected value
-  $("#luggage").empty();
+  //$("#luggage").empty();
+  var select = document.getElementById("luggage");
+  select.innerHTML = "";
   const selectedValue = event.target.value;
   // Do whatever you need with the selected value
   localStorage.setItem("vt", selectedValue);
@@ -272,13 +276,13 @@ $("#vehicleType").on("change", function (event) {
   const newEmptyOption = document.createElement("option");
   newEmptyOption.value = "";
   newEmptyOption.text = "Select Luggage";
-  $("#luggage").append(newEmptyOption);
+  select.add(newEmptyOption);
 
   for (const option of optionLuggage) {
     const newLuggage = document.createElement("option");
     newLuggage.value = option.max_luggage.description;
     newLuggage.text = option.max_luggage.description;
-    $("#luggage").append(newLuggage);
+    select.add(newLuggage);
   }
 });
 
