@@ -743,10 +743,9 @@
                         <h6>Vehicle Type</h6>
                       </div>
                       <div class="col-6">
-                        <select
-                          id="vehicleType"
-                          class="customSecondTag"
-                        ></select>
+                        <select id="vehicleType" class="customSecondTag">
+                          <option value="">Select</option>
+                        </select>
                       </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px">
@@ -756,7 +755,7 @@
                       <div class="col-6">
                         <div class="form-group">
                           <select id="luggage" class="customSecondTag">
-                            <option value="1">Select</option>
+                            <option value="">Select</option>
                           </select>
                         </div>
                       </div>
@@ -977,7 +976,13 @@
               </form>
             </div>
             <!-- Circles which indicates the steps of the form: -->
-            <div style="text-align: center">
+            <div
+              style="
+                text-align: center;
+                margin-top: 100px;
+                margin-bottom: -200px;
+              "
+            >
               <span class="step"></span>
               <span class="step"></span>
               <span class="step"></span>

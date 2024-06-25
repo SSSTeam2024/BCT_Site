@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap Min CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Responsive CSS -->
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <!-- Map -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Title -->
+  <title>Booking Payment | Coach Hire Network</title>
+   <!-- Favicon -->
+   <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .container {
+      margin: 30px auto;
+    }
+
+    .container .card {
+      width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      background: #fff;
+      border-radius: 0px;
+    }
+
+    body {
+      background: #eee
+    }
+
+
+
+    .btn.btn-primary {
+      background-color: #ddd;
+      color: black;
+      box-shadow: none;
+      border: none;
+      font-size: 20px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn.btn-primary:focus {
+      box-shadow: none;
+    }
+
+    .container .card .img-box {
+      width: 80px;
+      height: 50px;
+    }
+
+    .container .card img {
+      width: 100%;
+      object-fit: fill;
+    }
+
+    .container .card .number {
+      font-size: 24px;
+    }
+
+    .container .card-body .btn.btn-primary .fab.fa-cc-paypal {
+      font-size: 32px;
+      color: #3333f7;
+    }
+
+    .fab.fa-cc-amex {
+      color: #1c6acf;
+      font-size: 32px;
+    }
+
+    .fab.fa-cc-mastercard {
+      font-size: 32px;
+      color: red;
+    }
+
+    .fab.fa-cc-discover {
+      font-size: 32px;
+      color: orange;
+    }
+
+    .c-green {
+      color: green;
+    }
+
+    .box {
+      height: 40px;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ddd;
+    }
+
+    .btn.btn-primary.payment {
+      background-color: #1c6acf;
+      color: white;
+      border-radius: 0px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+
+    .form__div {
+      height: 50px;
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 45px;
+      font-size: 14px;
+      border: 1px solid #DADCE0;
+      border-radius: 0;
+      outline: none;
+      padding: 2px;
+      background: none;
+      z-index: 1;
+      box-shadow: none;
+    }
+
+    .form__label {
+      position: absolute;
+      left: 16px;
+      top: 10px;
+      background-color: #fff;
+      color: #80868B;
+      font-size: 16px;
+      transition: .3s;
+      text-transform: uppercase;
+    }
+
+    .form-control:focus+.form__label {
+      top: -8px;
+      left: 12px;
+      color: #1A73E8;
+      font-size: 12px;
+      font-weight: 500;
+      z-index: 10;
+    }
+
+    .form-control:not(:placeholder-shown).form-control:not(:focus)+.form__label {
+      top: -8px;
+      left: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      z-index: 10;
+    }
+
+    .form-control:focus {
+      border: 1.5px solid #1A73E8;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Start Track Area -->
+  <section class="track-area mt-minus-70 pb-100" style="margin-top: 18px; margin-bottom: 150px;">
+    <div class="container">
+      <table style="
+        width: 600px;
+        height: 96px;
+        margin: 0 auto;
+        border: none;
+        text-align: center;
+        padding: 0;
+        border-collapse: collapse;
+        color: #000;
+      ">
+        <tbody style="font-family: 'Roboto'; font-size: 1rem;">
+          <tr>
+            <td>
+              <a href="">
+                <img src="cid:unique-image-id" alt="" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left">
+      <fieldset style="
+      width: 600px;
+      margin: auto;
+    ">
+        <legend style="margin-left: 20%" id="legendLabel">
+          
+        </legend>
+        <table style="
+          width: 600px;
+          border: none;
+          text-align: center;
+          padding: 8px;
+        ">
+          <tbody>
+            <tr>
+              <td style="
+                  width: 200px;
+                  text-align: right;
+                  vertical-align: top;
+                  padding-right: 15px;
+                  background-color: #555;
+                  color: #ffe605;
+                ">
+                <b>Pickup</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc;">
+                <label></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Date & Time</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="dataAndTime"> </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Collection Address</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="pickupAddress"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Destination Address</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="destinationAddress"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Luggage</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="luggage_details"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Number Of Passengers</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="passenger_number"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Vehicle Type</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="vehicle_type"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+            width: 200px;
+            text-align: right;
+            vertical-align: top;
+            padding-right: 15px;
+            background-color: #555;
+            color: #ffe605;
+          "></td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc;">
+                <span style="color: #000" id="price"></span>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Journey Type</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="journey_type"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Passenger Name</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="passengers_name"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Passenger Phone</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="passengers_phone"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Email</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="passengers_email"></label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <fieldset style="
+      width: 400px;
+      margin: auto;
+    ">
+        <legend style="margin-left: 20%">
+          <strong>PAYMENT</strong>
+        </legend>
+        <table style="
+          width: 400px;
+          border: none;
+          text-align: center;
+          padding: 8px;
+        ">
+          <tbody>
+            <tr>
+              <td style="
+                  width: 200px;
+                  text-align: right;
+                  vertical-align: top;
+                  padding-right: 15px;
+                  background-color: #555;
+                  color: #ffe605;
+                ">
+                <b>Vehicle Price</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc;" id="vehicle_price">
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>VAT</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="vat"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Total Price</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="total_price"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Deposit Amount</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="deposit_amount"></label>
+              </td>
+            </tr>
+            <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Current Balance</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label id="current_balance"></label>
+              </td>
+            </tr>
+            <!-- <tr>
+              <td style="
+                width: 200px;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 15px;
+                background-color: #555;
+                color: #ffe605;
+              ">
+                <b>Balance Due Date</b>
+              </td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
+                <label>` +
+    quote.estimated_start_time +
+    `</label>
+              </td>
+            </tr> -->
+            <tr>
+              <td>
+                <button type="button" class="btn btnNext text-white" data-toggle="modal" style="margin-top: 20px; background-color: #e5d222; width: 150px; height: 50px; font-size: 20px;"
+                data-target="#alertModal" onclick="getPaymentMode('all')">All Amount</button>
+              </td>
+              <td>
+                <button type="button" class="btn btnNext text-white" data-toggle="modal" style="margin-top: 20px; background-color: #e5d222; width: 130px; height: 50px; font-size: 20px;"
+                data-target="#alertModal" onclick="getPaymentMode('deposit')">Deposit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+  </section>
+  <!-- End Track Area -->
+
+  <!-- Modal -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </symbol>
+  </svg>
+  <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h4 class="modal-title text-white" id="exampleModalLabel"><svg class="bi flex-shrink-0 me-2" width="24"
+              height="24" role="img" aria-label="Success:">
+              <use xlink:href="#check-circle-fill" />
+            </svg>Quote Payment</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 mt-4">
+              <div class="card p-3">
+                <p class="mb-0 fw-bold h4">Payment Methods</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card p-3">
+                <div class="card-body border p-0">
+                  <p>
+                    <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
+                      data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                      aria-controls="collapseExample" onclick="getPaymentType('paypal')">
+                      <span class="fw-bold">PayPal</span>
+                      <span class="fab fa-cc-paypal">
+                      </span>
+                    </a>
+                  </p>
+                  <div class="collapse p-3 pt-0" id="collapseExample">
+                    <div class="row">
+                      <div class="col-8">
+                        <p class="h4 mb-0">Summary</p>
+                        <p class="mb-0"><span class="fw-bold">Quote:</span><span class="c-green" id="paypal_quote_ref_modal">: 
+                          </span></p>
+                        <p class="mb-0"><span class="fw-bold">Price:</span><span class="c-green" id="dynamicPaypalPrice">:</span></p>
+                        <p class="mb-0">Pay easily and securely with PayPal. Use your PayPal account to quickly complete your purchase without sharing your financial information.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body border p-0">
+                  <p>
+                    <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
+                      data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                      aria-controls="collapseExample"  onclick="getPaymentType('credit card')">
+                      <span class="fw-bold">Credit Card</span>
+                      <span class="">
+                        <span class="fab fa-cc-amex"></span>
+                        <span class="fab fa-cc-mastercard"></span>
+                        <span class="fab fa-cc-discover"></span>
+                      </span>
+                    </a>
+                  </p>
+                  <div class="collapse show p-3 pt-0" id="collapseExample">
+                    <div class="row">
+                      <div class="col-lg-5 mb-lg-0 mb-3">
+                        <p class="h4 mb-0">Summary</p>
+                        <p class="mb-0"><span class="fw-bold">Quote:</span><span class="c-green" id="credit_card_quote_ref_modal">:</span>
+                        </p>
+                        <p class="mb-0">
+                          <span class="fw-bold">Price:</span>
+                          <span class="c-green" id="dynamicCreditCardPrice">:</span>
+                        </p>
+                        <p class="mb-0">Complete your quote payment with confidence. We offer secure and easy payment options to ensure your information is protected. Simply enter your details below to finalize your payment.
+
+                          Thank you for choosing us!</p>
+                      </div>
+                      <div class="col-lg-7">
+                        <form action="" class="form">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form__div">
+                                <input type="text" class="form-control" placeholder=" ">
+                                <label for="" class="form__label">Card Number</label>
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form__div">
+                                <input type="text" class="form-control" placeholder=" ">
+                                <label for="" class="form__label">MM / yy</label>
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form__div">
+                                <input type="password" class="form-control" placeholder=" ">
+                                <label for="" class="form__label">cvv code</label>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="form__div">
+                                <input type="text" class="form-control" placeholder=" ">
+                                <label for="" class="form__label">name on the card</label>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="btn btn-primary w-100">Sumbit</div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="btn btn-primary payment close" data-dismiss="modal" aria-label="Close" onclick="makePayment()">
+                <span aria-hidden="true">Make Payment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary" data-dismiss="modal" onclick="olLoadPage()">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+
+    let details;
+    let trackingId;
+    let allAmount;
+    let depositAmount;
+    let paymentMode;
+    let paymentType = "credit card";
+
+    function getPaymentType(type){
+      console.log(type);
+      paymentType = type
+    }
+    function getPaymentMode(mode){
+      if(mode === 'all'){
+        paymentMode = "total price";
+        let paypal_price = document.getElementById("dynamicPaypalPrice");
+        let credit_card_price = document.getElementById("dynamicCreditCardPrice");
+        paypal_price.innerHTML = "£"+allAmount //quote.total_price;
+        credit_card_price.innerHTML = "£"+allAmount//quote.total_price;
+      }
+      if(mode === 'deposit'){
+        paymentMode = mode;
+        let paypal_price = document.getElementById("dynamicPaypalPrice");
+        let credit_card_price = document.getElementById("dynamicCreditCardPrice");
+        paypal_price.innerHTML = "£" + depositAmount
+        credit_card_price.innerHTML = "£" + depositAmount
+      }
+    }
+
+    async function getPaymentDetails(id){
+      
+      const response = await fetch(
+        "http://localhost:3000/api/visitor-payment/get-details/"+id,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      response.json().then((data) => {
+        console.log(data);
+        details = data;
+        allAmount = details.id_quote.total_price
+        depositAmount = details.id_quote.deposit_amount
+        let legend = document.getElementById("legendLabel");
+        let creationDate = formatDate(details.id_quote.createdAt);
+        legend.innerHTML = "<strong>Reference: </strong>" + details.id_quote.quote_ref + "<strong> Date: </strong>" + creationDate ;
+        let dateAndTime = document.getElementById("dataAndTime");
+        dateAndTime.innerHTML = details.id_quote.date + "<strong> at </strong>" +details.id_quote.pickup_time
+        let pickupAddress = document.getElementById("pickupAddress");
+        pickupAddress.innerHTML = details.id_quote.start_point.placeName
+        let destinationAddress = document.getElementById("destinationAddress");
+        destinationAddress.innerHTML = details.id_quote.destination_point.placeName
+        let luggage_details = document.getElementById("luggage_details");
+        luggage_details.innerHTML = details.id_quote.luggage_details
+        let passenger_number = document.getElementById("passenger_number");
+        passenger_number.innerHTML = details.id_quote.passengers_number
+        let vehicle_type = document.getElementById("vehicle_type");
+        vehicle_type.innerHTML = details.id_quote.vehicle_type
+        let price = document.getElementById("price");
+        price.innerHTML = details.id_quote.manual_cost
+        let journey_type = document.getElementById("journey_type");
+        journey_type.innerHTML = details.id_quote.journey_type
+        let passengers_name = document.getElementById("passengers_name");
+        passengers_name.innerHTML = details.id_visitor.name
+        let passengers_phone = document.getElementById("passengers_phone");
+        passengers_phone.innerHTML = details.id_visitor.phone
+        let passengers_email = document.getElementById("passengers_email");
+        passengers_email.innerHTML = details.id_visitor.email
+
+        let vehicle_price = document.getElementById("vehicle_price");
+        vehicle_price.innerHTML = "£" + details.id_quote.manual_cost
+        let vat = document.getElementById("vat");
+        vat.innerHTML = "£" + Number(details.id_quote.manual_cost) * 0.2
+        let total_price = document.getElementById("total_price");
+        total_price.innerHTML = "£" + details.id_quote.total_price
+        let deposit_amount = document.getElementById("deposit_amount");
+        deposit_amount.innerHTML = "£" + details.id_quote.deposit_amount
+        let current_balance = document.getElementById("current_balance");
+        current_balance.innerHTML = "£" + details.id_quote.total_price
+
+        let paypal_quote_ref_modal = document.getElementById("paypal_quote_ref_modal");
+        paypal_quote_ref_modal.innerHTML = ' ' + details.id_quote.quote_ref
+        let credit_card_quote_ref_modal = document.getElementById("credit_card_quote_ref_modal");
+        credit_card_quote_ref_modal.innerHTML = ' ' + details.id_quote.quote_ref
+      }); 
+    }
+
+    async function makePayment(){
+      let currentDate = formatCurrentDate();
+      let requestData = {
+        quoteId: details.id_quote._id,
+        payment_type: paymentType,
+        visitorPaymentTrackingId: trackingId,
+        payment_mode: paymentMode,
+        date: currentDate,
+      }
+      let body = JSON.stringify(requestData);
+      const response = await fetch(
+        "http://localhost:3000/api/quote/confirm-booking",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: body
+        }
+      );
+
+      response.json().then((data) => {
+        console.log(data.link);
+        window.location.replace(data.link);
+      }); 
+    }
+
+
+    function formatDate(dateString){
+      const date = new Date(dateString);
+
+    // Extract the individual components of the date
+    const year = date.getFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
+    // Format the date components into the desired string format
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+    return formattedDate;
+    }
+
+    function formatCurrentDate(){
+          const date = new Date();
+    
+        // Extract the individual components of the date
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+    
+        // Format the date components into the desired string format
+        const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    
+        return formattedDate;
+        }
+
+    window.onload = function getPaymentData(){
+      const currentUrl = window.location.href;
+      console.log(currentUrl);
+      const urlParams = new URLSearchParams(window.location.search);
+      const hiddenId = urlParams.get('id');
+      console.log(hiddenId);
+      getPaymentDetails(hiddenId);
+      trackingId = hiddenId;
+    }
+  </script>
+</body>
+
+</html>
