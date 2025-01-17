@@ -2037,10 +2037,7 @@ What We Offer Area Style
 }
 
 .choose-img {
-    background-image: url(../img/5.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+width: 100%;
     height: 100%;
 }
 
@@ -2110,7 +2107,7 @@ Service Area Style
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../img/service/6903819.png);
+    /* background-image: url(../img/service/6903819.png); */
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -8189,22 +8186,172 @@ select {
     background-color: #04AA6D;
   }
 
-  .customBtn {
-    width: 20% !important; 
-    margin-left: 10px; 
-    margin-top: 5px; 
-    border-radius: 4px;
+ /*--------------------------
+* MENU TABS
+---------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+	--first-color: #2e2e41;
+	--second-color: #5b85ff;
+	--third-color: #434354;
+	--text-color: #fff;
+
+	--box-shadow: 0 5px 25px rgb(2, 2, 2, 0.1);
+	--text-shadow: 0 5px 25px rgb(2, 2, 2, 0.1);
+}
+
+.tab__bar {
+	position: relative;
+	margin: 100px 10px 30px 10px;
+  .tab__navigation {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    margin: 0 auto;
+  }
+  .tab__menu {
+    color: #000000;
+    list-style: none;
+    max-width: 100%; /* Allow the menu to span the full width */
+    white-space: normal; /* Allow wrapping instead of forcing everything in one line */
+    scroll-behavior: smooth;
+    user-select: none;
+    overflow: visible; /* Make sure no tabs are hidden */
+    display: flex; /* Align items horizontally */
+    justify-content: center; /* Center the tabs */
+    gap: 10px; /* Add spacing between tabs */
   }
 
-  .customButtons {
+  .tab__btn {
+    display: inline-block;
+    color: #000000;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 2px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .tab__btn:hover {
+    color: #ffffff;
+    background-color: var(--first-color);
+  }
+  
+  .tab__btn.active {
+    color: #ffffff;
+    background-color: #CD2528;
+  }
+
+  .left__btn,
+  .right__btn {
+    position: absolute;
+    color: var(--text-color);
+    font-size: 1.8em;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  .left__btn {
+    display: none;
+    left: -5px;
+    background: linear-gradient(to left, transparent, var(--first-color) 60%);
+    padding: 10px 30px 10px 0;
+  }
+  .right__btn {
+    right: -5px;
+    background: linear-gradient(to right, transparent, var(--first-color) 60%);
+    padding: 10px 0 10px 30px;
+  }
+}
+
+.tab__content {
+	position: relative;
+  .tab {
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    display: none;
+    animation: fadein .8s;
+    &.active {
+      display: flex;
+    }
+    .row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      @media (max-width: 767px) {
+        flex-direction: column;
+      }
+    }
+  }
+  .left-column,
+  .right-column {
+    width: 50%;
+    max-width: 500px;
+    @media (max-width: 767px) {
+      width: 100%;
+      max-width: 700px;
+    }
+  }
+  .left-column {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    .img-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--box-shadow);
+      img {
+        width: 100%;
+      }
+    }
   }
+  .info {
+    .city {
+      margin-bottom: 15px;
+      font-size: 32px;
+    }
+    .description {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1.8;
+      @media (max-width: 767px) {
+        text-align: justify;
+      }
+    }
+    .city, .description {
+      color: #000000;
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+  }
+}
 
-  .customSecondTag {
-    width: 100%;
-    height: 30px;
-    border-radius: 2px;
-    border-color: #ccc;
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
   }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

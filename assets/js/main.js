@@ -768,3 +768,33 @@ window.onload = function clearStorage() {
   localStorage.clear();
   localStorage.setItem("type", "One way");
 };
+///////
+// Javascript for tab navigation horizontal scroll buttons
+
+// Select all the required elements
+const tabMenu = document.querySelector(".tab__menu");
+const tabs = document.querySelectorAll(".tab");
+const tabBtns = document.querySelectorAll(".tab__btn");
+
+// Function to handle tab navigation
+const tab_Nav = function (tabBtnClick) {
+  // Remove 'active' class from all buttons and tabs
+  tabBtns.forEach((tabBtn) => {
+    tabBtn.classList.remove("active");
+  });
+
+  tabs.forEach((tab) => {
+    tab.classList.remove("active");
+  });
+
+  // Add 'active' class to the clicked button and its corresponding tab
+  tabBtns[tabBtnClick].classList.add("active");
+  tabs[tabBtnClick].classList.add("active");
+};
+
+// Add click event listeners to all tab buttons
+tabBtns.forEach((tabBtn, i) => {
+  tabBtn.addEventListener("click", () => {
+    tab_Nav(i);
+  });
+});
