@@ -22,15 +22,24 @@ async function fetchOffreServices() {
   }
 }
 
+function getCurrentHtmlFileName() {
+  const path = document.location.pathname;
+  return path.substring(path.lastIndexOf("/") + 1);
+}
+
 function updateOffreServices(offreServicesData) {
   const baseUrl = "http://localhost:3000/offerService/";
-
+  const currentFileName = getCurrentHtmlFileName();
   const offreServicesContainer = document.querySelector("#offreServices");
 
   if (!offreServicesContainer) {
     console.error("Our Values container not found!");
     return;
   }
+
+  const specificOffreServices = offreServicesData.filter(
+    (services) => services.associatedPage === currentFileName
+  );
 
   offreServicesContainer.innerHTML = "";
 
@@ -42,7 +51,7 @@ function updateOffreServices(offreServicesData) {
   const rowSection = document.createElement("div");
   rowSection.classList.add("row");
 
-  offreServicesData.map((offre) => {
+  specificOffreServices.map((offre) => {
     if (offre.littleTitle.display === "1") {
       const littleTitle = document.createElement("span");
       littleTitle.textContent = offre.littleTitle.name;

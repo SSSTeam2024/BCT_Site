@@ -48,19 +48,15 @@
         .disabled-tab {
             pointer-events: none;
             color: black !important;
-            /* Change color for disabled tabs */
         }
 
         .nav-link.active {
-            /* color: red !important;  */
             background-color: #CD2528 !important;
             color: #ffffff !important;
-            /* Change color for active tab  */
         }
 
         .nav-link:not(.active) {
             color: black !important;
-            /* Change color for inactive tabs */
         }
     </style>
 
@@ -353,7 +349,6 @@
                             <span aria-hidden="true">
                                 <i class="bx bx-x"></i>
                             </span>
-                        </button>
                         </button>
                         <h2 class="modal-title" id="myModalLabel2">
                             <a href="index.html">
@@ -891,19 +886,31 @@
             </div>
           </div>
         </div>
-      </section>
+    </section>
     <!-- End Track Area -->
 
     <!-- Start Why Choose Us Area -->
-    <section class="service-details-area ptb-100">
+    <section class="service-details-area ptb-100" id="vehicles_guide">
         <div class="container">
+          <div class="row" style="margin-bottom: 15px;">
+            <p style="margin-left: 15px;">
+                At Coach Hire Network, we prioritize customer satisfaction and strive to exceed expectations with our reliable service, professional drivers, and diverse fleet of vehicles. </br><span>Whether it's a corporate event, wedding, or group outing, we are dedicated to providing top-quality transportation services tailored to your specific needs.
+                </span>
+                </p>
+            <p style="margin-left: 15px;">
+                If you have any further questions or would like to inquire about booking our services, please feel free to reach out to us. 
+            </p>
+            <p style="margin-left: 15px;">
+                We are here to assist you and make your travel experience exceptional. 
+            </p>
+          </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="service-sidebar-area">
                         <div class="service-list service-card">
                             <a href="#">
-                            <h3 class="service-details-title">Chauffeured Cars</h3>
-                        </a>
+                              <h3 class="service-details-title">Chauffeured Cars</h3>
+                            </a>
                         </div>
                         <div class="service-list service-card">
                             <a href="#">
@@ -1039,18 +1046,6 @@
                                                      </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <p style="margin-left: 15px;">
-                    At Coach Hire Network, we prioritize customer satisfaction and strive to exceed expectations with our reliable service, professional drivers, and diverse fleet of vehicles. </br><span>Whether it's a corporate event, wedding, or group outing, we are dedicated to providing top-quality transportation services tailored to your specific needs.
-                    </span>
-                    </p>
-                <p style="margin-left: 15px;">
-                    If you have any further questions or would like to inquire about booking our services, please feel free to reach out to us. 
-                </p>
-                <p style="margin-left: 15px;">
-                    We are here to assist you and make your travel experience exceptional. 
-                </p>
             </div>
         </div>
     </section>
@@ -1217,26 +1212,21 @@
             </div>
         </div>
     </div>
-    </div>
 
     <script>
-        // Get all the service links
         const serviceLinks = document.querySelectorAll('.service-sidebar-area .service-card a');
     
         const serviceCardsh3 = document.querySelectorAll('.service-sidebar-area .service-card h3');
         const serviceCardsA = document.querySelectorAll('.service-sidebar-area .service-card a');
-        // Get all the service details wraps
         const serviceDetailsWraps = document.querySelectorAll('.service-details-wrap');
         serviceDetailsWraps.forEach((wrap) => {
                     wrap.style.display = 'none';
                 });
         serviceDetailsWraps[0].style.display = 'block';
-        // Add click event listener to each service link
         serviceLinks.forEach((link, index) => {
             link.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default link behavior
-    
-                // Hide all service details wraps
+                event.preventDefault();
+  
                 serviceDetailsWraps.forEach((wrap) => {
                     wrap.style.display = 'none';
                 });
@@ -1249,7 +1239,6 @@
                     link.style.backgroundColor = '#155263';
                 });
 
-                // Show the corresponding service details wrap
                 serviceDetailsWraps[index].style.display = 'block';
                 serviceCardsh3[index].style.backgroundColor = '#CD2528';
                 serviceCardsA[index].style.backgroundColor = '#CD2528';
@@ -1301,6 +1290,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/vehicleGuideComponent.js"></script>
 </body>
 
 </html>

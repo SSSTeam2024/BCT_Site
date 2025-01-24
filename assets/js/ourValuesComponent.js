@@ -41,21 +41,30 @@ function attachTabListeners() {
   });
 }
 
+function getCurrentHtmlFileName() {
+  const path = document.location.pathname;
+  return path.substring(path.lastIndexOf("/") + 1);
+}
+
 function updateOurValues(ourValuesData) {
   const baseUrl = "http://localhost:3000/ourValue/";
-
+  const currentFileName = getCurrentHtmlFileName();
   const ourValueContainer = document.querySelector("#our-values");
   if (!ourValueContainer) {
     console.error("Our Values container not found!");
     return;
   }
 
+  const specificOurValues = ourValuesData.filter(
+    (aboutUs) => aboutUs.page === currentFileName
+  );
+
   ourValueContainer.innerHTML = "";
 
   const container = document.createElement("div");
   container.classList.add("container");
 
-  ourValuesData.forEach((ouValues) => {
+  specificOurValues.forEach((ouValues) => {
     const imagePath = ouValues.image.path.startsWith("http")
       ? ouValues.image.path
       : `${baseUrl}${ouValues.image.path}`;
