@@ -14,7 +14,7 @@ async function fetchVehicleGuide() {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
+    console.log(response.json());
     return await response.json();
   } catch (error) {
     console.error("Error fetching Vehicle Guide data:", error.message);
