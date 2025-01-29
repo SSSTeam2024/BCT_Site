@@ -18,7 +18,6 @@ function initMapPartner() {
   });
 
   new AutocompleteDirectionsHandler(map);
-  // Initialize the autocomplete object
   autocomplete = new google.maps.places.Autocomplete(
     document.getElementById("autocomplete"),
     {
@@ -26,13 +25,13 @@ function initMapPartner() {
     }
   );
 
-  // Add event listener for place changed event
   autocomplete.addListener("place_changed", function () {
-    // Get the selected place from the autocomplete object
     const place = autocomplete.getPlace();
 
     if (!place.geometry) {
-      console.error("No details available for input: " + place.name);
+      console.error(
+        "No details available for input: " + place.formatted_address
+      );
       return;
     }
     coordinates = {
@@ -41,31 +40,27 @@ function initMapPartner() {
     };
     localStorage.setItem("coor", JSON.stringify(coordinates));
     addSelectedOption(
-      place.name,
+      place.formatted_address,
       place.geometry.location.lat(),
       place.geometry.location.lng()
     );
     addSelectedLocation(
-      place.name,
+      place.formatted_address,
       place.geometry.location.lat(),
       place.geometry.location.lng()
     );
 
-    // Clear the input field
     document.getElementById("autocomplete").value = "";
   });
 
-  // Add event listener for click event on selected options
   document
     .getElementById("selectedOptions")
     .addEventListener("click", function (event) {
       if (event.target.classList.contains("selected-option")) {
-        // Remove the clicked selected option
         removeSelectedOption(event.target.textContent);
       }
     });
 
-  // Function to add a selected option to the selected options div
   function addSelectedOption(optionText) {
     const selectedOptionsDiv = document.getElementById("selectedOptions");
     const selectedOptionDiv = document.createElement("div");
@@ -74,7 +69,6 @@ function initMapPartner() {
     selectedOptionsDiv.appendChild(selectedOptionDiv);
   }
 
-  // Function to remove a selected option from the selected options div and the selectedLocations array
   function removeSelectedOption(placeName) {
     selectedLocations = selectedLocations.filter(
       (location) => location.placeName !== placeName
@@ -86,23 +80,19 @@ function initMapPartner() {
     });
   }
 
-  // Function to add a selected location to the selectedLocations array
   function addSelectedLocation(placeName, lat, lng) {
     selectedLocations.push({
       placeName: placeName,
       coordinates: JSON.parse(localStorage.getItem("coor")),
     });
-    // localStorage.setItem("locations",  JSON.parse(selectedLocations))
-    // console.log(selectedLocations)
   }
 }
 
-// Link to open Terms and Conditions in a new tab
 document
   .getElementById("termsLink")
   .addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default link behavior
-    window.open("terms-conditions.html", "_blank"); // Open the page in a new tab
+    event.preventDefault();
+    window.open("terms-conditions.html", "_blank");
   });
 
 class AutocompleteDirectionsHandler {
@@ -198,10 +188,9 @@ window.initMap = initMapPartner;
 $("#vehicleTypeAffiliate").on("change", function (event) {
   const selectedOptions = $(this).find("option:selected");
   const selectedValues = [];
-
   selectedOptions.each(function () {
     const type = $(this).text();
-    const qty = ""; // Initialize qty to empty string
+    const qty = "";
     selectedValues.push({ type, qty });
   });
 
@@ -232,7 +221,6 @@ function updateSelectedValues(selectedValues) {
     selectedValuesContainer.append(selectedValueElement);
   });
   selectedVehicles = selectedValues;
-  console.log(selectedVehicles);
 }
 
 function convertToBase64(file) {
@@ -240,8 +228,8 @@ function convertToBase64(file) {
     const fileReader = new FileReader();
     fileReader.onload = () => {
       const base64String = fileReader.result;
-      const [, base64Data] = base64String.split(","); // Extract only the Base64 data
-      const extension = file.name.split(".").pop() || ""; // Get the file extension
+      const [, base64Data] = base64String.split(",");
+      const extension = file.name.split(".").pop() || "";
       resolve({ base64Data, extension });
     };
     fileReader.onerror = (error) => {
@@ -264,44 +252,20 @@ document
         localStorage.setItem("file", newFile);
         localStorage.setItem("64", base64Data);
         localStorage.setItem("extension", extension);
-
-        // // Create a blob from the base64 data
-        // const byteCharacters = atob(base64Data);
-        // const byteNumbers = new Array(byteCharacters.length);
-        // for (let i = 0; i < byteCharacters.length; i++) {
-        //   byteNumbers[i] = byteCharacters.charCodeAt(i);
-        // }
-        // const byteArray = new Uint8Array(byteNumbers);
-        // const blob = new Blob([byteArray], { type: "application/" + extension });
-
-        // // Create a blob URL for the blob
-        // const blobUrl = URL.createObjectURL(blob);
-
-        // // Create a link element to display the file name
-        // const openLink = document.createElement("a");
-        //   openLink.href = blobUrl;
-        //   openLink.textContent = "Open File";
-        //   openLink.target = "_blank"; // Open link in a new tab
-        //   fileContainer.innerHTML = ''; // Clear previous content
-        //   fileContainer.appendChild(openLink);
       } catch (error) {
         console.error(error);
       }
     }
   });
 
-// Add an event listener to #region
 $("#region").on("change", function (event) {
-  // Get all selected options
   const selectedOptions = $(this).find("option:selected");
 
-  // Extract values from selected options and store them in an array
   const selectedValues = [];
   selectedOptions.each(function () {
     selectedValues.push($(this).val());
   });
 
-  // Store the array of selected values in localStorage
   localStorage.setItem("selectedRegions", JSON.stringify(selectedValues));
 });
 
@@ -314,7 +278,6 @@ function getDate() {
 }
 const currentDate = getDate();
 
-// Vehicle Type
 const getVTA = async () => {
   try {
     const response = await fetch(
@@ -335,7 +298,6 @@ const getVTA = async () => {
 const displayOptionA = async () => {
   $("#vehicleTypeAffiliate").empty();
   const options = await getVTA();
-  // Assuming filtered is an array of objects with properties base_change and type
   const filtered = options.filter(
     (item) =>
       item.type !== "Multiple Executive Vehicles" &&
@@ -362,7 +324,6 @@ async function submitBecomePartnerForm(event) {
   let vehicleType = "";
   let coverageArea = "";
   let day = "";
-  // vehicleType = JSON.parse(localStorage.getItem("vta"));
   name_affiliate = event.target["nameAffiliate"].value;
   licenceNumber = event.target["licenceNumber"].value;
   phone_affiliate = event.target["phoneAffiliate"].value;
@@ -383,7 +344,7 @@ async function submitBecomePartnerForm(event) {
     number_file: licenceNumber,
     vehicles: selectedVehicles,
     id_creation_date: day,
-    id_file: localStorage.getItem("file"), // Add file data to the object
+    id_file: localStorage.getItem("file"),
     IdFileBase64String: localStorage.getItem("64"),
     IdFileExtension: localStorage.getItem("extension"),
     coverageArea: selectedLocations.map((location) => ({
@@ -461,7 +422,7 @@ async function submitBecomePartnerForm(event) {
     }, 2000);
   }
 
-  if (object.coverageArea === null) {
+  if (selectedLocations.length === 0) {
     var depot_address = document.getElementById("errorSelectedOptions");
     var paragrapDepotAddress = document.createElement("p");
     paragrapDepotAddress.setAttribute("id", "pDepotAddress");
@@ -471,8 +432,7 @@ async function submitBecomePartnerForm(event) {
       depot_address.removeChild(paragrapDepotAddress);
     }, 2000);
   }
-
-  if (object.vehicles === null) {
+  if (selectedVehicles[0].type === "") {
     var vehicleElement = document.getElementById("errorVehicleType");
     var paragraphVehicle = document.createElement("p");
     paragraphVehicle.setAttribute("id", "pvehicleTypeAffiliate");
@@ -480,6 +440,17 @@ async function submitBecomePartnerForm(event) {
     vehicleElement.appendChild(paragraphVehicle);
     setTimeout(() => {
       vehicleElement.removeChild(paragraphVehicle);
+    }, 2000);
+  }
+
+  if (object.id_file === null) {
+    var fileElement = document.getElementById("fileContainer");
+    var paragraphFile = document.createElement("p");
+    paragraphFile.setAttribute("id", "fileContainer");
+    paragraphFile.textContent = "Please select license file";
+    fileElement.appendChild(paragraphFile);
+    setTimeout(() => {
+      fileElement.removeChild(paragraphFile);
     }, 2000);
   }
 
@@ -492,16 +463,17 @@ async function submitBecomePartnerForm(event) {
     terms_Conditions.appendChild(paragraphTerms_Conditions);
     setTimeout(() => {
       terms_Conditions.removeChild(paragraphTerms_Conditions);
-    }, 3000);
+    }, 2000);
   }
 
   if (
-    object.coverageArea !== null &&
-    object.vehicles !== null &&
+    selectedLocations.length !== 0 &&
+    selectedVehicles[0].type.trim() !== "" &&
     object.name.trim() !== "" &&
     object.email.trim() !== "" &&
     object.phone.trim() !== "" &&
     object.address.trim() !== "" &&
+    object.id_file.trim() !== null &&
     document.getElementById("termsCheckbox").checked
   ) {
     var btn = document.getElementById("send_becomepartner_form");

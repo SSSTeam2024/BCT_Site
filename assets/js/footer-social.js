@@ -10,7 +10,7 @@ const iconClassMapping = {
 async function fetchFooterSocial() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/footer-social/getFooterSocials",
+      "http://57.128.184.217:3000/api/footer-social/getFooterSocials",
       {
         method: "GET",
         headers: {

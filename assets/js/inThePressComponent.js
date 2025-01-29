@@ -1,7 +1,7 @@
-async function fetchOnTheRoad() {
+async function fetchInThePress() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/on-the-road-component/getOnTheRoads",
+      "http://57.128.184.217:3000/api/in-the-press-component/getAllInThePresss",
       {
         method: "GET",
         headers: {
@@ -27,8 +27,8 @@ function getCurrentHtmlFileName() {
   return path.substring(path.lastIndexOf("/") + 1);
 }
 
-function updateOnTheRoad(onTheRoadData) {
-  const baseUrl = "http://57.128.184.217:3000/onTheRoadFiles/";
+function updateInThePress(onTheRoadData) {
+  const baseUrl = "http://57.128.184.217:3000/inThePressFiles/";
 
   const currentFileName = getCurrentHtmlFileName();
 
@@ -41,7 +41,7 @@ function updateOnTheRoad(onTheRoadData) {
     return;
   }
 
-  const onTheRoadContainer = document.querySelector("#onTheRoad_component");
+  const onTheRoadContainer = document.querySelector("#inThePress_component");
   if (!onTheRoadContainer) {
     console.error("On The Road container not found!");
     return;
@@ -57,7 +57,7 @@ function updateOnTheRoad(onTheRoadData) {
 
   specificOnTheRoad.forEach((fleet) => {
     const title = document.createElement("h2");
-    title.textContent = fleet.bigTitle;
+    title.textContent = fleet.title;
     const paragraph = document.createElement("p");
     paragraph.textContent = fleet.paragraph;
 
@@ -65,7 +65,7 @@ function updateOnTheRoad(onTheRoadData) {
     sectionTitle.appendChild(paragraph);
     const rowTab = document.createElement("div");
     rowTab.classList.add("row");
-    fleet.grids.forEach((grid) => {
+    fleet.news.forEach((grid) => {
       const tabCol = document.createElement("div");
       tabCol.classList.add("col-lg-6", "col-md-6");
 
@@ -73,7 +73,7 @@ function updateOnTheRoad(onTheRoadData) {
       singleTab.classList.add("single-blog");
 
       const link = document.createElement("a");
-      link.setAttribute("href", "news-details.html");
+      link.setAttribute("href", "news-details-1.html");
 
       const image = document.createElement("img");
 
@@ -90,22 +90,29 @@ function updateOnTheRoad(onTheRoadData) {
       const list = document.createElement("ul");
       const listDetails = document.createElement("li");
       listDetails.textContent = grid.date;
+      const listBy = document.createElement("li");
+      listBy.textContent = grid.by;
+      list.appendChild(listBy);
       list.appendChild(listDetails);
       const title = document.createElement("h3");
       const titleLink = document.createElement("a");
-      //   titleLink.setAttribute("href", "news-details.html");
+      titleLink.setAttribute("href", "news-details-1.html");
       titleLink.textContent = grid.title;
+
+      titleLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.setItem("gridData", JSON.stringify(grid));
+        window.location.href = "news-details-1.html";
+      });
       title.appendChild(titleLink);
       const paragraph = document.createElement("p");
-      paragraph.textContent = grid.details;
+      paragraph.textContent = grid.content;
       blogContent.appendChild(list);
       blogContent.appendChild(title);
       blogContent.appendChild(paragraph);
       singleTab.appendChild(link);
       singleTab.appendChild(blogContent);
-      const span = document.createElement("span");
-      span.textContent = grid.category;
-      singleTab.appendChild(span);
+
       tabCol.appendChild(singleTab);
       rowTab.appendChild(tabCol);
     });
@@ -117,10 +124,10 @@ function updateOnTheRoad(onTheRoadData) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const onTheRoadData = await fetchOnTheRoad();
+  const onTheRoadData = await fetchInThePress();
   if (onTheRoadData && Array.isArray(onTheRoadData)) {
     // console.log("onTheRoadData", onTheRoadData);
-    updateOnTheRoad(onTheRoadData);
+    updateInThePress(onTheRoadData);
   } else {
     console.error("Invalid or empty On The Road data received.");
   }

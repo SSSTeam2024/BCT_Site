@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Fetch menu data from your backend
-    const response = await fetch("http://localhost:3000/api/menu/getMenus"); // Replace with your API endpoint
+    const response = await fetch(
+      "http://57.128.184.217:3000/api/menu/getMenus"
+    ); // Replace with your API endpoint
     if (!response.ok) throw new Error("Failed to fetch menu data");
 
     const menuData = await response.json();

@@ -1,7 +1,7 @@
 async function fetchSocialServices() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/social-services-component/getSocialServices",
+      "http://57.128.184.217:3000/api/social-services-component/getSocialServices",
       {
         method: "GET",
         headers: {

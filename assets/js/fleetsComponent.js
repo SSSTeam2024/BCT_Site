@@ -1,7 +1,7 @@
 async function fetchFleets() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/fleets-component/get-all-fleets",
+      "http://57.128.184.217:3000/api/fleets-component/get-all-fleets",
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateFleets(fleetsData) {
-  const baseUrl = "http://localhost:3000/fleetFiles/";
+  const baseUrl = "http://57.128.184.217:3000/fleetFiles/";
 
   const currentFileName = getCurrentHtmlFileName();
 

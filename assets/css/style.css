@@ -5508,23 +5508,23 @@ Project Area Six Style
 }
 
 .project-area-six .single-project .project-image.bg-1 {
-    background-image: url(../../assets/img/project/4.jpg);
+    background-image: url(../../assets/img/blog/test1.jpg);
 }
 
 .project-area-six .single-project .project-image.bg-2 {
-    background-image: url(../../assets/img/project/5.jpg);
+    background-image: url(../../assets/img/a-YhuJeQ-min.jpeg);
 }
 
 .project-area-six .single-project .project-image.bg-3 {
-    background-image: url(../../assets/img/project/6.jpg);
+    background-image: url(../../assets/img/clients.jpg);
 }
 
 .project-area-six .single-project .project-image.bg-4 {
-    background-image: url(../../assets/img/project/7.jpg);
+    background-image: url(../../assets/img/02.jpg);
 }
 
 .project-area-six .single-project .project-image.bg-5 {
-    background-image: url(../../assets/img/project/8.jpg);
+    background-image: url(../../assets/img/blog/test-2.jpg);
 }
 
 .project-area-six .single-project .project-image.bg-6 {
@@ -5607,8 +5607,8 @@ Project Area Six Style
 }
 
 .project-area-six .single-project:hover .project-image {
-    -webkit-transform: scale(2.2) rotate(4deg);
-    transform: scale(2.2) rotate(4deg);
+    -webkit-transform: scale(1.8) rotate(4deg);
+    transform: scale(1.8) rotate(4deg);
 }
 
 
@@ -7349,7 +7349,7 @@ FAQ Area Style
 }
 
 .faq-area .faq-img {
-    background-image: url(../img/blog-details/news-details-img.jpg);
+    background-image: url(../img/blog//25.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
