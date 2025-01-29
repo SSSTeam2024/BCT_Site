@@ -493,14 +493,17 @@ async function submitLoginForm(event) {
     return;
   }
 
-  const response = await fetch("http://localhost:3000/api/visitor/newVisitor", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body,
-  });
+  const response = await fetch(
+    "http://57.128.184.217:3000/api/visitor/newVisitor",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: body,
+    }
+  );
 
   response.json().then((data) => {
     localStorage.setItem("v_id", data._id);
@@ -642,7 +645,7 @@ async function submitQuoteForm(event) {
       localStorage.clear();
     })
     .then(async () => {
-      await fetch("http://localhost:3000/api/visitor/updateStatus", {
+      await fetch("http://57.128.184.217:3000/api/visitor/updateStatus", {
         method: "POST",
         headers: {
           Accept: "application/json",
