@@ -442,27 +442,21 @@ const currentDate = getDate();
 
 async function submitLoginForm(event) {
   event.preventDefault();
-  let name_visitor = event.target["name"].value.trim();
-  let phone_visitor = event.target["phone"].value.trim();
-  let email_visitor = event.target["email"].value.trim();
-  let startDate = localStorage.getItem("goDate");
-
-  if (
-    !name_visitor ||
-    !phone_visitor ||
-    !email_visitor ||
-    !startDate ||
-    !start_point.placeName ||
-    !start_point.coordinates.lat ||
-    !start_point.coordinates.lon ||
-    !destination_point.placeName ||
-    !destination_point.coordinates.lat ||
-    !destination_point.coordinates.lon
-  ) {
-    // alert("Please fill in all required fields before submitting.");
-    return;
-  }
-
+  let email_visitor = "";
+  let name_visitor = "";
+  let phone_visitor = "";
+  let startDate = "";
+  const today = new Date();
+  name_visitor = event.target["name"].value;
+  phone_visitor = event.target["phone"].value;
+  email_visitor = event.target["email"].value;
+  startDate = localStorage.getItem("goDate");
+  var hours = today.getHours();
+  let minutes = today.getMinutes() + 1;
+  var ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  let date = /* "-- " +  */ hours + ":" + minutes + ampm;
   let object = {
     name: name_visitor,
     phone: phone_visitor,
@@ -486,29 +480,34 @@ async function submitLoginForm(event) {
     status: "new",
     enquiryDate: currentDate,
   };
-  let body = JSON.stringify(object);
-  try {
-    const response = await fetch(
-      "http://57.128.184.217:3000/api/visitor/newVisitor",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: body,
-      }
-    );
 
-    const data = await response.json();
+  let body = JSON.stringify(object);
+  if (
+    name_visitor === "" ||
+    phone_visitor === "" ||
+    email_visitor === "" ||
+    localStorage.getItem("goDate") === "--" ||
+    localStorage.getItem("destFullName") === "" ||
+    localStorage.getItem("pickupFullName") === ""
+  ) {
+    return;
+  }
+
+  const response = await fetch("http://localhost:3000/api/visitor/newVisitor", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: body,
+  });
+
+  response.json().then((data) => {
     localStorage.setItem("v_id", data._id);
     localStorage.setItem("email", data.email);
     localStorage.setItem("phone", data.phone);
     localStorage.setItem("name", data.name);
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("An error occurred while submitting. Please try again.");
-  }
+  });
 }
 
 function convertToHHMM(seconds) {
