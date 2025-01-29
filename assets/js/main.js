@@ -632,8 +632,8 @@ async function submitQuoteForm(event) {
     .then((data) => {
       localStorage.clear();
     })
-    .then(() => {
-      fetch("http://57.128.184.217:3000/api/visitor/updateStatus", {
+    .then(async () => {
+      await fetch("http://localhost:3000/api/visitor/updateStatus", {
         method: "POST",
         headers: {
           Accept: "application/json",
