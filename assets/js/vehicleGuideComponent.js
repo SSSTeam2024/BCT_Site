@@ -14,7 +14,6 @@ async function fetchVehicleGuide() {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    console.log(response.json());
     return await response.json();
   } catch (error) {
     console.error("Error fetching Vehicle Guide data:", error.message);
@@ -35,8 +34,8 @@ function updateVehiclesGuide(vehicleGuideData) {
       vehicleGuide.page.toLowerCase() === currentFileName.toLowerCase()
   );
 
-  console.log("currentFileName", currentFileName);
-  console.log("specificVehicleGuide", specificVehicleGuide);
+  // console.log("currentFileName", currentFileName);
+  // console.log("specificVehicleGuide", specificVehicleGuide);
   if (specificVehicleGuide.length === 0) {
     console.warn("No Vehicle Guide data available for this page.");
     return;
