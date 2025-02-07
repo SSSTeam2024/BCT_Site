@@ -65,48 +65,51 @@ function updateOurValues(ourValuesData) {
   container.classList.add("container");
 
   specificOurValues.forEach((ouValues) => {
-    const imagePath = ouValues.image.path.startsWith("http")
-      ? ouValues.image.path
-      : `${baseUrl}${ouValues.image.path}`;
-    const titleSection = document.createElement("div");
-    titleSection.classList.add("section-title");
+    if (ouValues.display === "0") {
+      container.innerHTML = "";
+    } else {
+      const imagePath = ouValues.image.path.startsWith("http")
+        ? ouValues.image.path
+        : `${baseUrl}${ouValues.image.path}`;
+      const titleSection = document.createElement("div");
+      titleSection.classList.add("section-title");
 
-    // Little Title
-    if (ouValues.littleTitle.display === "1") {
-      const span = document.createElement("span");
-      span.textContent = ouValues.littleTitle.name;
-      titleSection.appendChild(span);
-    }
-
-    // Big Title
-    if (ouValues.bigTitle.display === "1") {
-      const h2 = document.createElement("h2");
-      h2.textContent = ouValues.bigTitle.name;
-      titleSection.appendChild(h2);
-    }
-    container.appendChild(titleSection);
-    const tabBar = document.createElement("div");
-    const tabContent = document.createElement("div");
-    tabBar.classList.add("tab__bar");
-    tabContent.classList.add("tab__content");
-    const tabNavigation = document.createElement("div");
-    tabNavigation.classList.add("tab__navigation");
-    const tabMenu = document.createElement("ul");
-    tabMenu.classList.add("tab__menu");
-
-    ouValues.tabs.forEach((tab, index) => {
-      if (tab.display !== "1") {
-        return; // Skip this tab if display is not "1"
+      // Little Title
+      if (ouValues.littleTitle.display === "1") {
+        const span = document.createElement("span");
+        span.textContent = ouValues.littleTitle.name;
+        titleSection.appendChild(span);
       }
 
-      const tabBtn = document.createElement("li");
-      tabBtn.className = `tab__btn ${index === 0 ? "active" : ""}`;
-      tabBtn.textContent = tab.title;
-      tabMenu.appendChild(tabBtn);
+      // Big Title
+      if (ouValues.bigTitle.display === "1") {
+        const h2 = document.createElement("h2");
+        h2.textContent = ouValues.bigTitle.name;
+        titleSection.appendChild(h2);
+      }
+      container.appendChild(titleSection);
+      const tabBar = document.createElement("div");
+      const tabContent = document.createElement("div");
+      tabBar.classList.add("tab__bar");
+      tabContent.classList.add("tab__content");
+      const tabNavigation = document.createElement("div");
+      tabNavigation.classList.add("tab__navigation");
+      const tabMenu = document.createElement("ul");
+      tabMenu.classList.add("tab__menu");
 
-      const tabDiv = document.createElement("div");
-      tabDiv.className = `tab ${index === 0 ? "active" : ""}`;
-      tabDiv.innerHTML = `
+      ouValues.tabs.forEach((tab, index) => {
+        if (tab.display !== "1") {
+          return; // Skip this tab if display is not "1"
+        }
+
+        const tabBtn = document.createElement("li");
+        tabBtn.className = `tab__btn ${index === 0 ? "active" : ""}`;
+        tabBtn.textContent = tab.title;
+        tabMenu.appendChild(tabBtn);
+
+        const tabDiv = document.createElement("div");
+        tabDiv.className = `tab ${index === 0 ? "active" : ""}`;
+        tabDiv.innerHTML = `
         <div class="row">
           <div class="left-column">
             <div class="img-card">
@@ -130,12 +133,13 @@ function updateOurValues(ourValuesData) {
           </div>
         </div>
       `;
-      tabContent.appendChild(tabDiv);
-    });
-    tabNavigation.appendChild(tabMenu);
-    tabBar.appendChild(tabNavigation);
-    container.appendChild(tabBar);
-    container.appendChild(tabContent);
+        tabContent.appendChild(tabDiv);
+      });
+      tabNavigation.appendChild(tabMenu);
+      tabBar.appendChild(tabNavigation);
+      container.appendChild(tabBar);
+      container.appendChild(tabContent);
+    }
   });
   ourValueContainer.appendChild(container);
   attachTabListeners();

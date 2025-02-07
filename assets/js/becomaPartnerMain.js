@@ -185,43 +185,60 @@ class AutocompleteDirectionsHandler {
 
 window.initMap = initMapPartner;
 
-$("#vehicleTypeAffiliate").on("change", function (event) {
-  const selectedOptions = $(this).find("option:selected");
-  const selectedValues = [];
-  selectedOptions.each(function () {
+$(document).ready(function () {
+  let selectedVehicles = [];
+
+  $("#vehicleTypeAffiliate").on("click", "option", function (event) {
+    event.preventDefault(); // Prevent default multiple selection behavior
+
     const type = $(this).text();
-    const qty = "";
-    selectedValues.push({ type, qty });
+    const isAlreadySelected = selectedVehicles.some(
+      (item) => item.type === type
+    );
+
+    if (isAlreadySelected) {
+      // Remove from selection
+      selectedVehicles = selectedVehicles.filter((item) => item.type !== type);
+      $(this).prop("selected", false);
+    } else {
+      // Add to selection
+      selectedVehicles.push({ type, qty: "" });
+      $(this).prop("selected", true);
+    }
+
+    updateSelectedValues(selectedVehicles);
   });
 
-  updateSelectedValues(selectedValues);
+  function updateSelectedValues(selectedValues) {
+    const selectedValuesContainer = $("#selectedVehicleTypes");
+    selectedValuesContainer.empty();
+
+    selectedValues.forEach(function (value) {
+      const selectedValueElement = $("<div class='selected-value'></div>")
+        .text(value.type)
+        .click(function () {
+          // Remove the selected value from the array
+          selectedVehicles = selectedVehicles.filter(
+            (item) => item.type !== value.type
+          );
+          localStorage.setItem("vta", JSON.stringify(selectedVehicles));
+
+          // Unselect the option in the dropdown
+          $("#vehicleTypeAffiliate option").each(function () {
+            if ($(this).text() === value.type) {
+              $(this).prop("selected", false);
+            }
+          });
+
+          $(this).remove();
+        });
+
+      selectedValuesContainer.append(selectedValueElement);
+    });
+
+    localStorage.setItem("vta", JSON.stringify(selectedVehicles));
+  }
 });
-
-function updateSelectedValues(selectedValues) {
-  const selectedValuesContainer = $("#selectedVehicleTypes");
-  selectedValuesContainer.empty();
-
-  selectedValues.forEach(function (value) {
-    const selectedValueElement = $("<div class='selected-value'></div>")
-      .text(value.type)
-      .click(function () {
-        $(this).remove();
-        const index = selectedValues.findIndex(
-          (item) => item.type === value.type
-        );
-        selectedValues.splice(index, 1);
-        localStorage.setItem("vta", JSON.stringify(selectedValues));
-        $("#vehicleTypeAffiliate option")
-          .filter(function () {
-            return $(this).text() === value.type;
-          })
-          .prop("selected", false);
-      });
-
-    selectedValuesContainer.append(selectedValueElement);
-  });
-  selectedVehicles = selectedValues;
-}
 
 function convertToBase64(file) {
   return new Promise((resolve, reject) => {
