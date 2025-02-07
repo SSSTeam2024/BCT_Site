@@ -84,8 +84,8 @@ function updateSocialFooter(footerData) {
       if (linkData.display === "1") {
         const socialLi = document.createElement("li");
         const socialA = document.createElement("a");
-        socialA.href = linkData.link;
-
+        socialA.href = `https://${linkData.link}`;
+        console.log("socialA", socialA);
         const iconClass = iconClassMapping[key] || iconClassMapping.default;
 
         const icon = document.createElement("i");
