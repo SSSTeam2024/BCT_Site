@@ -85,14 +85,11 @@ function updateSocialFooter(footerData) {
         const socialLi = document.createElement("li");
         const socialA = document.createElement("a");
         socialA.href = linkData.link;
-        console.log("key", key);
 
-        // Get the icon class, with a fallback to "default" if key isn't found
         const iconClass = iconClassMapping[key] || iconClassMapping.default;
 
-        // Dynamically add the icon
         const icon = document.createElement("i");
-        icon.className = iconClass; // Set the icon class
+        icon.className = iconClass;
         socialA.appendChild(icon);
 
         socialLi.appendChild(socialA);
@@ -103,7 +100,6 @@ function updateSocialFooter(footerData) {
     socialWidget.appendChild(socialUl);
     socialCol.appendChild(socialWidget);
 
-    // Add Copyright Section
     const copyrightCol = document.createElement("div");
     copyrightCol.classList.add("col-lg-4");
 
@@ -113,7 +109,7 @@ function updateSocialFooter(footerData) {
     const copyrightP = document.createElement("p");
     copyrightP.innerHTML = `
       <i class="bx bx-copyright"></i> 2024 ${footer.siteName}. Designed By
-      <a href="https://https://sss.com.tn/" target="_blank">3S</a>
+      <a href="https://sss.com.tn/" target="_blank">3S</a>
     `;
 
     copyrightWidget.appendChild(copyrightP);
