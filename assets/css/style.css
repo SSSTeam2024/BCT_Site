@@ -2107,7 +2107,7 @@ Service Area Style
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-image: url(../img/service/6903819.png); */
+    background-image: url(../img/service/london-sightseeing.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2152,6 +2152,7 @@ Service Area Style
     color: #ffffff;
     margin-bottom: 15px;
     margin-top: -4px;
+    text-decoration: none;
 }
 
 .single-service .service-heading .circle-read-more i {
@@ -2161,15 +2162,18 @@ Service Area Style
 
 .single-service .service-heading .circle-read-more i::after {
     background-color: #fedad0;
+    text-decoration: none;
 }
 
 .single-service:hover {
     background-color: transparent;
+    text-decoration: none;
 }
 
 .single-service:hover .service-heading {
     -webkit-transform: scale(1);
     transform: scale(1);
+    text-decoration: none;
 }
 
 .single-service:hover .service-content-wrap {
@@ -2184,26 +2188,28 @@ Service Area Style
 .service-all p a {
     color: #CD2528;
     border-bottom: 1px solid #CD2528;
+    text-decoration: none;
 }
 
 .col-lg-4:nth-child(2) .single-service::before {
-    background-image: url(../img/service/3366336.png);
+    background-image: url(../img/service/_125026512_hi076459435.jpg.webp);
+    text-decoration: none;
 }
 
 .col-lg-4:nth-child(3) .single-service::before {
-    background-image: url(../img/service/6948352.png);
+    background-image: url(../img/service/Dulverton_1395090c.jpg);
 }
 
 .col-lg-4:nth-child(4) .single-service::before {
-    background-image: url(../img/service/2752467.png);
+    background-image: url(../img/service/Business-Travel-6.jpg);
 }
 
 .col-lg-4:nth-child(5) .single-service::before {
-    background-image: url(../img/service/4087840.png);
+    background-image: url(../img/service/41415_2022_4419_Fig1_HTML.jpg);
 }
 
 .col-lg-4:nth-child(6) .single-service::before {
-    background-image: url(../img/service/9375520.png);
+    background-image: url(../img/service/3700.avif);
 }
 
 /* 
@@ -2211,7 +2217,7 @@ Began Area Style
 ======================================================*/
 
 .began-top-wrap {
-    background-image: url(../img/about-us.jpg);
+    background-image: url(../img/DSC03988-scaled.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -5520,11 +5526,11 @@ Project Area Six Style
 }
 
 .project-area-six .single-project .project-image.bg-4 {
-    background-image: url(../../assets/img/02.jpg);
+    background-image: url(../../assets/img/project/sc1.jpg);
 }
 
 .project-area-six .single-project .project-image.bg-5 {
-    background-image: url(../../assets/img/blog/test-2.jpg);
+    background-image: url(../../assets/img/project/rs=w_1240\,h_620\,cg_true.webp);
 }
 
 .project-area-six .single-project .project-image.bg-6 {
@@ -7338,7 +7344,7 @@ FAQ Area Style
 }
 
 .faq-area .faq-img {
-    background-image: url(../img/blog//25.jpg);
+    background-image: url(../img/project/2021-Mercedes-Benz-Concept-EQT-17.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
