@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const bestOfferData = await fetchBestOffer();
 
   if (bestOfferData && Array.isArray(bestOfferData)) {
-    console.log("bestOfferData", bestOfferData);
     updateBestOffer(bestOfferData);
   } else {
     console.error("Invalid or empty Best Offer data received.");
