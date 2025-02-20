@@ -1,7 +1,7 @@
 async function fetchTermsCondition() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/terms-condition/getTermsCondition",
+      "http://localhost:3000/api/terms-condition/getTermsCondition",
       {
         method: "GET",
         headers: {

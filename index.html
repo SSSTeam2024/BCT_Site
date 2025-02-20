@@ -93,9 +93,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <div class="header-left-content">
+              <div class="header-left-content" id="logo-of-site">
                 <a href="index.html">
-                  <img src="assets/img/logo.png" alt="Logo" />
+                  <img src="assets/img/logo.png" alt="Logo" id="image_logo" />
                 </a>
               </div>
             </div>
@@ -103,7 +103,7 @@
               <div class="header-right-content">
                 <ul>
                   <li>
-                    <a href="tel:+502-464-679">
+                    <a href="tel:+0800 112 3455">
                       <i class="bx bxs-phone-call"></i>
                       <span>Contact support</span> 0800 112 3455
                     </a>
@@ -111,10 +111,17 @@
                   <li>
                     <a href="mailto:sales@coachhirenetwork.co.uk">
                       <i class="bx bx-envelope"></i>
-                      <span>Contact support</span> sales@coachhirenetwork.co.uk
+                      <span>Contact</span> sales@coachhirenetwork.co.uk
                     </a>
                   </li>
-                  <li class="get-quote pl-0">
+                  <!-- <li id="base-address" style="font-size: 12px">
+                    <span>
+                      <i class="bx bx-map"></i>
+                      <span>some</span>
+                      <span style="color: #000000">Birmingham</span>
+                    </span>
+                  </li> -->
+                  <li class="get-quote pl-0" id="get-a-quote">
                     <a class="default-btn active" href="request-quote.html">
                       Get a quote
                     </a>
@@ -131,7 +138,7 @@
       <div class="prevoz-nav-style prevoz-nav-style-three">
         <div class="navbar-area">
           <!-- Menu For Mobile Device -->
-          <div class="mobile-nav">
+          <div class="mobile-nav" id="mobile-log-of-site">
             <a href="index.html" class="logo">
               <img src="assets/img/logo.png" alt="Logo" />
             </a>
@@ -149,15 +156,15 @@
                 >
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a
-                        href="index.html"
-                        class="nav-link dropdown-toggle active"
-                      >
+                      <a href="index.html" class="nav-link dropdown-toggle">
                         Home
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="about.html" class="nav-link dropdown-toggle">
+                      <a
+                        href="about.html"
+                        class="nav-link dropdown-toggle active"
+                      >
                         About Us
                         <i class="bx bx-chevron-down"></i>
                       </a>
@@ -400,11 +407,6 @@
                   </ul>
                   <!-- Start Other Option -->
                   <div class="others-option">
-                    <!-- <div class="search-wrap">
-                      <a href=".search">
-                        <i class="bx bx-search"></i>
-                      </a>
-                    </div> -->
                     <button
                       type="button"
                       class="sidebar-menu"
@@ -413,19 +415,6 @@
                     >
                       <i class="flaticon-menu"></i>
                     </button>
-
-                    <!-- <div class="dark-switch">
-                      <div class="switch-box">
-                        <label id="switch" class="switch">
-                          <input
-                            type="checkbox"
-                            onchange="toggleTheme()"
-                            id="slider"
-                          />
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                    </div> -->
                   </div>
                   <!-- End Other Option -->
                 </div>
@@ -470,7 +459,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -484,13 +473,13 @@
                     <a href="our-services.html">Services</a>
                   </li>
                   <li>
-                    <a href="Vehicle-Guide.html">Vehicles</a>
-                  </li>
-                  <li>
                     <a href="request-quote.html">Get A Quote</a>
                   </li>
                   <li>
                     <a href="become-partner.html">Become A Partner</a>
+                  </li>
+                  <li>
+                    <a href="terms-conditions.html">Terms Conditions</a>
                   </li>
                 </ul>
               </div>
@@ -506,7 +495,7 @@
                   </li>
                   <li>
                     <i class="bx bx-envelope"></i> Email
-                    <a href="mailto:hello@prevoz.com"
+                    <a href="mailto:sales@coachhirenetwork.co.uk"
                       >sales@coachhirenetwork.co.uk</a
                     >
                   </li>
@@ -742,7 +731,7 @@
                       </div>
                       <div class="col-6">
                         <select id="vehicleType" class="customSecondTag">
-                          <option value="">Select Vehicle</option>
+                          <option value="">Select</option>
                         </select>
                       </div>
                     </div>
@@ -753,7 +742,7 @@
                       <div class="col-6">
                         <div class="form-group">
                           <select id="luggage" class="customSecondTag">
-                            <option value="">Select Luggage</option>
+                            <option value="">Select</option>
                           </select>
                         </div>
                       </div>
@@ -991,491 +980,12 @@
     </section>
     <!-- End Track Area -->
 
-    <!-- Start About Area -->
-    <section class="about-area pb-100">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="about-img">
-              <img src="assets/img/1.jpg" alt="Image" />
-              <div class="about-quatre">
-                <i class="bx bxs-quote-alt-left bx-tada"></i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="about-content ml-30">
-              <span>About Us</span>
-              <h2>
-                We make your trips memorable with friends, family and coworkers
-                to serve better
-              </h2>
-              <p>
-                We are a chauffeur and coach travel company catering for
-                standard, executive and luxury travel. With a national reach
-                Coach Hire Network are never too far from you.
-              </p>
-              <p>
-                Benefiting from a modern fleet of Mercedes vehicles and working
-                alongside some of the biggest coach operators in the UK, we have
-                successfully covered and managed some of the largest and diverse
-                events in the UK – including sporting events such as official
-                supporter and team transport, large corporate events and
-                festivals.
-              </p>
-              <a class="default-btn" href="about.html"> About Us </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End About Area -->
-
-    <!-- Start What We Offer Area -->
-    <section class="service-area pt-100 pb-100">
-      <div class="container">
-        <div class="section-title">
-          <span>Explore some of our special services!</span>
-          <h2>
-            Whether it's for leisure or special occasions, Coach Hire Network
-            offers
-          </h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-sm-6">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i
-                  class="fa-solid fa-van-shuttle fa-2xl"
-                  style="color: #cd2528"
-                ></i>
-                <h3>Day Excursions</h3>
-                <p>
-                  Enjoy sports games, festivals, shopping trips, casino outings,
-                  museum tours, historical sites, amusement parks, concerts, and
-                  theatre events with the utmost ease.
-                </p>
-              </div>
-              <div class="service-heading">
-                <a class="circle-read-more" href="our-services.html">
-                  <h3>Day Excursions</h3>
-                  <i
-                    class="fa-solid fa-van-shuttle fa-lg"
-                    style="color: #cd2528"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i
-                  class="fa-solid fa-champagne-glasses fa-2xl"
-                  style="color: #cd2528"
-                ></i>
-                <h3>Celebratory Parties</h3>
-                <p>
-                  Book our coaches for weddings, birthdays, anniversaries,
-                  retirement celebrations, graduations, and engagement parties.
-                </p>
-              </div>
-              <div class="service-heading">
-                <a class="circle-read-more" href="our-services.html">
-                  <h3>Celebratory Parties</h3>
-                  <i
-                    class="fa-solid fa-champagne-glasses fa-lg"
-                    style="color: #cd2528"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="fa-solid fa-church fa-2xl" style="color: #cd2528"></i>
-                <h3>Church and Community Functions</h3>
-                <p>
-                  Ideal for mission trips, community outreach programs, choir
-                  tours, and youth group activities.
-                </p>
-              </div>
-              <div class="service-heading">
-                <a class="circle-read-more" href="our-services.html">
-                  <h3>Church and Community Functions</h3>
-                  <i
-                    class="fa-solid fa-church fa-lg"
-                    style="color: #cd2528"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="fa-solid fa-plane fa-2xl" style="color: #cd2528"></i>
-                <h3>Corporate and Conference Travel</h3>
-                <p>
-                  From conventions and seminars to team-building exercises, we
-                  ensure professional and comfortable travel.
-                </p>
-              </div>
-              <div class="service-heading">
-                <a class="circle-read-more" href="our-services.html">
-                  <h3>Corporate and Conference Travel</h3>
-                  <i class="fa-solid fa-plane fa-lg" style="color: #cd2528"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i
-                  class="fa-solid fa-people-roof fa-2xl"
-                  style="color: #cd2528"
-                ></i>
-                <h3>Family Gatherings</h3>
-                <p>
-                  Organize memorable family reunions, picnics, and day and
-                  overnight trips with our fleet.
-                </p>
-              </div>
-              <div class="service-heading">
-                <a class="circle-read-more" href="our-services.html">
-                  <h3>Family Gatherings</h3>
-                  <i
-                    class="fa-solid fa-people-roof fa-lg"
-                    style="color: #cd2528"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="fa-solid fa-school fa-2xl" style="color: #cd2528"></i>
-                <h3>Educational Trips</h3>
-                <p>
-                  Safe and reliable transportation for school-related
-                  activities, including sports matches, prom nights, graduation
-                  parties, club outings, and cultural trips.
-                </p>
-              </div>
-              <div class="service-heading">
-                <a class="circle-read-more" href="our-services.html">
-                  <h3>Educational Trips</h3>
-                  <i
-                    class="fa-solid fa-school fa-lg"
-                    style="color: #cd2528"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End What We Offer Area -->
-
-    <!-- Start Why Choose Us Area -->
-    <section class="choose-us-area pb-100" id="best-offer">
-      <div class="container">
-        <div class="section-title">
-          <span>Ready</span>
-          <h2>When You Are: Coach Hire Network</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-5 pr-0">
-            <div class="choose-img choose-img-one"></div>
-          </div>
-          <div class="col-lg-7 pl-0">
-            <div class="choose-tab-wrap">
-              <h2>
-                Coach Hire Network is perfect for every journey and event.
-              </h2>
-              <h4 style="margin-bottom: 20px">Why our Company is best</h4>
-              <div class="tab quote-list-tab choose-tab">
-                <ul class="tabs">
-                  <li>
-                    <a href="#"> Our Mission </a>
-                  </li>
-                  <li>
-                    <a href="#"> Our Vision </a>
-                  </li>
-                  <li>
-                    <a href="#"> Our Goal </a>
-                  </li>
-                </ul>
-                <div class="tab_content">
-                  <div class="tabs_item">
-                    <p>
-                      Planning a group outing can be complicated, but
-                      transportation shouldn’t be one of them. Ensure a seamless
-                      and delightful journey with a coach hire from Coach Hire
-                      Network. We specialize in providing luxurious coaches
-                      tailored to fit any trip or event you have in mind.
-                    </p>
-                    <a class="default-btn" href="about.html"> Learn About </a>
-                  </div>
-
-                  <div class="tabs_item">
-                    <p>
-                      Choose Coach Hire Network for your next group travel and
-                      enjoy a journey as splendid as the destination. With our
-                      dependable service, you can focus on enjoying your event
-                      while we handle the drive.
-                    </p>
-                    <a class="default-btn" href="about.html"> Learn About </a>
-                  </div>
-
-                  <div class="tabs_item">
-                    <p>
-                      Need to organise coach or minibus hire? Want a fast and
-                      reliable service? Let Coach Hire Network deliver you
-                      safely to your destination. Coach Hire Network are
-                      specialists in coach and minibus hire.
-                    </p>
-                    <a class="default-btn" href="about.html"> Learn About </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <!-- End Why Choose Us Area -->
-
-    <!-- Start Our Mission-->
-    <section class="choose-us-area" style="margin-bottom: 30px" id="ourMission">
-      <div class="container">
-        <div class="section-title">
-          <span></span>
-          <h2></h2>
-          <p class="mb-0" style="font-size: 22px"></p>
-        </div>
-      </div>
-    </section>
-    <!-- End Our Mission -->
-    <!-- <section class="began-area pb-70" id="block1">
-      <div class="container">
-        <div class="section-title">
-          <span>Why Choose Coach Hire Network?</span>
-          <h2>Your Next UK Journey Awaits!</h2> -->
-    <!-- <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Quis ipsum.</p> -->
-    <!-- </div>
-        <div class="began-top-wrap">
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="began-wrap">
-                <h2>Why Choose Coach Hire Network?</h2>
-                <div class="row">
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-fast-delivery"></i>
-                      <h3>Reliability</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-lock"></i>
-                      <h3>Safety</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-stopwatch"></i>
-                      <h3>Flexibility</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-payment-method"></i>
-                      <h3>Comfort</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-warehouse"></i>
-                      <h3>Convenience</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-distribution"></i>
-                      <h3>Eco-Friendly</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Start Our Mission-->
-    <!-- <section class="choose-us-area" style="margin-bottom: 30px" id="ourMission">
-      <div class="container">
-        <div class="section-title">
-          <span>Our Mission</span>
-          <h2>At Coach Hire Network</h2>
-          <p class="mb-0" style="font-size: 22px">
-            Our mission is to provide top-quality coach hire services that
-            exceed our customers' expectations. We strive to deliver exceptional
-            customer service, comfortable and well-maintained coaches, and
-            reliable transportation solutions. Your satisfaction and safety are
-            our highest priorities.
-          </p>
-        </div>
-      </div>
-    </section> -->
-    <!-- End Our Mission -->
-
-    <!-- Start Why Choose Us Area -->
-    <!-- <section class="service-area pb-100" id="offreServices">
-      <div class="container">
-        <div class="section-title">
-          <span>We Offer Services </span>
-          <h2>Prime logistics services for the world’s logistics companies.</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-sm-6">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="icon fa-solid fa-car-rear"></i>
-                <h3>Extensive Fleet</h3>
-                <p>
-                  We boast a diverse range of coaches, from luxury vehicles to
-                  spacious minibuses and chauffeured cars to accommodate groups
-                  of all sizes.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6"> -->
-    <!-- <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="icon fa-solid fa-users"></i>
-                <h3>Experienced Drivers</h3>
-                <p>
-                  Our professional drivers are highly trained, knowledgeable,
-                  and dedicated to providing a safe and pleasant journey for our
-                  passengers.
-                </p>
-              </div> -->
-    <!-- <div class="service-heading">
-                    <a class="circle-read-more" href="service-details.html">
-                        <h3>Corporate Relocation</h3>
-                        <i class="flaticon-right-1"></i>
-                    </a>
-                </div> -->
-    <!-- </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="icon fa-solid fa-scale-balanced"></i>
-                <h3>Competitive Pricing</h3>
-                <p>
-                  We offer competitive pricing without compromising on quality
-                  or service. Our transparent pricing structure ensures value
-                  for money.
-                </p>
-              </div> -->
-    <!-- <div class="service-heading">
-                    <a class="circle-read-more" href="service-details.html">
-                        <h3>Warehouse & Storage</h3>
-                        <i class="flaticon-right-1"></i>
-                    </a>
-                </div> -->
-    <!-- </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="icon fa-solid fa-puzzle-piece"></i>
-                <h3>Tailored Solutions</h3>
-                <p>
-                  We understand that every travel requirement is unique. We work
-                  closely with our customers to customize our services to meet
-                  their specific needs.
-                </p>
-              </div> -->
-    <!-- <div class="service-heading">
-                    <a class="circle-read-more" href="service-details.html">
-                        <h3>Warehouse & Storage</h3>
-                        <i class="flaticon-right-1"></i>
-                    </a>
-                </div> -->
-    <!-- </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="icon fa-solid fa-handshake"></i>
-                <h3>24/7 Support</h3>
-                <p>
-                  Our dedicated customer support team is available round the
-                  clock to assist you with any queries or concerns you may have.
-                </p>
-              </div> -->
-    <!-- <div class="service-heading">
-                    <a class="circle-read-more" href="service-details.html">
-                        <h3>Warehouse & Storage</h3>
-                        <i class="flaticon-right-1"></i>
-                    </a>
-                </div> -->
-    <!-- </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-            <div class="single-service">
-              <div class="service-content-wrap">
-                <i class="icon fa-solid fa-medal"></i>
-                <h3>Commitment to Excellence</h3>
-                <p>
-                  We constantly strive for excellence in everything we do. From
-                  the moment you contact us to the completion of your journey,
-                  we are committed to exceeding your expectations.
-                </p>
-              </div> -->
-    <!-- <div class="service-heading">
-                    <a class="circle-read-more" href="service-details.html">
-                        <h3>Warehouse & Storage</h3>
-                        <i class="flaticon-right-1"></i>
-                    </a>
-                </div> -->
-    <!-- </div>
-          </div>
-
-          <div class="col-12">
-            <div class="service-all">
-              <p>
-                We would love to hear from you and discuss how we can assist you
-                with your travel needs. Feel free to reach out to our friendly
-                team via phone, email, or through our online contact form. We
-                are here to provide you with exceptional service and make your
-                journey a memorable one.
-              </p>
-              <p>
-                Thank you for considering Coach Hire Network as your trusted
-                travel partner. We look forward to serving you and ensuring a
-                comfortable and enjoyable journey every time.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- End Why Choose Us Area -->
+    <div id="content-container">
+      <div id="div1"></div>
+      <div id="div2"></div>
+      <div id="div3"></div>
+    </div>
 
     <!-- Start Footer Top Area -->
     <footer
@@ -1567,9 +1077,6 @@
                 <li>
                   <a href="terms-conditions.html">Terms & Conditions</a>
                 </li>
-                <!-- <li>
-                                <a href="Terms-and-Conditions-of-Quotes.html">Terms and Conditions of Quotes</a>
-                            </li> -->
                 <li>
                   <a href="Terms-and-Conditions-of-Quotes.html"
                     >Privacy & Policy</a
@@ -1619,6 +1126,7 @@
       <i class="bx bx-chevrons-up bx-fade-up"></i>
     </div>
     <!-- End Go Top Area -->
+
     <!-- Modal -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -1647,6 +1155,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
+      aria-modal="true"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -1660,14 +1169,21 @@
                 role="img"
                 aria-label="Success:"
               >
-                <use xlink:href="#check-circle-fill" /></svg
-              >Quote request has been successfully sent
+                <use href="#check-circle-fill" />
+              </svg>
+              Quote request has been successfully sent
             </h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body">
             <p>
               Your Quote has successfully been submitted. Our Sale Team will
-              contact you as soon as possible for the price and disponibility.
+              contact you as soon as possible for the price and availability.
             </p>
             <br />
             <p>Thank you!</p>
@@ -1676,7 +1192,7 @@
             <button
               type="submit"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               onclick="olLoadPage()"
             >
               Close
@@ -1736,16 +1252,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/aboutUsComponent.js"></script>
-    <script src="assets/js/ourMissionComponent.js"></script>
-    <script src="assets/js/offreServicesComponent.js"></script>
-    <script src="assets/js/bestOffersComponent.js"></script>
-    <script src="assets/js/servicesBlock1Component.js"></script>
+    <!-- Header JS -->
     <script src="assets/js/header.js"></script>
     <script src="assets/js/top-menu.js"></script>
     <script src="assets/js/footer-list.js"></script>
     <script src="assets/js/footer-social.js"></script>
+    <!-- <script src="assets/js/aboutUsComponent.js"></script>
     <script src="assets/js/ourValuesComponent.js"></script>
+    <script src="assets/js/offreServicesComponent.js"></script>
+    <script src="assets/js/ourMissionComponent.js"></script>
     <script src="assets/js/socialServicesComponent.js"></script>
+    <script src="assets/js/bestOffersComponent.js"></script> -->
+    <script src="assets/js/loadComponents.js"></script>
   </body>
 </html>

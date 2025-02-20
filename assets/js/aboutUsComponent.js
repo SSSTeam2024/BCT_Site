@@ -1,7 +1,7 @@
 async function fetchAboutUs() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/about-us-component/getAboutUsComponents",
+      "http://localhost:3000/api/about-us-component/getAboutUsComponents",
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateAboutUs(aboutUsData) {
-  const baseUrl = "http://57.128.184.217:3000/aboutUs/";
+  const baseUrl = "http://localhost:3000/aboutUs/";
 
   const aboutContainer = document.querySelector(".about-area .row");
   const currentFileName = getCurrentHtmlFileName();

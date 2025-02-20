@@ -1,7 +1,7 @@
 async function fetchInThePress() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/in-the-press-component/getAllInThePresss",
+      "http://localhost:3000/api/in-the-press-component/getAllInThePresss",
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateInThePress(onTheRoadData) {
-  const baseUrl = "http://57.128.184.217:3000/inThePressFiles/";
+  const baseUrl = "http://localhost:3000/inThePressFiles/";
 
   const currentFileName = getCurrentHtmlFileName();
 

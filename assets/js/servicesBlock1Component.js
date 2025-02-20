@@ -1,7 +1,7 @@
 async function fetchBlock1() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/services-block1-component/getBlock1",
+      "http://localhost:3000/api/services-block1-component/getBlock1",
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateBlock1(block1Data) {
-  const baseUrl = "http://57.128.184.217:3000/Block1/";
+  const baseUrl = "http://localhost:3000/Block1/";
 
   const currentFileName = getCurrentHtmlFileName();
 

@@ -7,7 +7,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- Bootstrap Min CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <!-- Owl Theme Default Min CSS -->
@@ -44,15 +43,16 @@
     <!-- Css For Map -->
     <link rel="stylesheet" type="text/css" href="assets/css/maps.css" />
     <!-- Map -->
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
     <!-- Title -->
     <title>Sports Team Coach Hire UK | Coach Hire Network</title>
+
     <style>
       .disabled-tab {
         pointer-events: none;
@@ -91,9 +91,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <div class="header-left-content">
+              <div class="header-left-content" id="logo-of-site">
                 <a href="index.html">
-                  <img src="assets/img/logo.png" alt="Logo" />
+                  <img src="assets/img/logo.png" alt="Logo" id="image_logo" />
                 </a>
               </div>
             </div>
@@ -101,7 +101,7 @@
               <div class="header-right-content">
                 <ul>
                   <li>
-                    <a href="tel:+502-464-679">
+                    <a href="tel:+0800 112 3455">
                       <i class="bx bxs-phone-call"></i>
                       <span>Contact support</span> 0800 112 3455
                     </a>
@@ -109,10 +109,17 @@
                   <li>
                     <a href="mailto:sales@coachhirenetwork.co.uk">
                       <i class="bx bx-envelope"></i>
-                      <span>Contact support</span> sales@coachhirenetwork.co.uk
+                      <span>Contact</span> sales@coachhirenetwork.co.uk
                     </a>
                   </li>
-                  <li class="get-quote pl-0">
+                  <!-- <li id="base-address" style="font-size: 12px">
+                    <span>
+                      <i class="bx bx-map"></i>
+                      <span>some</span>
+                      <span style="color: #000000">Birmingham</span>
+                    </span>
+                  </li> -->
+                  <li class="get-quote pl-0" id="get-a-quote">
                     <a class="default-btn active" href="request-quote.html">
                       Get a quote
                     </a>
@@ -129,7 +136,7 @@
       <div class="prevoz-nav-style prevoz-nav-style-three">
         <div class="navbar-area">
           <!-- Menu For Mobile Device -->
-          <div class="mobile-nav">
+          <div class="mobile-nav" id="mobile-log-of-site">
             <a href="index.html" class="logo">
               <img src="assets/img/logo.png" alt="Logo" />
             </a>
@@ -152,7 +159,10 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="about.html" class="nav-link dropdown-toggle">
+                      <a
+                        href="about.html"
+                        class="nav-link dropdown-toggle active"
+                      >
                         About Us
                         <i class="bx bx-chevron-down"></i>
                       </a>
@@ -195,7 +205,7 @@
                     <li class="nav-item">
                       <a
                         href="our-services.html"
-                        class="nav-link dropdown-toggle active"
+                        class="nav-link dropdown-toggle"
                       >
                         Services
                         <i class="bx bx-chevron-down"></i>
@@ -249,9 +259,7 @@
                           >
                         </li>
                         <li class="nav-item">
-                          <a
-                            href="Sports-Team-Coach-Hire.html"
-                            class="nav-link active"
+                          <a href="Sports-Team-Coach-Hire.html" class="nav-link"
                             >Sports Team Coach Hire</a
                           >
                         </li>
@@ -397,11 +405,6 @@
                   </ul>
                   <!-- Start Other Option -->
                   <div class="others-option">
-                    <!-- <div class="search-wrap">
-                      <a href=".search">
-                        <i class="bx bx-search"></i>
-                      </a>
-                    </div> -->
                     <button
                       type="button"
                       class="sidebar-menu"
@@ -410,19 +413,6 @@
                     >
                       <i class="flaticon-menu"></i>
                     </button>
-
-                    <!-- <div class="dark-switch">
-                      <div class="switch-box">
-                        <label id="switch" class="switch">
-                          <input
-                            type="checkbox"
-                            onchange="toggleTheme()"
-                            id="slider"
-                          />
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                    </div> -->
                   </div>
                   <!-- End Other Option -->
                 </div>
@@ -457,7 +447,6 @@
                   <i class="bx bx-x"></i>
                 </span>
               </button>
-
               <h2 class="modal-title" id="myModalLabel2">
                 <a href="index.html">
                   <img src="assets/img/logo1.png" alt="Logo" />
@@ -468,7 +457,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -564,14 +553,14 @@
       <div class="page-title-content">
         <div class="row align-items-center">
           <div class="col-lg-6 col-sm-6">
-            <h3>Sports Team Coach Hire</h3>
+            <h3>Sports Team Coach Hire UK</h3>
           </div>
           <div class="col-lg-6 col-sm-6">
             <ul>
               <li>
-                <a href="our-services.html"> Our Services </a>
+                <a href="index.html"> Home </a>
               </li>
-              <li>Sports Team Coach Hire</li>
+              <li>Sports Team Coach Hire UK</li>
             </ul>
           </div>
         </div>
@@ -1009,279 +998,12 @@
     </section>
     <!-- End Track Area -->
 
-    <!-- Start About Area -->
-    <!-- <section class="about-area pb-100">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-img">
-                        <img src="assets/img/1.jpg" alt="Image">
-                        <div class="about-quatre">
-                            <i class="bx bxs-quote-alt-left bx-tada"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-content ml-30">
-                        <span>About Us</span>
-                        <h2>We make your trips memorable with friends, family and coworkers to serve better</h2>
-                        <p>We are a chauffeur and coach travel company catering for standard, executive and luxury
-                            travel. With a national reach Coach Hire Network are never too far from you. Benefiting
-                            from a modern fleet of Mercedes vehicles and working
-                            alongside some of the biggest coach operators in the UK, we have successfully covered and
-                            managed some of the largest and diverse events in the UK – including sporting events such as
-                            official supporter and team transport, large
-                            corporate events and festivals.</p>
-                        <a class="default-btn" href="about.html">
-                            About Us
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End About Area -->
-
-    <!-- Start What We Offer Area -->
-    <!-- <section class="service-area pt-100 pb-100">
-        <div class="container">
-            <div class="section-title">
-                <h2>Explore some of our special services!</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-service">
-                        <div class="service-content-wrap">
-                            <i class="fa-solid fa-van-shuttle fa-2xl" style="color: #CD2528;"></i>
-                            <h3>Day Trip</h3>
-                            <p>Here at Coach Hire Network, we have coaches of all sizes to transport you and your group
-                                to exciting destinations around the UK with our day trip coach hire service.</p>
-                        </div>
-                        <div class="service-heading">
-                            <a class="circle-read-more" href="service-details.html">
-                                <h3>Day Trip</h3>
-                                <i class="fa-solid fa-van-shuttle fa-lg" style="color: #CD2528;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-service">
-                        <div class="service-content-wrap">
-                            <i class="fa-solid fa-map-location-dot fa-2xl" style="color: #CD2528;"></i>
-                            <h3>UK Tour</h3>
-                            <p>We work with many different tour operators both based in the UK and International,
-                                supplying coaches, minibuses, and car services when needed for UK tours.</p>
-                        </div>
-                        <div class="service-heading">
-                            <a class="circle-read-more" href="service-details.html">
-                                <h3>UK Tour</h3>
-                                <i class="fa-solid fa-map-location-dot fa-lg" style="color: #CD2528;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-                    <div class="single-service">
-                        <div class="service-content-wrap">
-                            <i class="fa-solid fa-medal fa-2xl" style="color: #CD2528;"></i>
-                            <h3>Sporting Event</h3>
-                            <p>With our ever expanding fleet of vehicles, Coach Hire Network specialises in getting you
-                                to your sporting event hassle free, on time and in style.</p>
-                        </div>
-                        <div class="service-heading">
-                            <a class="circle-read-more" href="service-details.html">
-                                <h3>Sporting Event</h3>
-                                <i class="fa-solid fa-medal fa-lg" style="color: #CD2528;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End What We Offer Area -->
-
-    <!-- Start Why Choose Us Area -->
-    <!-- <section class="choose-us-area pb-100">
-            <div class="container">
-                <div class="section-title">
-                    <span>Why Choose Us</span>
-                    <h2>We are best among them</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 pr-0">
-                        <div class="choose-img choose-img-one">
-                        </div>
-                    </div>
-                    <div class="col-lg-8 pl-0">
-                        <div class="choose-tab-wrap">
-                            <h2>Why our Company is best</h2>
-                            <div class="tab quote-list-tab choose-tab">
-                                <ul class="tabs">
-                                    <li>
-                                        <a href="#">
-                                            Our Mission
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Our Vision
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Our Goal
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab_content">
-                                    <div class="tabs_item">
-                                        <p>We like to offer our customers luxury as standard but sometimes the occasion
-                                            calls for something a little more indulgent. If you require chauffeur driven
-                                            cars, limos or party buses then give us a call and take advantage
-                                            of our great deals on chauffeur driven vehicles.
-                                        </p>
-                                        <a class="default-btn" href="about-us.html">
-                                            Learn About
-                                        </a>
-                                    </div>
-
-                                    <div class="tabs_item">
-                                        <p>We know how important it is to have an upfront quote so you can budget for your
-                                            plans. If your booking is straightforward then just fill out our online form and
-                                            we’ll provide a quote within minutes. If your booking
-                                            is more complex, just give us a call and we’ll be happy to go through your plans
-                                            and budget with you.
-                                        </p>
-                                        <a class="default-btn" href="about-us.html">
-                                            Learn About
-                                        </a>
-                                    </div>
-
-                                    <div class="tabs_item">
-                                        <p>Need to organise coach or minibus hire? Want a fast and reliable service? Let
-                                            Coach Hire Network deliver you safely to your destination. Coach Hire Network are
-                                            specialists in coach and minibus hire.
-                                        </p>
-                                        <a class="default-btn" href="about-us.html">
-                                            Learn About
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
     <!-- End Why Choose Us Area -->
-
-    <!-- Start Testimonials Area -->
-    <!-- <section class="testimonials-area fun-blue-bg ptb-100 mb-20">
-            <div class="container">
-                <div class="section-title">
-                    <span>Client’s Testimonials</span>
-                    <h2>What they say about us</h2>
-                </div>
-                <div class="row">
-                    <div class="testimonials-top-wrap owl-carousel owl-theme">
-                        <div class="testimonials-wrap">
-                            <img src="assets/img/avatar-homme.png" alt="Image">
-                            <div class="testimonials-content">
-                                <p>Our driver arrived early to our collection point and was very accommodating throughout
-                                    the day! Would certainly recommend.</p>
-                                <h3>McNeill170</h3>
-                                <ul>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="testimonials-wrap">
-                            <img src="assets/img/femme.png" alt="Image">
-                            <div class="testimonials-content">
-                                <p>We requested coach transportation from Birmingham to Knighton and, several days later,
-                                    Knighton to Heathrow. The equipment was clean and comfortable, the driver was
-                                    professional and amenable, the whole experience was perfectly
-                                    as promised. No complaints.</p>
-                                <h3>Kristen287</h3>
-                                <ul>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star-half'></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="testimonials-wrap">
-                            <img src="assets/img/5556468.png" alt="Image">
-                            <div class="testimonials-content">
-                                <p>Junior was a great driver and very personable. He was on time for both the pick ups and
-                                    kept us updated throughout the journey. Nothing was too much trouble. Nothing to do with
-                                    Junior but the air conditioning did not work correctly
-                                    on the vehicle.
-                                </p>
-                                <h3>Mossjl1969</h3>
-                                <ul>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star-half'></i>
-                                    </li>
-                                    <li>
-                                        <i class='bx bxs-star-half'></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-    <!-- End Testimonials Area -->
-
-    <!-- Start Regional offices  Area -->
-    <!-- <div class="contact-map-area ptb-100">
-            <div class="container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1214.0833406496365!2d-1.7889141581646524!3d52.512322530233696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870baa94efd25ab%3A0xe56cc980ef8d447c!2sUnit%2012%2C%20Orton%20Way%2C%20Haywards%20Industrial%20Estate%2C%20Orton%20Way%2C%20Birmingham%20B35%207BT%2C%20Royaume-Uni!5e0!3m2!1sfr!2stn!4v1707119769815!5m2!1sfr!2stn"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div> -->
-    <!-- End Regional offices Area -->
+    <div id="content-container">
+      <div id="div1"></div>
+      <div id="div2"></div>
+      <div id="div3"></div>
+    </div>
 
     <!-- Start Footer Top Area -->
     <footer
@@ -1373,9 +1095,6 @@
                 <li>
                   <a href="terms-conditions.html">Terms & Conditions</a>
                 </li>
-                <!-- <li>
-                                <a href="Terms-and-Conditions-of-Quotes.html">Terms and Conditions of Quotes</a>
-                            </li> -->
                 <li>
                   <a href="Terms-and-Conditions-of-Quotes.html"
                     >Privacy & Policy</a
@@ -1425,6 +1144,7 @@
       <i class="bx bx-chevrons-up bx-fade-up"></i>
     </div>
     <!-- End Go Top Area -->
+
     <!-- Modal -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -1453,6 +1173,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
+      aria-modal="true"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -1466,22 +1187,21 @@
                 role="img"
                 aria-label="Success:"
               >
-                <use xlink:href="#check-circle-fill" /></svg
-              >Quote request has been successfully sent
+                <use href="#check-circle-fill" />
+              </svg>
+              Quote request has been successfully sent
             </h4>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <p>
               Your Quote has successfully been submitted. Our Sale Team will
-              contact you as soon as possible for the price and disponibility.
+              contact you as soon as possible for the price and availability.
             </p>
             <br />
             <p>Thank you!</p>
@@ -1490,7 +1210,7 @@
             <button
               type="submit"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               onclick="olLoadPage()"
             >
               Close
@@ -1555,10 +1275,12 @@
     <script src="assets/js/top-menu.js"></script>
     <script src="assets/js/footer-list.js"></script>
     <script src="assets/js/footer-social.js"></script>
-    <script src="assets/js/aboutUsComponent.js"></script>
+    <!-- <script src="assets/js/aboutUsComponent.js"></script>
     <script src="assets/js/ourValuesComponent.js"></script>
     <script src="assets/js/offreServicesComponent.js"></script>
     <script src="assets/js/ourMissionComponent.js"></script>
     <script src="assets/js/socialServicesComponent.js"></script>
+    <script src="assets/js/bestOffersComponent.js"></script> -->
+    <script src="assets/js/loadComponents.js"></script>
   </body>
 </html>

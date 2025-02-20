@@ -91,9 +91,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <div class="header-left-content">
+              <div class="header-left-content" id="logo-of-site">
                 <a href="index.html">
-                  <img src="assets/img/logo.png" alt="Logo" />
+                  <img src="assets/img/logo.png" alt="Logo" id="image_logo" />
                 </a>
               </div>
             </div>
@@ -101,7 +101,7 @@
               <div class="header-right-content">
                 <ul>
                   <li>
-                    <a href="tel:0800 112 3455">
+                    <a href="tel:+0800 112 3455">
                       <i class="bx bxs-phone-call"></i>
                       <span>Contact support</span> 0800 112 3455
                     </a>
@@ -109,10 +109,17 @@
                   <li>
                     <a href="mailto:sales@coachhirenetwork.co.uk">
                       <i class="bx bx-envelope"></i>
-                      <span>Contact support</span> sales@coachhirenetwork.co.uk
+                      <span>Contact</span> sales@coachhirenetwork.co.uk
                     </a>
                   </li>
-                  <li class="get-quote pl-0">
+                  <!-- <li id="base-address" style="font-size: 12px">
+                    <span>
+                      <i class="bx bx-map"></i>
+                      <span>some</span>
+                      <span style="color: #000000">Birmingham</span>
+                    </span>
+                  </li> -->
+                  <li class="get-quote pl-0" id="get-a-quote">
                     <a class="default-btn active" href="request-quote.html">
                       Get a quote
                     </a>
@@ -129,7 +136,7 @@
       <div class="prevoz-nav-style prevoz-nav-style-three">
         <div class="navbar-area">
           <!-- Menu For Mobile Device -->
-          <div class="mobile-nav">
+          <div class="mobile-nav" id="mobile-log-of-site">
             <a href="index.html" class="logo">
               <img src="assets/img/logo.png" alt="Logo" />
             </a>
@@ -152,7 +159,10 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="about.html" class="nav-link dropdown-toggle">
+                      <a
+                        href="about.html"
+                        class="nav-link dropdown-toggle active"
+                      >
                         About Us
                         <i class="bx bx-chevron-down"></i>
                       </a>
@@ -195,7 +205,7 @@
                     <li class="nav-item">
                       <a
                         href="our-services.html"
-                        class="nav-link dropdown-toggle active"
+                        class="nav-link dropdown-toggle"
                       >
                         Services
                         <i class="bx bx-chevron-down"></i>
@@ -395,11 +405,6 @@
                   </ul>
                   <!-- Start Other Option -->
                   <div class="others-option">
-                    <!-- <div class="search-wrap">
-                      <a href=".search">
-                        <i class="bx bx-search"></i>
-                      </a>
-                    </div> -->
                     <button
                       type="button"
                       class="sidebar-menu"
@@ -408,19 +413,6 @@
                     >
                       <i class="flaticon-menu"></i>
                     </button>
-
-                    <!-- <div class="dark-switch">
-                      <div class="switch-box">
-                        <label id="switch" class="switch">
-                          <input
-                            type="checkbox"
-                            onchange="toggleTheme()"
-                            id="slider"
-                          />
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                    </div> -->
                   </div>
                   <!-- End Other Option -->
                 </div>
@@ -465,7 +457,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -572,13 +564,6 @@
             </ul>
           </div>
         </div>
-        <!-- <div class="row align-items-center" style="margin-top: 15px">
-          <div class="col-lg-12 col-sm-12">
-            <h4>
-              
-            </h4>
-          </div>
-        </div> -->
       </div>
     </div>
     <!-- End Page Title Area -->
@@ -1013,208 +998,12 @@
     </section>
     <!-- End Track Area -->
 
-    <!-- Start What We Offer Area -->
-    <section
-      class="what-offer-area-two"
-      id="whatOffer"
-      style="padding-bottom: 40px"
-    >
-      <div class="container">
-        <div class="row">
-          <div
-            class="about-content"
-            style="justify-content: center; margin-bottom: 30px"
-          >
-            <span>What We Can Do for You </span>
-            <h2>
-              Coach hire from Coach Hire Network: The Premier Choice for Your UK
-              Travels
-            </h2>
-          </div>
-
-          <div class="col-lg-3 col-sm-6 p-0">
-            <div class="single-offer">
-              <i class="icon fa-solid fa-people-group"></i>
-              <h3>Family Celebrations</h3>
-              <p>
-                Organize memorable family reunions, arrange unforgettable family
-                gatherings, picnics, and overnight trips with our fleet
-              </p>
-              <a class="circle-read-more" href="Wedding-Transport.html">
-                <i
-                  class="flaticon-right-1"
-                  style="margin-top: 4px; margin-bottom: 19px"
-                ></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 p-0">
-            <div class="single-offer">
-              <i class="icon fa-solid fa-bus"></i>
-              <h3>School Outings</h3>
-              <p>
-                Safe and reliable transportation for school-related activities,
-                including sports matches, prom nights, graduation parties, and
-                cultural trips
-              </p>
-              <a class="circle-read-more" href="School-Trip-Coach-Hire.html">
-                <i class="flaticon-right-1"></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 p-0">
-            <div class="single-offer">
-              <i class="icon fa-solid fa-calendar-day"></i>
-              <h3>Corporate Events</h3>
-              <p>
-                From conventions and seminars to team-building exercises, we
-                ensure professional and comfortable travel
-              </p>
-              <a class="circle-read-more" href="Staff-Transport.html">
-                <i
-                  class="flaticon-right-1"
-                  style="margin-top: 5px; margin-bottom: 19px"
-                ></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 p-0">
-            <div class="single-offer">
-              <i class="icon fa-solid fa-building-columns"></i>
-              <h3>Special Tours</h3>
-              <p>
-                Enjoy sports games, festivals, shopping trips, museum tours,
-                historical sites, amusement parks, concerts, and theatre events
-                with the utmost ease.
-              </p>
-              <a class="circle-read-more" href="UK-Tour-Coach-Hire.html">
-                <i class="flaticon-right-1" style="margin-top: 2px"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End What We Offer Area -->
-
-    <section class="began-area">
-      <div class="container">
-        <div class="section-title">
-          <!-- <span>Why
-                    Choose Coach Hire Network?</span> -->
-          <h2>Your Next UK Journey Awaits!</h2>
-          <!-- <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Quis ipsum.</p> -->
-        </div>
-        <div class="began-top-wrap">
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="began-wrap">
-                <h2>Why Choose Coach Hire Network?</h2>
-                <div class="row">
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-fast-delivery"></i>
-                      <h3>Reliability</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-lock"></i>
-                      <h3>Safety</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-stopwatch"></i>
-                      <h3>Flexibility</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-payment-method"></i>
-                      <h3>Comfort</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-warehouse"></i>
-                      <h3>Convenience</h3>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <i class="flaticon-distribution"></i>
-                      <h3>Eco-Friendly</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Start About Area -->
-    <section class="about-area-two" style="margin: 180px">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="about-content">
-              <span>Your Needs, Our Solutions </span>
-              <h2>
-                Reliable and express logistics and transport solutions That no
-                waste your time!
-              </h2>
-              <p class="mb-2">
-                At Coach Hire Network, we understand that time is of the
-                essence. That's why we specialize in providing fast, reliable
-                logistics and transport solutions tailored to your specific
-                needs. Whether you're moving goods across town or across the
-                country, our efficient services ensure that your deliveries are
-                on time, every time without any unnecessary delays. Let us
-                handle the logistics, so you can focus on what matters most.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6 pr-0">
-            <div class="about-img inner-about-img">
-              <div class="about-list">
-                <h3>Our Prime priorities:</h3>
-                <ul>
-                  <li>
-                    <i class="flaticon-checked"></i> Customer and employee
-                    solutions are time-consuming.
-                  </li>
-                  <li>
-                    <i class="flaticon-checked"></i> We accomplish our goals
-                    more efficiently.
-                  </li>
-                  <li>
-                    <i class="flaticon-checked"></i> Transparent Communication
-                    Collaboration properly do.
-                  </li>
-                  <li>
-                    <i class="flaticon-checked"></i> It provides a road map to
-                    increased productivity.
-                  </li>
-                  <li>
-                    <i class="flaticon-checked"></i> Providing independent
-                    advice for you.
-                  </li>
-                  <li>
-                    <i class="flaticon-checked"></i> 24/7 support system
-                    available
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End About Area -->
+    <!-- End Why Choose Us Area -->
+    <div id="content-container">
+      <div id="div1"></div>
+      <div id="div2"></div>
+      <div id="div3"></div>
+    </div>
 
     <!-- Start Footer Top Area -->
     <footer
@@ -1306,9 +1095,6 @@
                 <li>
                   <a href="terms-conditions.html">Terms & Conditions</a>
                 </li>
-                <!-- <li>
-                                <a href="Terms-and-Conditions-of-Quotes.html">Terms and Conditions of Quotes</a>
-                            </li> -->
                 <li>
                   <a href="Terms-and-Conditions-of-Quotes.html"
                     >Privacy & Policy</a
@@ -1358,6 +1144,7 @@
       <i class="bx bx-chevrons-up bx-fade-up"></i>
     </div>
     <!-- End Go Top Area -->
+
     <!-- Modal -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -1386,6 +1173,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
+      aria-modal="true"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -1399,22 +1187,21 @@
                 role="img"
                 aria-label="Success:"
               >
-                <use xlink:href="#check-circle-fill" /></svg
-              >Quote request has been successfully sent
+                <use href="#check-circle-fill" />
+              </svg>
+              Quote request has been successfully sent
             </h4>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <p>
               Your Quote has successfully been submitted. Our Sale Team will
-              contact you as soon as possible for the price and disponibility.
+              contact you as soon as possible for the price and availability.
             </p>
             <br />
             <p>Thank you!</p>
@@ -1423,7 +1210,7 @@
             <button
               type="submit"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               onclick="olLoadPage()"
             >
               Close
@@ -1492,6 +1279,8 @@
     <script src="assets/js/ourValuesComponent.js"></script>
     <script src="assets/js/offreServicesComponent.js"></script>
     <script src="assets/js/ourMissionComponent.js"></script>
-    <script src="assets/js/socialServicesComponent.js"></script> -->
+    <script src="assets/js/socialServicesComponent.js"></script>
+    <script src="assets/js/bestOffersComponent.js"></script> -->
+    <script src="assets/js/loadComponents.js"></script>
   </body>
 </html>

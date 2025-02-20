@@ -7,7 +7,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- Bootstrap Min CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <!-- Owl Theme Default Min CSS -->
@@ -44,15 +43,16 @@
     <!-- Css For Map -->
     <link rel="stylesheet" type="text/css" href="assets/css/maps.css" />
     <!-- Map -->
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
     <!-- Title -->
     <title>Shuttle Services | Coach Hire Network</title>
+
     <style>
       .disabled-tab {
         pointer-events: none;
@@ -91,9 +91,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <div class="header-left-content">
+              <div class="header-left-content" id="logo-of-site">
                 <a href="index.html">
-                  <img src="assets/img/logo.png" alt="Logo" />
+                  <img src="assets/img/logo.png" alt="Logo" id="image_logo" />
                 </a>
               </div>
             </div>
@@ -101,7 +101,7 @@
               <div class="header-right-content">
                 <ul>
                   <li>
-                    <a href="tel:+502-464-679">
+                    <a href="tel:+0800 112 3455">
                       <i class="bx bxs-phone-call"></i>
                       <span>Contact support</span> 0800 112 3455
                     </a>
@@ -109,10 +109,17 @@
                   <li>
                     <a href="mailto:sales@coachhirenetwork.co.uk">
                       <i class="bx bx-envelope"></i>
-                      <span>Contact support</span> sales@coachhirenetwork.co.uk
+                      <span>Contact</span> sales@coachhirenetwork.co.uk
                     </a>
                   </li>
-                  <li class="get-quote pl-0">
+                  <!-- <li id="base-address" style="font-size: 12px">
+                    <span>
+                      <i class="bx bx-map"></i>
+                      <span>some</span>
+                      <span style="color: #000000">Birmingham</span>
+                    </span>
+                  </li> -->
+                  <li class="get-quote pl-0" id="get-a-quote">
                     <a class="default-btn active" href="request-quote.html">
                       Get a quote
                     </a>
@@ -129,7 +136,7 @@
       <div class="prevoz-nav-style prevoz-nav-style-three">
         <div class="navbar-area">
           <!-- Menu For Mobile Device -->
-          <div class="mobile-nav">
+          <div class="mobile-nav" id="mobile-log-of-site">
             <a href="index.html" class="logo">
               <img src="assets/img/logo.png" alt="Logo" />
             </a>
@@ -152,7 +159,10 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="about.html" class="nav-link dropdown-toggle">
+                      <a
+                        href="about.html"
+                        class="nav-link dropdown-toggle active"
+                      >
                         About Us
                         <i class="bx bx-chevron-down"></i>
                       </a>
@@ -195,7 +205,7 @@
                     <li class="nav-item">
                       <a
                         href="our-services.html"
-                        class="nav-link dropdown-toggle active"
+                        class="nav-link dropdown-toggle"
                       >
                         Services
                         <i class="bx bx-chevron-down"></i>
@@ -222,9 +232,7 @@
                           >
                         </li>
                         <li class="nav-item">
-                          <a
-                            href="Shuttle_Services.html"
-                            class="nav-link active"
+                          <a href="Shuttle_Services.html" class="nav-link"
                             >Shuttle Services</a
                           >
                         </li>
@@ -397,11 +405,6 @@
                   </ul>
                   <!-- Start Other Option -->
                   <div class="others-option">
-                    <!-- <div class="search-wrap">
-                      <a href=".search">
-                        <i class="bx bx-search"></i>
-                      </a>
-                    </div> -->
                     <button
                       type="button"
                       class="sidebar-menu"
@@ -410,19 +413,6 @@
                     >
                       <i class="flaticon-menu"></i>
                     </button>
-
-                    <!-- <div class="dark-switch">
-                      <div class="switch-box">
-                        <label id="switch" class="switch">
-                          <input
-                            type="checkbox"
-                            onchange="toggleTheme()"
-                            id="slider"
-                          />
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                    </div> -->
                   </div>
                   <!-- End Other Option -->
                 </div>
@@ -467,7 +457,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -568,7 +558,7 @@
           <div class="col-lg-6 col-sm-6">
             <ul>
               <li>
-                <a href="our-services.html"> Our Services </a>
+                <a href="index.html"> Home </a>
               </li>
               <li>Shuttle Services</li>
             </ul>
@@ -1008,237 +998,12 @@
     </section>
     <!-- End Track Area -->
 
-    <section class="choose-us-area" style="margin-bottom: 30px">
-      <div class="container">
-        <div class="section-title">
-          <!-- <span>Let Coach Hire Network Facilitate Your Ground Transportation</span> -->
-          <h2>Let Coach Hire Network Facilitate Your Ground Transportation</h2>
-          <p class="mb-0" style="font-size: 18px">
-            There are various situations that require well-planned and efficient
-            shuttle services. Whether you have employees flying in from
-            different locations for a conference or training exercise,
-            organizing a large public event, hosting a major sporting event, or
-            responding to a natural disaster, Coach Hire Network is here to
-            provide timely and cost-effective coach hire services.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="began-area pb-70">
-      <div class="container">
-        <div class="section-title">
-          <!-- <span>Began With Roles</span> -->
-          <h2>Why Choose Coach Hire for Shuttle Services</h2>
-        </div>
-        <div class="began-top-wrap">
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="began-wrap">
-                <h4>
-                  When it comes to ferrying people between venues, it's crucial
-                  to select the right mode of transportation. Coach hire offers
-                  several features that make it an excellent choice for shuttle
-                  services:
-                </h4>
-                <div class="row">
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <a href="#" style="text-decoration: none">
-                        <i class="flaticon-fast-delivery"></i>
-                        <h3>Flexibility</h3>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <a href="#" style="text-decoration: none">
-                        <i class="flaticon-lock"></i>
-                        <h3>Dependability</h3>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <a href="#" style="text-decoration: none">
-                        <i class="flaticon-stopwatch"></i>
-                        <h3>Comfort</h3>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <a href="#" style="text-decoration: none">
-                        <i class="flaticon-payment-method"></i>
-                        <h3>Safety and Security</h3>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <a href="#" style="text-decoration: none">
-                        <i class="flaticon-warehouse"></i>
-                        <h3>Affordability</h3>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6 p-0">
-                    <div class="single-began">
-                      <a href="#" style="text-decoration: none">
-                        <i class="flaticon-distribution"></i>
-                        <h3>Convenience</h3>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="shuttle_services">
-                <span>Flexibility</span>
-                <p>
-                  With coach hire, you have complete control over the shuttle
-                  schedule. You can start and stop the services according to
-                  your requirements, make real-time adjustments to schedules and
-                  stops, and ensure a seamless travel experience for your
-                  participants.
-                </p>
-              </div>
-              <div class="shuttle_services">
-                <span>Dependability</span>
-                <p>
-                  Our experienced drivers have access to resources that help
-                  them anticipate and navigate potential traffic issues,
-                  ensuring that your attendees reach their destinations on time.
-                  In the unlikely event of a replacement coach needed, Coach
-                  Hire Network's extensive network of providers makes it easier
-                  to find a suitable alternative.
-                </p>
-              </div>
-              <div class="shuttle_services">
-                <span>Comfort</span>
-                <p>
-                  Our coaches are designed with passenger comfort in mind. With
-                  plush, high-back bucket seats and spacious aisles, your
-                  participants can enjoy a comfortable journey with ample
-                  legroom.
-                </p>
-              </div>
-              <div class="shuttle_services">
-                <span>Safety and Security</span>
-                <p>
-                  Your safety is our top priority. Our highly skilled and
-                  trained drivers have a proven track record of safety.
-                  Additionally, the controlled access on our coaches allows for
-                  easy monitoring of passengers, ensuring a secure environment
-                  for everyone onboard.
-                </p>
-              </div>
-              <div class="shuttle_services">
-                <span>Affordability</span>
-                <p>
-                  Coach hire consistently offers a cost-effective solution
-                  compared to other modes of transportation, allowing you to
-                  maximize your budget without compromising on quality.
-                </p>
-              </div>
-              <div class="shuttle_services">
-                <span>Convenience</span>
-                <p>
-                  With coach hire, participants can be picked up and dropped off
-                  directly at their desired locations, providing a door-to-door
-                  service. This convenience also enables efficient communication
-                  and coordination during the journey.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="section-title">
-            <h2 style="font-size: 32px">
-              Experience the Coach Hire Network Advantage for Your Shuttle
-              Services
-            </h2>
-            <p>
-              With over 30 years of industry-leading experience, Coach Hire
-              Network is the trusted choice for coach hire services.
-            </p>
-          </div>
-          <div class="shuttle-services-list">
-            <h3>We offer:</h3>
-            <ul>
-              <li>
-                <i class="flaticon-checked"></i>
-                Customized and comprehensive dispatch services available 24/7,
-                with real-time monitoring capabilities and immediate response to
-                contingencies.
-              </li>
-              <li>
-                <i class="flaticon-checked"></i>
-                Dedicated project management team providing a single point of
-                contact for all your needs.
-              </li>
-              <li>
-                <i class="flaticon-checked"></i>
-                A wide range of coach options, from mini-coaches to full-sized
-                coaches, accommodating various group sizes. We also have
-                ADA-accessible coaches available.
-              </li>
-              <li>
-                <i class="flaticon-checked"></i>
-                Access to our online Trip Management Portal, where you can
-                conveniently review invoices, itineraries, and other important
-                information.
-              </li>
-              <li>
-                <i class="flaticon-checked"></i>
-                Competitive pricing due to our strong vendor relationships and
-                extensive understanding of local markets.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="section-title">
-            <h2 style="font-size: 32px; margin-top: 20px">
-              Set Up Your Coach Hire Services Today!
-            </h2>
-          </div>
-          <p>
-            For a quick and accurate estimate on the cost of coach hire services
-            for your event, visit our user-friendly website and ask for a quote
-            . You'll receive a quote within minutes, followed by a confirmation
-            email from one of our representatives.
-          </p>
-          <p>
-            If you have specific questions about our coach hire services or want
-            to learn more about our comprehensive offerings, please call us at
-            <strong>080011230</strong> to speak with a knowledgeable travel
-            consultant.
-          </p>
-          <p>
-            You can also use our online Cost Calculator to get an estimate on
-            the cost of a charter bus rental. Within minutes, you'll receive a
-            quote and a follow-up email from one of our booking agents.
-          </p>
-          <p class="mb-3">
-            Choose Coach Hire Network for your shuttle service needs and
-            experience the difference in quality and reliability.
-          </p>
-        </div>
-      </div>
-    </section>
+    <!-- End Why Choose Us Area -->
+    <div id="content-container">
+      <div id="div1"></div>
+      <div id="div2"></div>
+      <div id="div3"></div>
+    </div>
 
     <!-- Start Footer Top Area -->
     <footer
@@ -1330,9 +1095,6 @@
                 <li>
                   <a href="terms-conditions.html">Terms & Conditions</a>
                 </li>
-                <!-- <li>
-                            <a href="Terms-and-Conditions-of-Quotes.html">Terms and Conditions of Quotes</a>
-                        </li> -->
                 <li>
                   <a href="Terms-and-Conditions-of-Quotes.html"
                     >Privacy & Policy</a
@@ -1382,6 +1144,7 @@
       <i class="bx bx-chevrons-up bx-fade-up"></i>
     </div>
     <!-- End Go Top Area -->
+
     <!-- Modal -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -1410,6 +1173,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
+      aria-modal="true"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -1423,22 +1187,21 @@
                 role="img"
                 aria-label="Success:"
               >
-                <use xlink:href="#check-circle-fill" /></svg
-              >Quote request has been successfully sent
+                <use href="#check-circle-fill" />
+              </svg>
+              Quote request has been successfully sent
             </h4>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <p>
               Your Quote has successfully been submitted. Our Sale Team will
-              contact you as soon as possible for the price and disponibility.
+              contact you as soon as possible for the price and availability.
             </p>
             <br />
             <p>Thank you!</p>
@@ -1447,7 +1210,7 @@
             <button
               type="submit"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               onclick="olLoadPage()"
             >
               Close
@@ -1456,51 +1219,6 @@
         </div>
       </div>
     </div>
-
-    <script>
-      // Get all the service links
-      const serviceLinks = document.querySelectorAll(".single-began a");
-
-      // Get all the service details wraps
-      const serviceDetailsWraps =
-        document.querySelectorAll(".shuttle_services");
-
-      let previousIndex = 0; // Track the index of the previously clicked service
-
-      // Function to show service details wrap and change background color
-      function showService(index) {
-        // Hide all service details wraps
-        serviceDetailsWraps.forEach((wrap) => {
-          wrap.style.display = "none";
-        });
-
-        // Show the corresponding service details wrap
-        serviceDetailsWraps[index].style.display = "block";
-
-        // Change background color of corresponding service link and reset the previous one
-        serviceLinks[previousIndex].parentNode.style.backgroundColor = "";
-        serviceLinks[previousIndex].parentNode.style.color = "";
-        serviceLinks[previousIndex].querySelector("i").style.color = "";
-        serviceLinks[index].parentNode.style.backgroundColor = "#CD2528"; // Change to desired color
-        serviceLinks[index].parentNode.style.color = "white"; // Change text color to white
-        serviceLinks[index].querySelector("i").style.color = "white"; // Change icon color to white
-
-        previousIndex = index; // Update previousIndex to current index
-      }
-
-      // Show the "Flexibility" service by default
-      showService(0); // 0 index for "Flexibility"
-
-      // Add click event listener to each service link
-      serviceLinks.forEach((link, index) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault(); // Prevent default link behavior
-
-          // Call showService function to display corresponding service details
-          showService(index);
-        });
-      });
-    </script>
 
     <!-- Jquery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
@@ -1557,10 +1275,12 @@
     <script src="assets/js/top-menu.js"></script>
     <script src="assets/js/footer-list.js"></script>
     <script src="assets/js/footer-social.js"></script>
-    <script src="assets/js/aboutUsComponent.js"></script>
+    <!-- <script src="assets/js/aboutUsComponent.js"></script>
     <script src="assets/js/ourValuesComponent.js"></script>
     <script src="assets/js/offreServicesComponent.js"></script>
     <script src="assets/js/ourMissionComponent.js"></script>
     <script src="assets/js/socialServicesComponent.js"></script>
+    <script src="assets/js/bestOffersComponent.js"></script> -->
+    <script src="assets/js/loadComponents.js"></script>
   </body>
 </html>

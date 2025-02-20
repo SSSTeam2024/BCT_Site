@@ -1,7 +1,7 @@
 async function fetchOffreServices() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/offre-service-component/getOfferService",
+      "http://localhost:3000/api/offre-service-component/getOfferService",
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateOffreServices(offreServicesData) {
-  const baseUrl = "http://57.128.184.217:3000/offerService/";
+  const baseUrl = "http://localhost:3000/offerService/";
   const currentFileName = getCurrentHtmlFileName();
   const offreServicesContainer = document.querySelector("#offreServices");
 

@@ -1,7 +1,7 @@
 async function fetchVehiclesClass() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/vehicles-class-component/getVehiclesClass",
+      "http://localhost:3000/api/vehicles-class-component/getVehiclesClass",
       {
         method: "GET",
         headers: {

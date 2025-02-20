@@ -16,7 +16,7 @@ function attachTabListeners() {
 async function fetchAboutUs() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/about-us-component/getAboutUsComponents"
+      "http://localhost:3000/api/about-us-component/getAboutUsComponents"
     );
 
     if (!response.ok) {
@@ -33,7 +33,7 @@ async function fetchAboutUs() {
 async function fetchOurValue() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/our-value-component/getOurValue"
+      "http://localhost:3000/api/our-value-component/getOurValue"
     );
 
     if (!response.ok) {
@@ -50,7 +50,7 @@ async function fetchOurValue() {
 async function fetchOffreServices() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/offre-service-component/getOfferService"
+      "http://localhost:3000/api/offre-service-component/getOfferService"
     );
 
     if (!response.ok) {
@@ -67,7 +67,7 @@ async function fetchOffreServices() {
 async function fetchOurMissions() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/our-mission-component/getOurMissions",
+      "http://localhost:3000/api/our-mission-component/getOurMissions",
       {
         method: "GET",
         headers: {
@@ -91,7 +91,7 @@ async function fetchOurMissions() {
 async function fetchVehicleGuide() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/vehicle-guide-component/getVehicleGuides",
+      "http://localhost:3000/api/vehicle-guide-component/getVehicleGuides",
       {
         method: "GET",
         headers: {
@@ -115,7 +115,7 @@ async function fetchVehicleGuide() {
 async function fetchVehiclesClass() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/vehicles-class-component/getVehiclesClass",
+      "http://localhost:3000/api/vehicles-class-component/getVehiclesClass",
       {
         method: "GET",
         headers: {
@@ -139,7 +139,7 @@ async function fetchVehiclesClass() {
 async function fetchInThePress() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/in-the-press-component/getAllInThePresss",
+      "http://localhost:3000/api/in-the-press-component/getAllInThePresss",
       {
         method: "GET",
         headers: {
@@ -163,7 +163,7 @@ async function fetchInThePress() {
 async function fetchBlock1() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/services-block1-component/getBlock1",
+      "http://localhost:3000/api/services-block1-component/getBlock1",
       {
         method: "GET",
         headers: {
@@ -187,7 +187,7 @@ async function fetchBlock1() {
 async function fetchFleet() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/fleets-component/get-all-fleets",
+      "http://localhost:3000/api/fleets-component/get-all-fleets",
       {
         method: "GET",
         headers: {
@@ -211,7 +211,7 @@ async function fetchFleet() {
 async function fetchOnTheRoad() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/on-the-road-component/getOnTheRoads",
+      "http://localhost:3000/api/on-the-road-component/getOnTheRoads",
       {
         method: "GET",
         headers: {
@@ -235,7 +235,7 @@ async function fetchOnTheRoad() {
 async function fetchTermsConditions() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/terms-condition/getTermsCondition",
+      "http://localhost:3000/api/terms-condition/getTermsCondition",
       {
         method: "GET",
         headers: {
@@ -424,7 +424,7 @@ function renderAboutUsSection(about, container) {
     return;
   }
 
-  const baseUrl = "http://57.128.184.217:3000/aboutUs/";
+  const baseUrl = "http://localhost:3000/aboutUs/";
   const imagePath = about.image.path.startsWith("http")
     ? about.image.path
     : `${baseUrl}${about.image.path}`;
@@ -501,7 +501,7 @@ function renderOurValuesSection(ouValues, container) {
     return;
   }
 
-  const baseUrl = "http://57.128.184.217:3000/ourValue/";
+  const baseUrl = "http://localhost:3000/ourValue/";
   const imagePath = ouValues.image.path.startsWith("http")
     ? ouValues.image.path
     : `${baseUrl}${ouValues.image.path}`;
@@ -609,7 +609,7 @@ function renderOurMissions(ourMissions, container) {
 }
 
 function renderOfferService(offerService, container) {
-  const baseUrl = "http://57.128.184.217:3000/offerService/";
+  const baseUrl = "http://localhost:3000/offerService/";
   const offreContainer = document.createElement("div");
   offreContainer.classList.add("container");
 
@@ -706,7 +706,7 @@ function renderOfferService(offerService, container) {
 }
 
 function renderVehicleGuide(vehicleGuide, container) {
-  const baseUrl = "http://57.128.184.217:3000/VehicleGuide/";
+  const baseUrl = "http://localhost:3000/VehicleGuide/";
   const vehicleGuideContainerDiv = document.createElement("div");
   vehicleGuideContainerDiv.classList.add("container");
   if (vehicleGuide.display === "0") {
@@ -861,7 +861,7 @@ function renderInThePress(inThePress, container) {
   if (inThePress.display === "0") {
     container.innerHTML === "";
   } else {
-    const baseUrl = "http://57.128.184.217:3000/inThePressFiles/";
+    const baseUrl = "http://localhost:3000/inThePressFiles/";
     const containerInThePress = document.createElement("div");
     containerInThePress.classList.add("container");
     const sectionTitle = document.createElement("div");
@@ -1041,7 +1041,7 @@ function renderFleet(fleet, container) {
   sectionTitle.appendChild(titleH2);
   sectionTitle.appendChild(titleP);
 
-  const baseUrl = "http://57.128.184.217:3000/fleetFiles/";
+  const baseUrl = "http://localhost:3000/fleetFiles/";
   const row = document.createElement("div");
   row.classList.add("row");
 
@@ -1117,7 +1117,7 @@ function renderOnTheRoad(onTheRoad, container) {
     projectImage.classList.add("project-image");
 
     // Set the background image dynamically
-    projectImage.style.backgroundImage = `url(http://57.128.184.217:3000/onTheRoadFiles/${grid.image})`;
+    projectImage.style.backgroundImage = `url(http://localhost:3000/onTheRoadFiles/${grid.image})`;
     projectImage.style.backgroundSize = "cover";
     projectImage.style.backgroundPosition = "center";
 

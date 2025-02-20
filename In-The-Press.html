@@ -91,9 +91,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <div class="header-left-content">
+              <div class="header-left-content" id="logo-of-site">
                 <a href="index.html">
-                  <img src="assets/img/logo.png" alt="Logo" />
+                  <img src="assets/img/logo.png" alt="Logo" id="image_logo" />
                 </a>
               </div>
             </div>
@@ -101,7 +101,7 @@
               <div class="header-right-content">
                 <ul>
                   <li>
-                    <a href="tel:+502-464-679">
+                    <a href="tel:+0800 112 3455">
                       <i class="bx bxs-phone-call"></i>
                       <span>Contact support</span> 0800 112 3455
                     </a>
@@ -109,10 +109,17 @@
                   <li>
                     <a href="mailto:sales@coachhirenetwork.co.uk">
                       <i class="bx bx-envelope"></i>
-                      <span>Contact support</span> sales@coachhirenetwork.co.uk
+                      <span>Contact</span> sales@coachhirenetwork.co.uk
                     </a>
                   </li>
-                  <li class="get-quote pl-0">
+                  <!-- <li id="base-address" style="font-size: 12px">
+                    <span>
+                      <i class="bx bx-map"></i>
+                      <span>some</span>
+                      <span style="color: #000000">Birmingham</span>
+                    </span>
+                  </li> -->
+                  <li class="get-quote pl-0" id="get-a-quote">
                     <a class="default-btn active" href="request-quote.html">
                       Get a quote
                     </a>
@@ -129,7 +136,7 @@
       <div class="prevoz-nav-style prevoz-nav-style-three">
         <div class="navbar-area">
           <!-- Menu For Mobile Device -->
-          <div class="mobile-nav">
+          <div class="mobile-nav" id="mobile-log-of-site">
             <a href="index.html" class="logo">
               <img src="assets/img/logo.png" alt="Logo" />
             </a>
@@ -171,7 +178,7 @@
                           >
                         </li>
                         <li class="nav-item">
-                          <a href="In-The-Press.html" class="nav-link active"
+                          <a href="In-The-Press.html" class="nav-link"
                             >In The Press</a
                           >
                         </li>
@@ -398,11 +405,6 @@
                   </ul>
                   <!-- Start Other Option -->
                   <div class="others-option">
-                    <!-- <div class="search-wrap">
-                      <a href=".search">
-                        <i class="bx bx-search"></i>
-                      </a>
-                    </div> -->
                     <button
                       type="button"
                       class="sidebar-menu"
@@ -411,19 +413,6 @@
                     >
                       <i class="flaticon-menu"></i>
                     </button>
-
-                    <!-- <div class="dark-switch">
-                      <div class="switch-box">
-                        <label id="switch" class="switch">
-                          <input
-                            type="checkbox"
-                            onchange="toggleTheme()"
-                            id="slider"
-                          />
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                    </div> -->
                   </div>
                   <!-- End Other Option -->
                 </div>
@@ -468,7 +457,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -569,7 +558,7 @@
           <div class="col-lg-6 col-sm-6">
             <ul>
               <li>
-                <a href="about.html"> About Us </a>
+                <a href="index.html"> Home </a>
               </li>
               <li>In The Press</li>
             </ul>
@@ -1009,54 +998,12 @@
     </section>
     <!-- End Track Area -->
 
-    <!-- Start Blog Area -->
-    <section
-      class="blog-area blog-inner-area-full-width ptb-100"
-      id="inThePress_component"
-    >
-      <div class="container">
-        <div class="section-title">
-          <h2>Take a look at a few photos of our drivers on the road.</h2>
-          <p>
-            They take great pride in what they do and always provide the very
-            best service to our clients, having many years of experience in all
-            things coach hire, minibus hire and chauffeured car hire we
-            guarantee our drivers will get you to your destination on time,
-            hassle free and of course in true Coach Hire Network style. We have
-            vehicles of all sizes on offer to provide you with only the best
-            service, picking you up from your location and with the help of our
-            professional drivers, transporting you directly to your destination.
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6">
-            <div class="single-blog">
-              <a href="news-details.html">
-                <img src="assets/img/blog/13.jpg" alt="Image" />
-              </a>
-              <div class="blog-content">
-                <ul>
-                  <li>
-                    <a href="#">By: Amith klev</a>
-                  </li>
-                  <li>jan 30, 2020</li>
-                </ul>
-                <h3>
-                  <a href="news-details.html">
-                    Exporters Achieve Cost Savings Throughout the sale
-                  </a>
-                </h3>
-                <p>
-                  Lorem, ipsum dolor ipsum sit amet consectetur adipisicing
-                  elit. vel odio impedit reiciendis, eligendi.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Blog Area -->
+    <!-- End Why Choose Us Area -->
+    <div id="content-container">
+      <div id="div1"></div>
+      <div id="div2"></div>
+      <div id="div3"></div>
+    </div>
 
     <!-- Start Footer Top Area -->
     <footer
@@ -1148,9 +1095,6 @@
                 <li>
                   <a href="terms-conditions.html">Terms & Conditions</a>
                 </li>
-                <!-- <li>
-                            <a href="Terms-and-Conditions-of-Quotes.html">Terms and Conditions of Quotes</a>
-                        </li> -->
                 <li>
                   <a href="Terms-and-Conditions-of-Quotes.html"
                     >Privacy & Policy</a
@@ -1200,6 +1144,7 @@
       <i class="bx bx-chevrons-up bx-fade-up"></i>
     </div>
     <!-- End Go Top Area -->
+
     <!-- Modal -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -1228,6 +1173,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
+      aria-modal="true"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -1241,22 +1187,21 @@
                 role="img"
                 aria-label="Success:"
               >
-                <use xlink:href="#check-circle-fill" /></svg
-              >Quote request has been successfully sent
+                <use href="#check-circle-fill" />
+              </svg>
+              Quote request has been successfully sent
             </h4>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <p>
               Your Quote has successfully been submitted. Our Sale Team will
-              contact you as soon as possible for the price and disponibility.
+              contact you as soon as possible for the price and availability.
             </p>
             <br />
             <p>Thank you!</p>
@@ -1265,7 +1210,7 @@
             <button
               type="submit"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               onclick="olLoadPage()"
             >
               Close
@@ -1325,16 +1270,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/inThePressComponent.js"></script>
     <!-- Header JS -->
     <script src="assets/js/header.js"></script>
     <script src="assets/js/top-menu.js"></script>
     <script src="assets/js/footer-list.js"></script>
     <script src="assets/js/footer-social.js"></script>
-    <script src="assets/js/aboutUsComponent.js"></script>
+    <!-- <script src="assets/js/aboutUsComponent.js"></script>
     <script src="assets/js/ourValuesComponent.js"></script>
     <script src="assets/js/offreServicesComponent.js"></script>
     <script src="assets/js/ourMissionComponent.js"></script>
     <script src="assets/js/socialServicesComponent.js"></script>
+    <script src="assets/js/bestOffersComponent.js"></script> -->
+    <script src="assets/js/loadComponents.js"></script>
   </body>
 </html>

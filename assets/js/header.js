@@ -1,7 +1,7 @@
 async function fetchHeader() {
   try {
     const response = await fetch(
-      "http://57.128.184.217:3000/api/header/getHeaders",
+      "http://localhost:3000/api/header/getHeaders",
       {
         method: "GET",
         headers: {
@@ -23,15 +23,19 @@ async function fetchHeader() {
 }
 
 function updateHeader(data) {
-  const baseUrl = "http://57.128.184.217:3000/header/";
+  const baseUrl = "http://localhost:3000/header/";
+  console.log("data", data);
   data.map((data) => {
     const logoPath = data.logo.startsWith("http")
       ? data.logo
       : `${baseUrl}${data.logo}`;
 
     //! Logo
-    const logoLink = document.querySelector("#logo-of-site a");
-    const logoImage = logoLink.querySelector("img");
+    const logoLink = document.querySelector("#logo-of-site");
+    logoLink.classList.add("header-left-content");
+    const newLink = document.createElement("a");
+    newLink.setAttribute("href", data.logo_link);
+    const logoImage = document.querySelector("#image_logo");
     logoLink.setAttribute("href", data.logo_link);
     logoImage.setAttribute("src", logoPath);
 
@@ -44,7 +48,7 @@ function updateHeader(data) {
     //! Phone
     const phoneLink = document.querySelector("a[href^='tel:']");
     const phoneIcon = phoneLink.querySelector("span");
-    const phoneItem = phoneLink.closest("li"); // Select the parent <li> element
+    const phoneItem = phoneLink.closest("li");
 
     if (data.phone_display === "1") {
       phoneItem.style.display = "";
@@ -69,19 +73,20 @@ function updateHeader(data) {
     }
 
     //! Address
-    const addressLink = document.querySelector("#base-address");
-    const addressIcon = addressLink.querySelector("span");
-    const addressItem = addressLink.closest("li");
-    if (data.address_display === "1") {
-      addressItem.style.display = "";
-      addressIcon.textContent = data.address_value;
-      addressLink.innerHTML = `<i class='bx bx-map'></i> <span>${data.address_label}</span> ${data.address_value}`;
-    } else {
-      addressItem.style.display = "none";
-    }
+    // const addressLink = document.querySelector("#base-address");
+    // const addressIcon = addressLink.querySelector("span");
+    // const addressItem = addressLink.closest("li");
+    // if (data.address_display === "1") {
+    //   addressItem.style.display = "";
+    //   addressIcon.textContent = data.address_value;
+    //   addressLink.innerHTML = `<i class='bx bx-map'></i> <span>${data.address_label}</span> ${data.address_value}`;
+    // } else {
+    //   addressItem.style.display = "none";
+    // }
 
     //! Button
     const buttonLink = document.querySelector("#get-a-quote a");
+    console.log("buttonLink", buttonLink);
     const buttonItem = buttonLink.closest("li");
     if (data.button_display === "1") {
       buttonItem.style.display = "";

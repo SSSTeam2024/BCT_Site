@@ -57,15 +57,19 @@
       .disabled-tab {
         pointer-events: none;
         color: black !important;
+        /* Change color for disabled tabs */
       }
 
       .nav-link.active {
+        /* color: red !important;  */
         background-color: #cd2528 !important;
         color: #ffffff !important;
+        /* Change color for active tab  */
       }
 
       .nav-link:not(.active) {
         color: black !important;
+        /* Change color for inactive tabs */
       }
     </style>
   </head>
@@ -89,7 +93,7 @@
             <div class="col-lg-3">
               <div class="header-left-content" id="logo-of-site">
                 <a href="index.html">
-                  <img src="assets/img/logo.png" alt="Logo" />
+                  <img src="assets/img/logo.png" alt="Logo" id="image_logo" />
                 </a>
               </div>
             </div>
@@ -97,7 +101,7 @@
               <div class="header-right-content">
                 <ul>
                   <li>
-                    <a href="tel:+502-464-679">
+                    <a href="tel:+0800 112 3455">
                       <i class="bx bxs-phone-call"></i>
                       <span>Contact support</span> 0800 112 3455
                     </a>
@@ -105,9 +109,16 @@
                   <li>
                     <a href="mailto:sales@coachhirenetwork.co.uk">
                       <i class="bx bx-envelope"></i>
-                      <span>Contact support</span> sales@coachhirenetwork.co.uk
+                      <span>Contact</span> sales@coachhirenetwork.co.uk
                     </a>
                   </li>
+                  <!-- <li id="base-address" style="font-size: 12px">
+                    <span>
+                      <i class="bx bx-map"></i>
+                      <span>some</span>
+                      <span style="color: #000000">Birmingham</span>
+                    </span>
+                  </li> -->
                   <li class="get-quote pl-0" id="get-a-quote">
                     <a class="default-btn active" href="request-quote.html">
                       Get a quote
@@ -148,7 +159,10 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="about.html" class="nav-link dropdown-toggle">
+                      <a
+                        href="about.html"
+                        class="nav-link dropdown-toggle active"
+                      >
                         About Us
                         <i class="bx bx-chevron-down"></i>
                       </a>
@@ -299,13 +313,13 @@
                       </ul>
                     </li>
                     <li class="nav-item">
-                      <a href="#" class="nav-link dropdown-toggle active">
+                      <a href="#" class="nav-link dropdown-toggle">
                         Our Vehicles
                         <i class="bx bx-chevron-down"></i>
                       </a>
                       <ul class="dropdown-menu">
                         <li class="nav-item">
-                          <a href="Vehicle-Guide.html" class="nav-link active"
+                          <a href="Vehicle-Guide.html" class="nav-link"
                             >Vehicle Guide</a
                           >
                         </li>
@@ -391,11 +405,6 @@
                   </ul>
                   <!-- Start Other Option -->
                   <div class="others-option">
-                    <!-- <div class="search-wrap">
-                      <a href=".search">
-                        <i class="bx bx-search"></i>
-                      </a>
-                    </div> -->
                     <button
                       type="button"
                       class="sidebar-menu"
@@ -404,19 +413,6 @@
                     >
                       <i class="flaticon-menu"></i>
                     </button>
-
-                    <!-- <div class="dark-switch">
-                      <div class="switch-box">
-                        <label id="switch" class="switch">
-                          <input
-                            type="checkbox"
-                            onchange="toggleTheme()"
-                            id="slider"
-                          />
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                    </div> -->
                   </div>
                   <!-- End Other Option -->
                 </div>
@@ -461,7 +457,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -1002,225 +998,12 @@
     </section>
     <!-- End Track Area -->
 
-    <!-- Start Why Choose Us Area -->
-    <section class="service-details-area ptb-100" id="vehicles_guide">
-      <div class="container">
-        <div class="row" style="margin-bottom: 15px">
-          <p style="margin-left: 15px">
-            At Coach Hire Network, we prioritize customer satisfaction and
-            strive to exceed expectations with our reliable service,
-            professional drivers, and diverse fleet of vehicles. <br />
-            <span
-              >Whether it's a corporate event, wedding, or group outing, we are
-              dedicated to providing top-quality transportation services
-              tailored to your specific needs.
-            </span>
-          </p>
-          <p style="margin-left: 15px">
-            If you have any further questions or would like to inquire about
-            booking our services, please feel free to reach out to us.
-          </p>
-          <p style="margin-left: 15px">
-            We are here to assist you and make your travel experience
-            exceptional.
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="service-sidebar-area">
-              <div class="service-list service-card">
-                <a href="#">
-                  <h3 class="service-details-title">Chauffeured Cars</h3>
-                </a>
-              </div>
-              <div class="service-list service-card">
-                <a href="#">
-                  <h3 class="service-details-title">MPVs</h3>
-                </a>
-              </div>
-              <div class="service-list service-card">
-                <a href="#">
-                  <h3 class="service-details-title">16-Seater Minibuses</h3>
-                </a>
-              </div>
-              <div class="service-list service-card">
-                <a href="#">
-                  <h3 class="service-details-title">33-Seater Midis</h3>
-                </a>
-              </div>
-              <div class="service-list service-card">
-                <a href="#">
-                  <h3 class="service-details-title">49-Seater Coaches</h3>
-                </a>
-              </div>
-              <div class="service-list service-card">
-                <a href="#">
-                  <h3 class="service-details-title">62-Seater Coaches</h3>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <div class="service-details-wrap">
-              <ul>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our chauffeured
-                  cars are meticulously maintained and regularly serviced to
-                  ensure optimal performance and safety.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our professional
-                  drivers are not only licensed by the local authority but also
-                  undergo rigorous training to provide a high level of service.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Whether you need a
-                  car for airport transfers, business meetings, or special
-                  events, our chauffeured cars offer comfort, style, and
-                  reliability.
-                </li>
-              </ul>
-              <div class="service-img">
-                <img src="assets/img/service-details/18.png" alt="Image" />
-              </div>
-            </div>
-            <div class="service-details-wrap">
-              <ul>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our MPVs, typically
-                  Vito's or V-Class models, are known for their spacious
-                  interiors and luxurious features.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Ideal for small
-                  groups or families, our MPVs provide ample space for both
-                  passengers and their luggage.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> With comfortable
-                  seating and modern amenities, our MPVs ensure a smooth and
-                  enjoyable journey for everyone.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> All our MPVs are
-                  VOSA licensed, meeting the necessary safety standards and
-                  regulatory requirements.
-                </li>
-              </ul>
-              <div class="service-img">
-                <img src="assets/img/service-details/8.jpg" alt="Image" />
-              </div>
-            </div>
-            <div class="service-details-wrap">
-              <ul>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our 16-seater
-                  minibuses are a popular choice for medium-sized groups.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> These minibuses are
-                  VOSA licensed, meeting the necessary safety standards and
-                  regulatory requirements.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Equipped with
-                  comfortable seating, air conditioning, and entertainment
-                  systems, our minibuses offer a pleasant travel experience.
-                </li>
-              </ul>
-              <div class="service-img">
-                <img
-                  src="assets/img/service-details/Luxury-16-seat-Minibus_Exterior-1-1024x768.jpg"
-                  alt="Image"
-                />
-              </div>
-            </div>
-            <div class="service-details-wrap">
-              <ul>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our 33-seater midis
-                  are the perfect option for larger groups that require more
-                  seating capacity.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> These midis bridge
-                  the gap between minibuses and coaches, offering a balance of
-                  space and convenience.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> With their VOSA
-                  license, you can trust that our midis adhere to safety
-                  regulations and ensure a secure journey.
-                </li>
-              </ul>
-              <div class="service-img">
-                <img src="assets/img/service-details/9.jpg" alt="Image" />
-              </div>
-            </div>
-            <div class="service-details-wrap">
-              <ul>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our 49-seater
-                  coaches are designed to accommodate larger groups, making them
-                  ideal for corporate events, school trips, or sports team
-                  transportation.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> These coaches come
-                  with various onboard amenities, such as air conditioning,
-                  Wi-Fi, and entertainment systems, to enhance passenger
-                  comfort.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> The reclining seats
-                  provide ample legroom, allowing passengers to relax and enjoy
-                  the journey.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> All our 49-seater
-                  coaches are VOSA licensed, meeting the highest safety
-                  standards and regulatory requirements.
-                </li>
-              </ul>
-              <div class="service-img">
-                <img src="assets/img/service-details/17.png" alt="Image" />
-              </div>
-            </div>
-            <div class="service-details-wrap">
-              <ul>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> Our 62-seater
-                  coaches offer even more seating capacity, making them suitable
-                  for large groups or events.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> These coaches are a
-                  versatile option, providing extra seats without compromising
-                  on comfort or amenities.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> With their spacious
-                  interiors and modern features, our 62-seater coaches ensure a
-                  pleasant and enjoyable travel experience.
-                </li>
-                <li>
-                  <i class="bx bxs-radio-circle-marked"></i> All our 62-seater
-                  coaches are VOSA licensed, guaranteeing a safe and reliable
-                  transportation option.
-                </li>
-              </ul>
-              <div class="service-img">
-                <img
-                  src="assets/img/service-details/corporate-coach-to-hire-birmingham.jpg"
-                  alt="Image"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <!-- End Why Choose Us Area -->
+    <div id="content-container">
+      <div id="div1"></div>
+      <div id="div2"></div>
+      <div id="div3"></div>
+    </div>
 
     <!-- Start Footer Top Area -->
     <footer
@@ -1312,9 +1095,6 @@
                 <li>
                   <a href="terms-conditions.html">Terms & Conditions</a>
                 </li>
-                <!-- <li>
-                                <a href="Terms-and-Conditions-of-Quotes.html">Terms and Conditions of Quotes</a>
-                            </li> -->
                 <li>
                   <a href="Terms-and-Conditions-of-Quotes.html"
                     >Privacy & Policy</a
@@ -1364,6 +1144,7 @@
       <i class="bx bx-chevrons-up bx-fade-up"></i>
     </div>
     <!-- End Go Top Area -->
+
     <!-- Modal -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -1392,6 +1173,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
+      aria-modal="true"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -1405,22 +1187,21 @@
                 role="img"
                 aria-label="Success:"
               >
-                <use xlink:href="#check-circle-fill" /></svg
-              >Quote request has been successfully sent
+                <use href="#check-circle-fill" />
+              </svg>
+              Quote request has been successfully sent
             </h4>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <p>
               Your Quote has successfully been submitted. Our Sale Team will
-              contact you as soon as possible for the price and disponibility.
+              contact you as soon as possible for the price and availability.
             </p>
             <br />
             <p>Thank you!</p>
@@ -1429,7 +1210,7 @@
             <button
               type="submit"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               onclick="olLoadPage()"
             >
               Close
@@ -1438,47 +1219,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <script>
-      const serviceLinks = document.querySelectorAll(
-        ".service-sidebar-area .service-card a"
-      );
-
-      const serviceCardsh3 = document.querySelectorAll(
-        ".service-sidebar-area .service-card h3"
-      );
-      const serviceCardsA = document.querySelectorAll(
-        ".service-sidebar-area .service-card a"
-      );
-      const serviceDetailsWraps = document.querySelectorAll(
-        ".service-details-wrap"
-      );
-      serviceDetailsWraps.forEach((wrap) => {
-        wrap.style.display = "none";
-      });
-      serviceDetailsWraps[0].style.display = "block";
-      serviceLinks.forEach((link, index) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault();
-
-          serviceDetailsWraps.forEach((wrap) => {
-            wrap.style.display = "none";
-          });
-
-          serviceCardsh3.forEach((h3) => {
-            h3.style.backgroundColor = "#155263";
-          });
-
-          serviceCardsA.forEach((link) => {
-            link.style.backgroundColor = "#155263";
-          });
-
-          serviceDetailsWraps[index].style.display = "block";
-          serviceCardsh3[index].style.backgroundColor = "#CD2528";
-          serviceCardsA[index].style.backgroundColor = "#CD2528";
-        });
-      });
-    </script> -->
 
     <!-- Jquery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
@@ -1530,7 +1270,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/vehicleGuideComponent.js"></script>
+    <!-- Header JS -->
     <script src="assets/js/header.js"></script>
     <script src="assets/js/top-menu.js"></script>
     <script src="assets/js/footer-list.js"></script>
@@ -1539,6 +1279,8 @@
     <script src="assets/js/ourValuesComponent.js"></script>
     <script src="assets/js/offreServicesComponent.js"></script>
     <script src="assets/js/ourMissionComponent.js"></script>
-    <script src="assets/js/socialServicesComponent.js"></script> -->
+    <script src="assets/js/socialServicesComponent.js"></script>
+    <script src="assets/js/bestOffersComponent.js"></script> -->
+    <script src="assets/js/loadComponents.js"></script>
   </body>
 </html>
