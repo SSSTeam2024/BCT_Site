@@ -1,7 +1,7 @@
 async function fetchHeader() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/header/getHeaders",
+      "http://57.128.184.217:3000/api/header/getHeaders",
       {
         method: "GET",
         headers: {
@@ -23,7 +23,7 @@ async function fetchHeader() {
 }
 
 function updateHeader(data) {
-  const baseUrl = "http://localhost:3000/header/";
+  const baseUrl = "http://57.128.184.217:3000/header/";
   console.log("data", data);
   data.map((data) => {
     const logoPath = data.logo.startsWith("http")

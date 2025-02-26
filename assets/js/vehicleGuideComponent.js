@@ -1,7 +1,7 @@
 async function fetchVehicleGuide() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/vehicle-guide-component/getVehicleGuides",
+      "http://57.128.184.217:3000/api/vehicle-guide-component/getVehicleGuides",
       {
         method: "GET",
         headers: {
@@ -47,7 +47,7 @@ function updateVehiclesGuide(vehicleGuideData) {
     return;
   }
 
-  const baseUrl = "http://localhost:3000/VehicleGuide/";
+  const baseUrl = "http://57.128.184.217:3000/VehicleGuide/";
 
   // Clear existing content
   vehicleGuideContainer.innerHTML = "";

@@ -289,7 +289,7 @@
 
         let allAmount;
         let depositAmount;
-    
+
         function getPaymentMode(mode, data){
           if(mode === 'total price'){
             let price = document.getElementById("price")
@@ -302,9 +302,9 @@
         }
     
         async function getPaymentDetails(type, mode, date, Id){
-          
+
           const response = await fetch(
-            "http://localhost:3000/api/visitor-payment/get-details/"+Id,
+            "http://57.128.184.217:3000/api/quote/getQuoteById/"+Id,
             {
               method: "GET",
               headers: {
@@ -321,7 +321,7 @@
             payment_type.innerHTML = type
             let payment_date = document.getElementById("payment_date")
             payment_date.innerHTML = date
-            getPaymentMode(mode, data.id_quote)
+            getPaymentMode(mode, data)
           }); 
         }
     
@@ -344,16 +344,11 @@
     
         window.onload = function getPaymentData(){
           const currentUrl = window.location.href;
-          console.log(currentUrl);
           const urlParams = new URLSearchParams(window.location.search);
           const type = urlParams.get('type');
           const mode = urlParams.get('mode');
           const date = urlParams.get('date');
           const Id = urlParams.get('id');
-          console.log(type);
-          console.log(mode);
-          console.log(date);
-          console.log(Id);
           getPaymentDetails(type, mode, date, Id)
         }
       </script>

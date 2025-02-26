@@ -216,7 +216,7 @@ function showCurrentValueTextArea(event) {
 const getVT = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/passengerLuggageLimit/getAllPassengerLuggageLimits"
+      "http://57.128.184.217:3000/api/passengerLuggageLimit/getAllPassengerLuggageLimits"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -296,7 +296,7 @@ $("#luggage").on("change", function (event) {
 const getJourneys = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/journey/getAllJourneys"
+      "http://57.128.184.217:3000/api/journey/getAllJourneys"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -334,7 +334,7 @@ $("#journeys").on("change", function (event) {
 const getSource = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/source/getAllSources"
+      "http://57.128.184.217:3000/api/source/getAllSources"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -493,14 +493,17 @@ async function submitLoginForm(event) {
     return;
   }
 
-  const response = await fetch("http://localhost:3000/api/visitor/newVisitor", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body,
-  });
+  const response = await fetch(
+    "http://57.128.184.217:3000/api/visitor/newVisitor",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: body,
+    }
+  );
 
   response.json().then((data) => {
     localStorage.setItem("v_id", data._id);
@@ -624,14 +627,17 @@ async function submitQuoteForm(event) {
     status: "Pending",
   };
 
-  const response = await fetch("http://localhost:3000/api/quote/newQuote", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body,
-  });
+  const response = await fetch(
+    "http://57.128.184.217:3000/api/quote/newQuote",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: body,
+    }
+  );
 
   response
     .json()
@@ -639,7 +645,7 @@ async function submitQuoteForm(event) {
       localStorage.clear();
     })
     .then(async () => {
-      await fetch("http://localhost:3000/api/visitor/updateStatus", {
+      await fetch("http://57.128.184.217:3000/api/visitor/updateStatus", {
         method: "POST",
         headers: {
           Accept: "application/json",

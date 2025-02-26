@@ -1,7 +1,7 @@
 async function fetchBestOffer() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/best-offers-component/getBestOffer",
+      "http://57.128.184.217:3000/api/best-offers-component/getBestOffer",
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateBestOffer(bestOfferData) {
-  const baseUrl = "http://localhost:3000/BestOffer/";
+  const baseUrl = "http://57.128.184.217:3000/BestOffer/";
 
   const offerContainer = document.querySelector("#best-offer");
   const currentFileName = getCurrentHtmlFileName();

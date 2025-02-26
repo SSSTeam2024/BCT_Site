@@ -15,7 +15,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Title -->
-  <title>Booking Payment | Coach Hire Network</title>
+  <title>Booking Confirmation | Coach Hire Network</title>
    <!-- Favicon -->
    <link rel="icon" type="image/png" href="assets/img/logo.png">
   <style>
@@ -176,6 +176,9 @@
   <!-- Start Track Area -->
   <section class="track-area mt-minus-70 pb-100" style="margin-top: 18px; margin-bottom: 150px;">
     <div class="container">
+      <div>
+        <p style="font-size: 16px; margin-left: 180px;">Thank you for your booking! To confirm your reservation, please click on the link below:</p>
+      </div>
       <table style="
         width: 600px;
         height: 96px;
@@ -314,6 +317,19 @@
               <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
                 <label id="vehicle_type"></label>
               </td>
+            </tr>
+            <tr>
+              <td  style="
+              width: 200px;
+              text-align: right;
+              vertical-align: top;
+              padding-right: 15px;
+              background-color: #555;
+              color: #ffe605;
+            "></td>
+              <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc;">
+                <span style="color: #000" id="quote_price"></span>  <a href="#" onclick="submitPaymenEmail()">BOOK NOW</a>
+                </td>
             </tr>
             <tr>
               <td style="
@@ -479,31 +495,21 @@
                 <label id="current_balance"></label>
               </td>
             </tr>
-            <!-- <tr>
-              <td style="
-                width: 200px;
-                text-align: right;
-                vertical-align: top;
-                padding-right: 15px;
-                background-color: #555;
-                color: #ffe605;
-              ">
-                <b>Balance Due Date</b>
+            <tr>
+              <td
+                style="
+                  width: 200px;
+                  text-align: right;
+                  vertical-align: top;
+                  padding-right: 15px;
+                  background-color: #555;
+                  color: #ffe605;
+                "
+              >
+                <b>Click to Book</b>
               </td>
               <td style="text-align: left; padding-left: 15px; border-bottom: 1px solid #ccc; color: #000;">
-                <label>` +
-    quote.estimated_start_time +
-    `</label>
-              </td>
-            </tr> -->
-            <tr>
-              <td>
-                <button type="button" class="btn btnNext text-white" data-toggle="modal" style="margin-top: 20px; background-color: #e5d222; width: 150px; height: 50px; font-size: 20px;"
-                data-target="#alertModal" onclick="getPaymentMode('all')">All Amount</button>
-              </td>
-              <td>
-                <button type="button" class="btn btnNext text-white" data-toggle="modal" style="margin-top: 20px; background-color: #e5d222; width: 130px; height: 50px; font-size: 20px;"
-                data-target="#alertModal" onclick="getPaymentMode('deposit')">Deposit</button>
+               <a href="#" onclick="submitPaymenEmail()">BOOK NOW</a>
               </td>
             </tr>
           </tbody>
@@ -690,9 +696,11 @@
     }
 
     async function getPaymentDetails(){
+      
       const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get("id");
+      const id = urlParams.get("id");
 
+      
       const response = await fetch(`http://57.128.184.217:3000/api/quote/getQuoteById/${id}`, {
       method: "GET",
       headers: {
@@ -702,7 +710,6 @@
     });
 
       response.json().then((data) => {
-        details = data
         allAmount = data.total_price
         depositAmount = data.deposit_amount
         let legend = document.getElementById("legendLabel");
@@ -722,6 +729,9 @@
         vehicle_type.innerHTML = data.vehicle_type
         let price = document.getElementById("price");
         price.innerHTML = data.manual_cost
+        let quotePrice = document.getElementById("quote_price");
+        quotePrice.innerHTML = "£" + data.total_price
+
         let journey_type = document.getElementById("journey_type");
         journey_type.innerHTML = data.journey_type
         let passengers_name = document.getElementById("passengers_name");
@@ -752,7 +762,7 @@
     async function makePayment(){
       let currentDate = formatCurrentDate();
       let requestData = {
-        quoteId: details._id,
+        quoteId: data._id,
         payment_type: paymentType,
         visitorPaymentTrackingId: trackingId,
         payment_mode: paymentMode,
@@ -772,7 +782,6 @@
       );
 
       response.json().then((data) => {
-        console.log(data.link);
         window.location.replace(data.link);
       }); 
     }
@@ -821,6 +830,54 @@
       getPaymentDetails(hiddenId);
       trackingId = hiddenId;
     }
+  </script>
+  <script>
+async function submitPaymenEmail() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+
+  try {
+    const response = await fetch(`http://57.128.184.217:3000/api/quote/getQuoteById/${id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const quoteDetails = await response.json();
+
+    const sendingEmail = await fetch(
+      "http://57.128.184.217:3000/api/quote/sendPaymentEmail",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id_visitor: quoteDetails.id_visitor._id,
+          quote_id: quoteDetails._id
+        })
+      }
+    );
+
+    if (!sendingEmail.ok) {
+      throw new Error(`Email sending failed! Status: ${sendingEmail.status}`);
+    }
+
+    const emailResponse = await sendingEmail.json();
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+
   </script>
 </body>
 

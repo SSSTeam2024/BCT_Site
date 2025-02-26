@@ -1,7 +1,7 @@
 async function fetchFooterList() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/footer-list/getFooterLists",
+      "http://57.128.184.217:3000/api/footer-list/getFooterLists",
       {
         method: "GET",
         headers: {

@@ -10,7 +10,7 @@ const iconClassMapping = {
 async function fetchFooterSocial() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/footer-social/getFooterSocials",
+      "http://57.128.184.217:3000/api/footer-social/getFooterSocials",
       {
         method: "GET",
         headers: {
@@ -107,7 +107,9 @@ function updateSocialFooter(footerData) {
 
     const copyrightP = document.createElement("p");
     copyrightP.innerHTML = `
-      <i class="bx bx-copyright"></i> 2024 ${footer.siteName}. Designed By
+      <i class="bx bx-copyright"></i> ${new Date().getFullYear()} ${
+      footer.siteName
+    }. Designed By
       <a href="https://sss.com.tn/" target="_blank">3S</a>
     `;
 

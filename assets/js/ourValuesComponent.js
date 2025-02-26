@@ -1,7 +1,7 @@
 async function fetchOurValue() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/our-value-component/getOurValue",
+      "http://57.128.184.217:3000/api/our-value-component/getOurValue",
       {
         method: "GET",
         headers: {
@@ -47,7 +47,7 @@ function getCurrentHtmlFileName() {
 }
 
 function updateOurValues(ourValuesData) {
-  const baseUrl = "http://localhost:3000/ourValue/";
+  const baseUrl = "http://57.128.184.217:3000/ourValue/";
   const currentFileName = getCurrentHtmlFileName();
   const ourValueContainer = document.querySelector("#our-values");
   if (!ourValueContainer) {

@@ -298,7 +298,7 @@ const currentDate = getDate();
 const getVTA = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/vehicleType/getAllVehiclesTypes"
+      "http://57.128.184.217:3000/api/vehicleType/getAllVehiclesTypes"
     );
 
     if (!response.ok) {
@@ -497,7 +497,7 @@ async function submitBecomePartnerForm(event) {
     btn.setAttribute("data-target", "#alertModalAffiliate");
     $("#alertModalAffiliate").modal("show");
     const response = await fetch(
-      "http://localhost:3000/api/affiliate/register",
+      "http://57.128.184.217:3000/api/affiliate/register",
       {
         method: "POST",
         headers: {
