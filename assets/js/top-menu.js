@@ -30,14 +30,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           }`;
           navLink.textContent = item.label;
 
-          // Check for sub-items
           if (item.subItems.length > 0) {
             const dropdownMenu = document.createElement("ul");
             dropdownMenu.className = "dropdown-menu";
 
             item.subItems
-              .filter((subItem) => subItem.display) // Filter sub-items for display
-              .sort((a, b) => a.order - b.order) // Sort sub-items by the `order` property
+              .filter((subItem) => subItem.display)
+              .sort((a, b) => a.order - b.order)
               .forEach((subItem) => {
                 const subNavItem = document.createElement("li");
                 subNavItem.className = "nav-item";

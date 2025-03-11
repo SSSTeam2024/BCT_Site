@@ -2363,7 +2363,7 @@ Testimonials Area Style
 
 .testimonials-wrap {
     position: relative;
-    padding-left: 280px;
+    padding-left: 170px;
 }
 
 .testimonials-wrap img {
@@ -3149,8 +3149,8 @@ About Area Two Style
 ======================================================*/
 
 .about-area-two .about-content {
-    max-width: 640px;
-    margin-left: 0px;
+    max-width: 560px;
+    margin-left: 80px;
 }
 
 .about-area-two .pr-0 {
@@ -3159,7 +3159,7 @@ About Area Two Style
 
 .about-area-two .about-img {
     position: relative;
-    /* background-image: url(../img/about-img-two.jpg); */
+    background-image: url(../img/about-img-two.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -3170,7 +3170,7 @@ About Area Two Style
     background-color: #ffffff;
     -webkit-box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
-    width: 100%;
+    width: 56%;
     padding: 10px;
     max-width: 100%;
 }
