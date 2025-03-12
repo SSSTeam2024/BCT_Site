@@ -409,7 +409,7 @@ async function updateSections() {
     }
     if (section.typeComponent === "termsCondition") {
       sectionContainer.setAttribute("id", "terms_condition");
-      sectionContainer.classList.add("privacy-policy", "ptb-100");
+      sectionContainer.classList.add("privacy-policy", "pb-70");
       renderTermsCondition(section, sectionContainer);
     }
     contentContainer.appendChild(sectionContainer);

@@ -2579,15 +2579,15 @@ Tracking Area Style
     margin-bottom: 40px;
 }
 
-.subscribe-area .section-title.white-title h2 {
+.subscribe-area .section-title.white-title h3 {
     color: #ffffff;
 }
 
-.subscribe-area .section-title.white-title h2::before {
+.subscribe-area .section-title.white-title h3::before {
     display: none;
 }
 
-.subscribe-area .section-title.white-title h2::after {
+.subscribe-area .section-title.white-title h3::after {
     display: none;
 }
 
@@ -4554,10 +4554,11 @@ Our Project Area Style
 
 .began-area-four {
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .began-area-four .begans-bg {
-    background-image: url(../../assets/img/products-bg.jpg);
+    background-image: url(../../assets/img/IMG_0905.JPG);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4565,7 +4566,7 @@ Our Project Area Style
 }
 
 .began-area-four .began-wrap {
-    width: 715px;
+    width: 740px;
     background-color: transparent;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -4580,29 +4581,31 @@ Our Project Area Style
 }
 
 .began-area-four .began-wrap .single-began i {
-    color: #74a9f6;
+    color: #CD2528;
 }
 
 .began-area-four .began-wrap .single-began h3 {
     color: #ffffff;
 }
 
-.began-area-four .began-wrap .col-lg-4:nth-child(1) .single-began {
-    border-right: 1px solid #19345a;
-    border-bottom: 1px solid #19345a;
+.began-area-four .began-wrap .col-lg-6:nth-child(1) .single-began {
+    border-right: 1px solid #882224;
+    border-bottom: 1px solid #882224;
 }
 
-.began-area-four .began-wrap .col-lg-4:nth-child(2) .single-began {
-    border-bottom: 1px solid #19345a;
-    border-right: 1px solid #19345a;
+.began-area-four .began-wrap .col-lg-6:nth-child(2) .single-began {
+    border-bottom: 1px solid #882224;
+    border-right: 1px solid #882224;
 }
 
-.began-area-four .began-wrap .col-lg-4:nth-child(3) .single-began {
-    border-bottom: 1px solid #19345a;
+.began-area-four .began-wrap .col-lg-6:nth-child(3) .single-began {
+    border-right: 1px solid #882224;
+    border-bottom: 1px solid #882224;
 }
 
-.began-area-four .began-wrap .col-lg-4:nth-child(4) .single-began {
-    border-right: 1px solid #19345a;
+.began-area-four .began-wrap .col-lg-6:nth-child(4) .single-began {
+    border-right: 1px solid #882224;
+    border-bottom: 1px solid #882224;
 }
 
 .began-area-four .began-wrap .col-lg-4:nth-child(5) .single-began {
@@ -7344,7 +7347,7 @@ FAQ Area Style
 }
 
 .faq-area .faq-img {
-    background-image: url(../img/project/2021-Mercedes-Benz-Concept-EQT-17.jpg);
+    background-image: url(../img/IMG_0793.JPG);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -86,7 +86,6 @@ function updateHeader(data) {
 
     //! Button
     const buttonLink = document.querySelector("#get-a-quote a");
-    console.log("buttonLink", buttonLink);
     const buttonItem = buttonLink.closest("li");
     if (data.button_display === "1") {
       buttonItem.style.display = "";
