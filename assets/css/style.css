@@ -2601,7 +2601,7 @@ Office Map Area Style
 ======================================================*/
 
 .office-map-area {
-    /* background-image: url(../img/map-bg.png); */
+    background-image: url(../img/7.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2633,15 +2633,11 @@ Office Map Area Style
 }
 
 .office-map-area .container .map-location ul {
-    padding: 15px 30px 30px 30px;
+    padding: 15px 30px 5px 30px;
 }
 
 .office-map-area .container .map-location ul li {
-    margin-bottom: 15px;
-}
-
-.office-map-area .container .map-location ul li:last-child {
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 .office-map-area .container .map-location ul .color {
@@ -3763,7 +3759,7 @@ Choose Us Three Style
 ======================================================*/
 
 .choose-us-area-three .choose-main-wrap {
-    background-image: url(../img/choose-bg.jpg);
+    background-image: url(../img/1742556268417.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6682,16 +6678,16 @@ INNER PAGE STYLE
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb {
     float: left;
-    height: 80px;
+    height: 200px;
     overflow: hidden;
     position: relative;
-    width: 80px;
+    width: 200px;
     margin-right: 15px;
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage {
-    width: 80px;
-    height: 80px;
+    width: 200px;
+    height: 200px;
     display: inline-block;
     background-size: cover !important;
     background-repeat: no-repeat;
@@ -6700,19 +6696,23 @@ INNER PAGE STYLE
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage.bg1 {
-    background-image: url(../img/blog-details/1.jpg);
+    background-image: url(../img/blog-details/1742556268417.jpg);
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage.bg2 {
-    background-image: url(../img/blog-details/2.jpg);
+    background-image: url(../img/blog-details/1742556268700.jpg);
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage.bg3 {
-    background-image: url(../img/blog-details/3.jpg);
+    background-image: url(../img/blog-details/1742556268660.jpg);
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage.bg4 {
-    background-image: url(../img/blog-details/4.jpg);
+    background-image: url(../img/blog-details/1742556268635.jpg);
+}
+
+.blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage.bg5 {
+    background-image: url(../img/blog-details/1742556268683.jpg);
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .info {
@@ -8091,8 +8091,16 @@ Road Transfort Area Style
 Careers Area Style
 =====================================================*/
 
-.careers-img {
-    background-image: url(../img/over-view-img.jpg);
+.careers-img1 {
+    background-image: url(../img/blog-details/1742556268455.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.careers-img2 {
+    background-image: url(../img/blog-details/1742556268749.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
