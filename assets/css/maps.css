@@ -13,6 +13,7 @@
 /* Adjust map height for smaller screens */
 @media (max-width: 768px) {
   #map {
-    height: 200px;
+    height: 420px;
+    width: 350px;
   }
 }
