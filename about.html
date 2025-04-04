@@ -684,6 +684,12 @@
                           name="phone"
                           id="phone"
                         />
+                        <small
+                          id="phoneError"
+                          style="color: red; display: none; font-size: 11px"
+                          >Invalid phone number format. Use + followed by 12
+                          digits.</small
+                        >
                       </div>
                     </div>
                     <div class="row mb-20">
@@ -1254,7 +1260,7 @@
           </div>
           <div class="modal-footer">
             <button
-              type="submit"
+              type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
               onclick="olLoadPage()"
@@ -1314,6 +1320,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
     <!-- Header JS -->

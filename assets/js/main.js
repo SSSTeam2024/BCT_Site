@@ -446,17 +446,11 @@ async function submitLoginForm(event) {
   let name_visitor = "";
   let phone_visitor = "";
   let startDate = "";
-  const today = new Date();
   name_visitor = event.target["name"].value;
   phone_visitor = event.target["phone"].value;
   email_visitor = event.target["email"].value;
   startDate = localStorage.getItem("goDate");
-  var hours = today.getHours();
-  let minutes = today.getMinutes() + 1;
-  var ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  let date = /* "-- " +  */ hours + ":" + minutes + ampm;
+
   let object = {
     name: name_visitor,
     phone: phone_visitor,
@@ -480,6 +474,11 @@ async function submitLoginForm(event) {
     status: "new",
     enquiryDate: currentDate,
   };
+
+  const phoneRegex = /^\+\d{12}$/;
+  if (!phoneRegex.test(phone_visitor)) {
+    return;
+  }
 
   let body = JSON.stringify(object);
   if (
@@ -530,16 +529,11 @@ function addDurationToTime(time, hoursToAdd, minutesToAdd, givenDate) {
   const newHours = Math.floor(totalMinutes / 60) % 24;
   const newMinutes = totalMinutes % 60;
 
-  // Split the given date into year, month, and day
   const [year, month, day] = givenDate.split("-").map(Number);
 
-  // Create a new Date object with the given date
   const currentDate = new Date(year, month - 1, day);
 
-  // If adding time exceeds the current day
   if (totalMinutes >= 24 * 60) {
-    // Increment the date by 1 day
-    console.log("If condition");
     currentDate.setDate(currentDate.getDate() + 1);
   }
   let y = currentDate.getFullYear();
@@ -660,14 +654,12 @@ function olLoadPage() {
   location.reload();
 }
 
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+var currentTab = 0;
+showTab(currentTab);
 
 function showTab(n) {
-  // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("QuoteTab");
   x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
@@ -678,31 +670,22 @@ function showTab(n) {
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
-  //... and run a function that will display the correct step indicator:
   fixStepIndicator(n);
 }
 
 function nextPrev(n) {
-  // This function will figure out which tab to display
   var x = document.getElementsByClassName("QuoteTab");
-  // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
   x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
-  // if you have reached the end of the form...
   if (currentTab >= x.length) {
-    // ... the form gets submitted:
     document.getElementById("regForm").submit();
     return false;
   }
-  // Otherwise, display the correct tab:
   showTab(currentTab);
 }
 
 function validateForm() {
-  // This function deals with validation of the form fields
   var x,
     y,
     i,
@@ -712,9 +695,12 @@ function validateForm() {
   let returnDate = document.getElementById("returnDatePicker");
   let returnTime = document.getElementById("returnTimePicker");
   let inputsArray = Array.from(y);
+  const phoneInput = document.getElementById("phone");
+  const phoneValue = phoneInput?.value || "";
+  let showAlert = false;
+  const phoneRegex = /^\+\d{12}$/;
   let filteredInputs = inputsArray;
   if (currentTab === 0) {
-    // Convert HTMLCollection to an array
     let type = localStorage.getItem("type");
     switch (type) {
       case "One way":
@@ -728,7 +714,6 @@ function validateForm() {
   }
 
   if (currentTab === 1) {
-    // Convert HTMLCollection to an array
     let journey = localStorage.getItem("jrn");
     if (journey === null) {
       valid = false;
@@ -740,39 +725,47 @@ function validateForm() {
     let luggage = localStorage.getItem("lgg");
     if (luggage === null) {
       valid = false;
+      showAlert = true;
     }
   }
 
-  // A loop that checks every input field in the current tab:
   for (i = 0; i < filteredInputs.length; i++) {
-    // If a field is empty...
     if (filteredInputs[i].value == "") {
-      // add an "invalid" class to the field:
-      // filteredInputs[i].className += " invalid";
-      // and set the current valid status to false
       valid = false;
+      showAlert = true;
     }
   }
 
-  // If the valid status is true, mark the step as finished and valid:
+  if (currentTab === 0 && !phoneRegex.test(phoneValue)) {
+    valid = false;
+    const errorElem = document.getElementById("phoneError");
+    if (errorElem) {
+      errorElem.style.display = "block";
+      setTimeout(() => {
+        errorElem.style.display = "none";
+      }, 5000);
+    }
+    // ⛔ Do NOT show the general alert in this case
+    return false;
+  }
+
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
   }
 
-  if (!valid) {
+  if (!valid && showAlert) {
     alert("Please Fill in all the requested information!");
   }
-  return valid; // return the valid status
+  return valid;
 }
 
 function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
   var i,
     x = document.getElementsByClassName("step");
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");
   }
-  //... and adds the "active" class on the current step:
+
   x[n].className += " active";
 }
 
@@ -780,17 +773,12 @@ window.onload = function clearStorage() {
   localStorage.clear();
   localStorage.setItem("type", "One way");
 };
-///////
-// Javascript for tab navigation horizontal scroll buttons
 
-// Select all the required elements
 const tabMenu = document.querySelector(".tab__menu");
 const tabs = document.querySelectorAll(".tab");
 const tabBtns = document.querySelectorAll(".tab__btn");
 
-// Function to handle tab navigation
 const tab_Nav = function (tabBtnClick) {
-  // Remove 'active' class from all buttons and tabs
   tabBtns.forEach((tabBtn) => {
     tabBtn.classList.remove("active");
   });
@@ -799,12 +787,10 @@ const tab_Nav = function (tabBtnClick) {
     tab.classList.remove("active");
   });
 
-  // Add 'active' class to the clicked button and its corresponding tab
   tabBtns[tabBtnClick].classList.add("active");
   tabs[tabBtnClick].classList.add("active");
 };
 
-// Add click event listeners to all tab buttons
 tabBtns.forEach((tabBtn, i) => {
   tabBtn.addEventListener("click", () => {
     tab_Nav(i);
