@@ -19,7 +19,6 @@ function handleRadioClick() {
 
   if (selectedRadioButton) {
     const selectedValue = selectedRadioButton.value;
-    // Display the selected value or do something with it
     switch (selectedValue) {
       case "show":
         localStorage.setItem("type", "Return");
@@ -738,14 +737,13 @@ function validateForm() {
 
   if (currentTab === 0 && !phoneRegex.test(phoneValue)) {
     valid = false;
-    const errorElem = document.getElementById("phoneError");
-    if (errorElem) {
-      errorElem.style.display = "block";
-      setTimeout(() => {
-        errorElem.style.display = "none";
-      }, 5000);
-    }
-    // ⛔ Do NOT show the general alert in this case
+    // const errorElem = document.getElementById("phoneError");
+    // if (errorElem) {
+    //   errorElem.style.display = "block";
+    //   setTimeout(() => {
+    //     errorElem.style.display = "none";
+    //   }, 5000);
+    // }
     return false;
   }
 
@@ -794,5 +792,24 @@ const tab_Nav = function (tabBtnClick) {
 tabBtns.forEach((tabBtn, i) => {
   tabBtn.addEventListener("click", () => {
     tab_Nav(i);
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const phoneInput = document.getElementById("phone");
+  const phoneError = document.getElementById("phoneError");
+  const ukPhoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+
+  phoneInput.addEventListener("blur", function () {
+    const value = phoneInput.value.trim();
+    if (!ukPhoneRegex.test(value)) {
+      phoneError.style.display = "block";
+    } else {
+      phoneError.style.display = "none";
+    }
+  });
+
+  phoneInput.addEventListener("focus", function () {
+    phoneError.style.display = "none";
   });
 });
