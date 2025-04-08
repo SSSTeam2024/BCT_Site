@@ -474,7 +474,7 @@ async function submitLoginForm(event) {
     enquiryDate: currentDate,
   };
 
-  const phoneRegex = /^\+\d{12}$/;
+  const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
   if (!phoneRegex.test(phone_visitor)) {
     return;
   }
@@ -737,13 +737,6 @@ function validateForm() {
 
   if (currentTab === 0 && !phoneRegex.test(phoneValue)) {
     valid = false;
-    // const errorElem = document.getElementById("phoneError");
-    // if (errorElem) {
-    //   errorElem.style.display = "block";
-    //   setTimeout(() => {
-    //     errorElem.style.display = "none";
-    //   }, 5000);
-    // }
     return false;
   }
 
@@ -799,16 +792,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const phoneInput = document.getElementById("phone");
   const phoneError = document.getElementById("phoneError");
 
-  // UK mobile regex: +44 7XXX XXXXXX or 07XXX XXXXXX
   const ukPhoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
 
-  // Only allow numbers, +, space (optional)
   phoneInput.addEventListener("input", function () {
-    // Remove disallowed characters (keep digits, +, space)
     this.value = this.value.replace(/[^+\d\s]/g, "");
   });
 
-  // Show/hide error on blur
   phoneInput.addEventListener("blur", function () {
     const value = phoneInput.value.trim();
     if (!ukPhoneRegex.test(value)) {
@@ -818,7 +807,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Hide error on focus
   phoneInput.addEventListener("focus", function () {
     phoneError.style.display = "none";
   });
