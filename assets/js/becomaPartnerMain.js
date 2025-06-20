@@ -312,23 +312,119 @@ const getVTA = async () => {
   }
 };
 
-const displayOptionA = async () => {
-  $("#vehicleTypeAffiliate").empty();
-  const options = await getVTA();
-  const filtered = options.filter(
+const availableList = document.getElementById("availableList");
+const selectedList = document.getElementById("selectedList");
+const moveAllAvailableButton = document.getElementById("moveAllAvailable");
+const moveAllSelectedButton = document.getElementById("moveAllSelected");
+
+const populateAvailableList = (items) => {
+  availableList.innerHTML = "";
+  items.forEach((item) => {
+    const option = document.createElement("option");
+    option.value = item.type;
+    option.text = item.type;
+    availableList.appendChild(option);
+  });
+};
+function toggleRemoveAllButton() {
+  if (selectedList.options.length === 0) {
+    moveAllSelectedButton.disabled = true;
+  } else {
+    moveAllSelectedButton.disabled = false;
+  }
+}
+const moveToSelected = () => {
+  const selectedOptions = Array.from(availableList.selectedOptions);
+  selectedOptions.forEach((option) => {
+    selectedList.appendChild(option);
+  });
+};
+const moveToAvailable = () => {
+  const selectedOptions = Array.from(selectedList.selectedOptions);
+  selectedOptions.forEach((option) => {
+    availableList.appendChild(option);
+  });
+};
+function moveAllToSelected() {
+  const availableOptions = Array.from(availableList.options);
+  availableOptions.forEach((option) => {
+    selectedList.appendChild(option);
+  });
+  saveSelectedVehicles();
+  toggleRemoveAllButton();
+}
+function removeFromLocalStorage(valuesToRemove) {
+  const stored = JSON.parse(localStorage.getItem("selectedVehicles") || "[]");
+  const updated = stored.filter((item) => !valuesToRemove.includes(item.type));
+  localStorage.setItem("selectedVehicles", JSON.stringify(updated));
+}
+function removeAllFromSelected() {
+  const selectedOptions = Array.from(selectedList.options);
+  selectedOptions.forEach((option) => {
+    availableList.appendChild(option);
+  });
+  removeFromLocalStorage(selectedOptions.map((o) => o.value));
+  saveSelectedVehicles();
+  toggleRemoveAllButton();
+}
+moveAllAvailableButton.addEventListener("click", moveAllToSelected);
+moveAllSelectedButton.addEventListener("click", removeAllFromSelected);
+
+availableList.addEventListener("click", () => {
+  if (availableList.selectedOptions.length > 0) {
+    moveToSelected();
+    saveSelectedVehicles();
+    toggleRemoveAllButton();
+  }
+});
+selectedList.addEventListener("click", () => {
+  if (selectedList.selectedOptions.length > 0) {
+    moveToAvailable();
+    saveSelectedVehicles();
+    toggleRemoveAllButton();
+  }
+});
+const loadVehicleData = async () => {
+  const vehicles = await getVTA();
+  if (!vehicles) return;
+
+  const filtered = vehicles.filter(
     (item) =>
       item.type !== "Multiple Executive Vehicles" &&
       item.type !== "Multiple Luxury Vehicles" &&
       item.type !== "Multiple Standard Vehicles"
   );
-  for (const option of filtered) {
-    const newOption = document.createElement("option");
-    newOption.value = option.type;
-    newOption.text = option.type;
-    $("#vehicleTypeAffiliate").append(newOption);
-  }
+  populateAvailableList(filtered);
 };
-displayOptionA();
+function saveSelectedVehicles() {
+  const selectedList = document.getElementById("selectedList");
+  const selectedObjects = Array.from(selectedList.options).map((option) => ({
+    type: option.value,
+    qty: "",
+  }));
+
+  localStorage.setItem("selectedVehicles", JSON.stringify(selectedObjects));
+}
+function loadSelectedVehicles() {
+  const saved = localStorage.getItem("selectedVehicles");
+  if (!saved) return;
+
+  const selectedValues = JSON.parse(saved);
+  const availableList = document.getElementById("availableList");
+  const selectedList = document.getElementById("selectedList");
+
+  const optionsToMove = Array.from(availableList.options).filter((option) =>
+    selectedValues.includes(option.value)
+  );
+
+  optionsToMove.forEach((option) => selectedList.appendChild(option));
+}
+
+loadVehicleData();
+loadSelectedVehicles();
+function filterPhoneInput(input) {
+  input.value = input.value.replace(/[^\d+ ]/g, "");
+}
 async function submitBecomePartnerForm(event) {
   event.preventDefault();
   let email_affiliate = "";
@@ -338,7 +434,9 @@ async function submitBecomePartnerForm(event) {
   let notes_affiliate = "";
   let address_affiliate = "";
   let website = "";
-  let vehicleType = "";
+  let vehicleTypes = JSON.parse(
+    localStorage.getItem("selectedVehicles") || "[]"
+  );
   let coverageArea = "";
   let day = "";
   name_affiliate = event.target["nameAffiliate"].value;
@@ -350,6 +448,8 @@ async function submitBecomePartnerForm(event) {
   website = event.target["website"].value;
   day = $("#id_creation_date").val();
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   let object = {
     name: name_affiliate,
     phone: phone_affiliate,
@@ -359,7 +459,7 @@ async function submitBecomePartnerForm(event) {
     statusAffiliate: "Pending",
     enquiryDate: currentDate,
     number_file: licenceNumber,
-    vehicles: selectedVehicles,
+    vehicles: vehicleTypes,
     id_creation_date: day,
     id_file: localStorage.getItem("file"),
     IdFileBase64String: localStorage.getItem("64"),
@@ -373,7 +473,83 @@ async function submitBecomePartnerForm(event) {
     })),
     website: website,
   };
+
   let body = JSON.stringify(object);
+
+  function validateEmail() {
+    let email = document.getElementById("emailAffiliate");
+    let emailErrorDiv = document.getElementById("divemailAffiliate");
+    let errorMessage = "";
+
+    // Check if email is empty
+    if (object.email.trim() === "") {
+      errorMessage = "Please enter your email.";
+    }
+    // Check if email is valid
+    else if (!emailRegex.test(object.email.trim())) {
+      errorMessage = "Please enter a valid email address.";
+    }
+
+    // If there is an error, show it
+    if (errorMessage) {
+      var paragraphEmail = document.getElementById("paraghraphEmailAffiliate");
+      if (!paragraphEmail) {
+        paragraphEmail = document.createElement("p");
+        paragraphEmail.setAttribute("id", "paraghraphEmailAffiliate");
+        paragraphEmail.textContent = errorMessage;
+        emailErrorDiv.appendChild(paragraphEmail);
+      }
+      // Remove error message after 3 seconds
+      setTimeout(() => {
+        emailErrorDiv.removeChild(paragraphEmail);
+      }, 3000);
+    } else {
+      // Clear any existing error message
+      var paragraphEmail = document.getElementById("paraghraphEmailAffiliate");
+      if (paragraphEmail) {
+        emailErrorDiv.removeChild(paragraphEmail);
+      }
+    }
+  }
+
+  function validateUKPhoneNumber(phoneNumber) {
+    // UK phone number regex:
+    const ukPhoneRegex = /^(?:\+44|0044|0)\d{10}$/;
+    return ukPhoneRegex.test(phoneNumber);
+  }
+
+  function validatePhone() {
+    const phoneInput = document.getElementById("phoneAffiliate");
+    const phone = phoneInput.value.trim();
+    const phoneErrorDiv = document.getElementById("divphoneAffiliate");
+    let errorMessage = "";
+
+    if (phone === "") {
+      errorMessage = "Please enter your phone number.";
+    } else if (!validateUKPhoneNumber(phone)) {
+      errorMessage = "Please enter a valid UK phone number.";
+    }
+
+    // Display error message if any
+    let paragraphPhone = document.getElementById("paragraphPhoneAffiliate");
+    if (errorMessage) {
+      if (!paragraphPhone) {
+        paragraphPhone = document.createElement("p");
+        paragraphPhone.setAttribute("id", "paragraphPhoneAffiliate");
+        paragraphPhone.textContent = errorMessage;
+        phoneErrorDiv.appendChild(paragraphPhone);
+      }
+      // Remove after 3 seconds
+      setTimeout(() => {
+        if (paragraphPhone && paragraphPhone.parentNode) {
+          phoneErrorDiv.removeChild(paragraphPhone);
+        }
+      }, 3000);
+    } else if (paragraphPhone) {
+      phoneErrorDiv.removeChild(paragraphPhone);
+    }
+  }
+
   if (object.name.trim() === "") {
     var name = document.getElementById("divenameAffiliate");
     var paragraphName = document.createElement("p");
@@ -382,7 +558,7 @@ async function submitBecomePartnerForm(event) {
     name.appendChild(paragraphName);
     setTimeout(() => {
       name.removeChild(paragraphName);
-    }, 2000);
+    }, 3000);
   }
 
   if (object.number_file.trim() === "") {
@@ -393,7 +569,7 @@ async function submitBecomePartnerForm(event) {
     licenceNumberDiv.appendChild(paragraphLicenceNumber);
     setTimeout(() => {
       licenceNumberDiv.removeChild(paragraphLicenceNumber);
-    }, 2000);
+    }, 3000);
   }
 
   if (object.id_creation_date === "") {
@@ -404,29 +580,39 @@ async function submitBecomePartnerForm(event) {
     dateDiv.appendChild(paragraphDateDiv);
     setTimeout(() => {
       dateDiv.removeChild(paragraphDateDiv);
-    }, 2000);
+    }, 3000);
   }
 
   if (object.email.trim() === "") {
     var email = document.getElementById("divemailAffiliate");
     var paragraphEmail = document.createElement("p");
     paragraphEmail.setAttribute("id", "paraghraphEmailAffiliate");
-    paragraphEmail.textContent = "Please enter your email";
+    paragraphEmail.textContent = "Please enter your email.";
     email.appendChild(paragraphEmail);
     setTimeout(() => {
       email.removeChild(paragraphEmail);
-    }, 2000);
+    }, 3000);
   }
-  if (object.phone.trim() === "") {
-    var element = document.getElementById("divphoneAffiliate");
-    var paragraph = document.createElement("p");
-    paragraph.setAttribute("id", "paraghraphPhoneAffiliate");
-    paragraph.textContent = "Please enter your number";
-    element.appendChild(paragraph);
-    setTimeout(() => {
-      element.removeChild(paragraph);
-    }, 2000);
-  }
+  // if (!emailRegex.test(object.email.trim())) {
+  //   var email = document.getElementById("divemailAffiliate");
+  //   var paragraphEmail = document.createElement("p");
+  //   paragraphEmail.setAttribute("id", "paraghraphEmailAffiliate");
+  //   paragraphEmail.textContent = "Please enter a valid email address.";
+  //   email.appendChild(paragraphEmail);
+  //   setTimeout(() => {
+  //     email.removeChild(paragraphEmail);
+  //   }, 3000);
+  // }
+  // if (object.phone.trim() === "") {
+  //   var element = document.getElementById("divphoneAffiliate");
+  //   var paragraph = document.createElement("p");
+  //   paragraph.setAttribute("id", "paraghraphPhoneAffiliate");
+  //   paragraph.textContent = "Please enter your number";
+  //   element.appendChild(paragraph);
+  //   setTimeout(() => {
+  //     element.removeChild(paragraph);
+  //   }, 3000);
+  // }
 
   if (object.address.trim() === "") {
     var address = document.getElementById("errorAddress");
@@ -436,7 +622,7 @@ async function submitBecomePartnerForm(event) {
     address.appendChild(paragraphAddress);
     setTimeout(() => {
       address.removeChild(paragraphAddress);
-    }, 2000);
+    }, 3000);
   }
 
   if (selectedLocations.length === 0) {
@@ -447,9 +633,9 @@ async function submitBecomePartnerForm(event) {
     depot_address.appendChild(paragrapDepotAddress);
     setTimeout(() => {
       depot_address.removeChild(paragrapDepotAddress);
-    }, 2000);
+    }, 3000);
   }
-  if (selectedVehicles[0].type === "") {
+  if (vehicleTypes.length === 0) {
     var vehicleElement = document.getElementById("errorVehicleType");
     var paragraphVehicle = document.createElement("p");
     paragraphVehicle.setAttribute("id", "pvehicleTypeAffiliate");
@@ -457,7 +643,7 @@ async function submitBecomePartnerForm(event) {
     vehicleElement.appendChild(paragraphVehicle);
     setTimeout(() => {
       vehicleElement.removeChild(paragraphVehicle);
-    }, 2000);
+    }, 3000);
   }
 
   if (object.id_file === null) {
@@ -468,7 +654,7 @@ async function submitBecomePartnerForm(event) {
     fileElement.appendChild(paragraphFile);
     setTimeout(() => {
       fileElement.removeChild(paragraphFile);
-    }, 2000);
+    }, 3000);
   }
 
   if (!document.getElementById("termsCheckbox").checked) {
@@ -480,12 +666,12 @@ async function submitBecomePartnerForm(event) {
     terms_Conditions.appendChild(paragraphTerms_Conditions);
     setTimeout(() => {
       terms_Conditions.removeChild(paragraphTerms_Conditions);
-    }, 2000);
+    }, 3000);
   }
-
+  validatePhone();
   if (
     selectedLocations.length !== 0 &&
-    selectedVehicles[0].type.trim() !== "" &&
+    object.vehicles.length !== 0 &&
     object.name.trim() !== "" &&
     object.email.trim() !== "" &&
     object.phone.trim() !== "" &&
@@ -511,5 +697,5 @@ async function submitBecomePartnerForm(event) {
 }
 
 function olLoadPage() {
-  location.reload();
+  location.href("/index.html");
 }

@@ -247,6 +247,57 @@
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
       }
+
+      .dual-listbox {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        margin: 20px;
+      }
+
+      .listbox-container {
+        text-align: center;
+        width: 300px;
+      }
+
+      select {
+        width: 300px;
+        height: 300px;
+        padding: 5px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .buttons-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button_dual {
+        padding: 8px 16px;
+        font-size: 16px;
+        color: #000000;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+      }
+
+      .button_dual:hover {
+        background-color: #cd2528;
+        color: #ffffff;
+      }
+
+      .button_dual:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
     </style>
   </head>
 
@@ -618,6 +669,10 @@
                 class="close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                style="
+                  background-color: #cd2528 !important;
+                  color: #ffffff !important;
+                "
               >
                 <span aria-hidden="true">
                   <i class="bx bx-x"></i>
@@ -633,7 +688,7 @@
               <div class="sidebar-modal-widget">
                 <h3 class="title">About Us</h3>
                 <p>
-                  Coach Network provide coach hire for private, commercial
+                  Coach Hire Network provide coach hire for private, commercial
                   including the public sector. We welcome any group size no
                   matter how small or large. Our fleet ranges from budget
                   vehicle hire to executive and luxury hire. With true national
@@ -675,7 +730,7 @@
                   </li>
                   <li>
                     <i class="bx bxs-phone-call"></i> Phone
-                    <a href="tel:+44 800 112 37700000">+44 800 112 37700000</a>
+                    <a href="tel:08001123770">08001123770</a>
                   </li>
                 </ul>
               </div>
@@ -1008,7 +1063,7 @@
           </p>
           <p>
             To learn more or to apply to become a partner, please contact us at
-            <strong>+44 800 112 37700000</strong> or email us at
+            <strong>08001123770</strong> or email us at
             <a href="mailto:sales@coachhirenetwork.co.uk"
               >sales@coachhirenetwork.co.uk.</a
             >
@@ -1076,7 +1131,8 @@
                                 name="phoneAffiliate"
                                 id="phoneAffiliate"
                                 class="form-control"
-                                placeholder="Your Phone"
+                                placeholder="Your Phone Number"
+                                oninput="filterPhoneInput(this)"
                               />
                               <div
                                 id="divphoneAffiliate"
@@ -1117,34 +1173,46 @@
                     <div>
                       <fieldset>
                         <legend>Fleet Information:</legend>
-                        <div class="row">
-                          <div class="col-lg-2 col-sm-2"></div>
-                          <div class="col-4 col-sm-4">
-                            <div class="form-group">
-                              <label> Vehicle Type </label>
-                              <small
-                                >You can select one or multiple vehicle
-                                types</small
-                              >
-                              <select
-                                id="vehicleTypeAffiliate"
-                                multiple
-                              ></select>
+                        <div class="container">
+                          <div class="row" style="margin-bottom: 40px">
+                            <div class="col">
+                              <div class="dual-listbox">
+                                <div class="listbox-container">
+                                  <h3>Available Vehicles</h3>
+                                  <select
+                                    id="availableList"
+                                    multiple
+                                    size="10"
+                                  ></select>
+                                  <button
+                                    id="moveAllAvailable"
+                                    class="button_dual"
+                                    type="button"
+                                  >
+                                    Move All
+                                  </button>
+                                </div>
+                                <div class="listbox-container">
+                                  <h3>Selected Vehicles</h3>
+                                  <select
+                                    id="selectedList"
+                                    multiple
+                                    size="10"
+                                  ></select>
+                                  <button
+                                    id="moveAllSelected"
+                                    class="button_dual"
+                                    type="button"
+                                  >
+                                    Remove All
+                                  </button>
+                                </div>
+                              </div>
+                              <div
+                                id="errorVehicleType"
+                                class="text-danger"
+                              ></div>
                             </div>
-                            <div
-                              id="errorVehicleType"
-                              class="text-danger"
-                            ></div>
-                          </div>
-                          <div class="col-4 col-sm-4">
-                            <div class="form-group">
-                              <label> Selected Vehicle Type </label>
-                              <div id="selectedVehicleTypes"></div>
-                            </div>
-                            <!-- <div
-                              id="errorVehicleType"
-                              class="text-danger"
-                            ></div> -->
                           </div>
                         </div>
                       </fieldset>
@@ -1474,6 +1542,135 @@
         </div>
       </div>
     </div>
+    <!-- <script>
+      // Dummy data (can be fetched via API)
+      const vehicleTypes = [
+        { type: "Sedan" },
+        { type: "SUV" },
+        { type: "Truck" },
+        { type: "Coupe" },
+        { type: "Convertible" },
+        { type: "Wagon" },
+        { type: "Hatchback" },
+        { type: "Minivan" },
+        { type: "Luxury" },
+        { type: "Electric" },
+      ];
+
+      // DOM Elements
+      const availableList = document.getElementById("availableList");
+      const selectedList = document.getElementById("selectedList");
+      //const moveRightButton = document.getElementById("moveRight");
+      //const moveLeftButton = document.getElementById("moveLeft");
+      const moveAllAvailableButton =
+        document.getElementById("moveAllAvailable");
+      const moveAllSelectedButton = document.getElementById("moveAllSelected");
+
+      // Populate Available List with vehicle types
+      const populateAvailableList = (items) => {
+        availableList.innerHTML = "";
+        items.forEach((item) => {
+          const option = document.createElement("option");
+          option.value = item.type;
+          option.text = item.type;
+          availableList.appendChild(option);
+        });
+      };
+
+      // Move selected item(s) from available to selected
+      const moveToSelected = () => {
+        const selectedOptions = Array.from(availableList.selectedOptions);
+        selectedOptions.forEach((option) => {
+          selectedList.appendChild(option);
+        });
+        // updateButtonState();
+      };
+
+      // Move selected item(s) from selected to available
+      const moveToAvailable = () => {
+        const selectedOptions = Array.from(selectedList.selectedOptions);
+        selectedOptions.forEach((option) => {
+          availableList.appendChild(option);
+        });
+        // updateButtonState();
+      };
+
+      // Move all items from available to selected
+      const moveAllToSelected = () => {
+        Array.from(availableList.options).forEach((option) => {
+          selectedList.appendChild(option);
+        });
+        //updateButtonState();
+      };
+
+      // Remove all items from selected to available
+      const removeAllFromSelected = () => {
+        Array.from(selectedList.options).forEach((option) => {
+          availableList.appendChild(option);
+        });
+        // updateButtonState();
+      };
+
+      // Update button state based on selection
+      // const updateButtonState = () => {
+      //  moveRightButton.disabled = availableList.selectedOptions.length === 0;
+      //  moveLeftButton.disabled = selectedList.selectedOptions.length === 0;
+      // };
+
+      // Event listeners for the buttons
+      // moveRightButton.addEventListener("click", moveToSelected);
+      // moveLeftButton.addEventListener("click", moveToAvailable);
+      moveAllAvailableButton.addEventListener("click", moveAllToSelected);
+      moveAllSelectedButton.addEventListener("click", removeAllFromSelected);
+
+      // Event listeners for click-to-move functionality
+      availableList.addEventListener("click", () => {
+        if (availableList.selectedOptions.length > 0) {
+          moveToSelected();
+        }
+      });
+
+      selectedList.addEventListener("click", () => {
+        if (selectedList.selectedOptions.length > 0) {
+          moveToAvailable();
+        }
+      });
+
+      // Initial population of the available list
+      populateAvailableList(vehicleTypes);
+
+      // Update button states initially
+      //updateButtonState();
+
+      const getVTA = async () => {
+        try {
+          const response = await fetch(
+            "http://57.128.184.217:3000/api/vehicleType/getAllVehiclesTypes"
+          );
+          const data = await response.json();
+          return data; // Return the array of vehicle types
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          return [];
+        }
+      };
+
+      // Fetch and populate available list
+      const loadVehicleData = async () => {
+        const vehicles = await getVTA();
+        if (!vehicles) return;
+
+        const filtered = vehicles.filter(
+          (item) =>
+            item.type !== "Multiple Executive Vehicles" &&
+            item.type !== "Multiple Luxury Vehicles" &&
+            item.type !== "Multiple Standard Vehicles"
+        );
+        populateAvailableList(filtered);
+      };
+      loadVehicleData();
+    </script> -->
+
     <!-- Jquery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
     <!-- Bootstrap Bundle Min JS -->

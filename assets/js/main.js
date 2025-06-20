@@ -199,11 +199,11 @@ function testClicked() {
 }
 
 // Passenger Number
-function showCurrentValue(event) {
-  const value = event.target.value;
-  displayOption(value);
-  localStorage.setItem("pax", value);
-}
+// function showCurrentValue(event) {
+//   const value = event.target.value;
+//   displayOption(value.replace(/[^\d+ ]/g, ""));
+//   localStorage.setItem("pax", value);
+// }
 // Notes
 function showCurrentValueTextArea(event) {
   const value = event.target.value;
@@ -230,19 +230,26 @@ const getVT = async () => {
 
 let passengerLuggageLimitOptions;
 let max_pax;
-
+function filterPaxInput(input) {
+  input.value = input.value.replace(/[^\d]/g, "");
+  if (Number(input.value) > 0) {
+    displayOption(input.value);
+    localStorage.setItem("pax", input.value);
+  } else {
+    input.value = "";
+  }
+}
 const displayOption = async (val) => {
   let value = Number(val);
   max_pax = value;
-  //$("#vehicleType").empty();
   var select = document.getElementById("vehicleType");
   select.innerHTML = "";
-  passengerLuggageLimitOptions = await getVT();
-  const option1 = passengerLuggageLimitOptions.filter(
-    (item) => Number(item.max_passengers) >= value
-  );
 
-  // Assuming filtered is an array of objects with properties base_change and type
+  passengerLuggageLimitOptions = await getVT();
+  const option1 = passengerLuggageLimitOptions
+    .filter((item) => Number(item.max_passengers) >= value)
+    .sort((a, b) => a.max_passengers - b.max_passengers);
+
   const newEmptyOption = document.createElement("option");
   newEmptyOption.value = "";
   newEmptyOption.text = "Select Vehicle";
@@ -479,6 +486,11 @@ async function submitLoginForm(event) {
     return;
   }
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email_visitor)) {
+    return;
+  }
+
   let body = JSON.stringify(object);
   if (
     name_visitor === "" ||
@@ -619,36 +631,38 @@ async function submitQuoteForm(event) {
     visitor_id: localStorage.getItem("v_id"),
     status: "Pending",
   };
-
-  const response = await fetch(
-    "http://57.128.184.217:3000/api/quote/newQuote",
-    {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: body,
-    }
-  );
-
-  response
-    .json()
-    .then((data) => {
-      localStorage.clear();
-    })
-    .then(async () => {
+  const visitorUpdateBody = JSON.stringify(ObjectToUpdate);
+  try {
+    await Promise.all([
+      fetch("http://57.128.184.217:3000/api/quote/newQuote", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: body,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.clear();
+        }),
       await fetch("http://57.128.184.217:3000/api/visitor/updateStatus", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(ObjectToUpdate),
-      });
-    });
-  setTimeout(() => {}, 2000);
+        body: visitorUpdateBody,
+      }),
+    ]);
+    setTimeout(() => {
+      console.log("Both API calls completed");
+    }, 2000);
+  } catch (error) {
+    console.error("Error during API calls:", error);
+  }
 }
+
 function olLoadPage() {
   location.reload();
 }
@@ -695,9 +709,12 @@ function validateForm() {
   let returnTime = document.getElementById("returnTimePicker");
   let inputsArray = Array.from(y);
   const phoneInput = document.getElementById("phone");
+  const emailInput = document.getElementById("email");
+  const emailValue = emailInput?.value || "";
   const phoneValue = phoneInput?.value || "";
   let showAlert = false;
   const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   let filteredInputs = inputsArray;
   if (currentTab === 0) {
     let type = localStorage.getItem("type");
@@ -729,13 +746,18 @@ function validateForm() {
   }
 
   for (i = 0; i < filteredInputs.length; i++) {
-    if (filteredInputs[i].value == "") {
+    if (filteredInputs[i].value.trim() === "") {
       valid = false;
       showAlert = true;
     }
   }
 
   if (currentTab === 0 && !phoneRegex.test(phoneValue)) {
+    valid = false;
+    return false;
+  }
+
+  if (currentTab === 0 && !emailRegex.test(emailValue)) {
     valid = false;
     return false;
   }
@@ -809,5 +831,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   phoneInput.addEventListener("focus", function () {
     phoneError.style.display = "none";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("emailError");
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  emailInput.addEventListener("blur", function () {
+    const value = emailInput.value.trim();
+    if (!emailRegex.test(value)) {
+      emailError.style.display = "block";
+    } else {
+      emailError.style.display = "none";
+    }
+  });
+
+  emailInput.addEventListener("focus", function () {
+    emailError.style.display = "none";
   });
 });
